@@ -1,0 +1,451 @@
+---
+title: "Workshop: Automation with Relay.app"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+author: "The Graph Courses Team"
+---
+
+# Introduction
+
+In this workshop, you'll add a consultation contact form to your portfolio website. When someone fills it out, mentioning their company and what they need help with, an automation will kick in behind the scenes: it will research the company, use an AI model to draft a professional report on GenAI opportunities for that organization, and email the report to you. That way, before you respond to the inquiry, you have useful context to work with.
+
+Specifically, the automation will:
+
+1.  Monitor a Google Sheets spreadsheet for new form submissions
+2.  Research the potential client's company using Google Search
+3.  Use an AI model to generate a professional HTML report on GenAI opportunities
+4.  Email you the report as an attachment
+
+You'll build this using [Relay.app](https://relay.app){target="_blank"}, an automation platform that connects different web services with AI models. With its AI assistant, the whole setup takes just a few minutes.
+
+::: callout-tip
+## Consulting? Me?
+
+You may be thinking "I'm not qualified to be a GenAI consultant!". But by now you have a solid understanding of how large language models work and what they can do. That puts you in probably the **top 5% of people** in terms of GenAI literacy, which means you could, in theory, act as a consultant in your own field, helping others figure out how to use these tools effectively.
+
+:::
+
+------------------------------------------------------------------------
+
+# Part 1: Setting Up Your Google Form and Data Collection
+
+::: callout-tip
+## A note on privacy and permissions
+
+Setting up this automation will involve granting Relay.app access to your Google Drive and Google Sheets so it can read form responses and run the workflow. Relay.app is a trusted service that we have vetted, and only actions you explicitly set up will be taken: it won't read or modify anything else in your account. If you're still concerned though, you may want to create a separate Google account for this workshop.
+:::
+
+## Create Your Project Folder
+
+1.  In your browser, navigate to [drive.google.com](https://drive.google.com/){target="_blank"}
+2.  Click **New** at the top left, then click **New folder**
+
+![Figure: Create a new folder.](images/new_folder.jpg){fig-alt="Create a new folder" width="300"}
+
+3.  Name the folder something like `GenAI Consultations`
+4.  Double-click to open the folder
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/6e163120-758c-4186-b7f3-be06417a2cd6/File.jpeg?tl_px=0,0&br_px=1376,769&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=337,171){width="619"}
+
+## Build Your Consultation Form
+
+1.  Inside the folder, click **New** → **Google Forms**. You can close the Gemini quickstart helper if that pops up. 
+
+2.  In the title field enter: `Consultation Inquiry`
+
+3.  Set up the following form questions:
+
+    -   **Question 1:** "Name" (Short answer)
+    -   **Question 2:** "Email" (Short answer)
+    -   **Question 3:** "What is your company name and primary geographic area?" (Short answer)
+    -   **Question 4:** "What would you like help with?" (Paragraph)
+
+![](images/consultation_form.jpg){width="525"}
+
+4.  When done, click **Publish** at the top right to make your form live.
+
+![Figure: Publish the form.](images/forms_publish_button.jpg){fig-alt="Publish the form" width="300"}
+
+## Test Your Form and Connect to Sheets
+
+1.  Click the Share button at the top right, then copy the responder link.
+
+2.  Paste that link into a new tab and submit a test response. Try to use a real organization you know and care about. Example:
+
+    -   Name: `John Doe`
+    -   Email: `john.doe@example.com`
+    -   Company: `The Graduate Institute, Geneva`
+    -   Help needed: `General advice on how to use GenAI to help students`
+
+3.  Return to the form editor tab and click **Responses**. You should see your new submission.
+
+4.  Click **Link to Sheets** → **Create** to generate a connected spreadsheet.
+
+![Figure: Link to Sheets.](images/link_to_sheets_n.jpg){fig-alt="Link to Sheets" width="300"}
+
+5.  Open the connected spreadsheet. You should see your test response as a row. Keep this tab open; you'll need to point Relay.app to this spreadsheet shortly.
+
+------------------------------------------------------------------------
+
+# Part 2: Building the Automation with Relay.app
+
+
+## 2.1 Sign Up for a Relay.app Account
+
+1.  Navigate to [relay.app](https://relay.app){target="_blank"} and sign up with the same Google account you used for your Google Form.
+
+2.  You may be asked to add your LinkedIn profile. Up to you whether you want to do this or skip. 
+
+## 2.2 Start Creating a New Workflow
+
+1.  You may land on a page asking you to create an "agent." You can skip this by going directly to the workflow dashboard at [https://run.relay.app/dashboard](https://run.relay.app/dashboard){target="_blank"}
+
+2.  On the left-hand sidebar, click the plus icon to create a new **Workflow**.
+
+![Figure: Create a new workflow.](images/create_new_workflow_button_n.jpg){fig-alt="Create a new workflow" width="318"}
+
+3.  Relay will open the workflow editor, with an AI assistant panel on the left.
+
+## 2.3 Use the AI Assistant to Build the Workflow
+
+Rather than configuring each step manually, we'll let the AI assistant build the workflow from a prompt.
+
+::: callout-note
+We've written the prompt for you below. Writing these prompts takes some practice, but the steps can be described in plain language. You'll learn how to craft these yourself over time as you build more workflows. For now, we'll explain why we chose each specification after the prompt.
+:::
+
+1.  Copy the prompt below and paste it into the AI assistant text box.
+
+![Figure: Paste your prompt here.](images/paste_your_prompt_here_n.jpg){fig-alt="Paste your prompt here" width="532"}
+
+**Prompt to paste:**
+
+```         
+I have a Google spreadsheet that is updated when clients fill out my contact form.
+
+For each new submission, I want a report of genAI opportunities for the client's organization emailed to me.
+
+First, our automation should research the company, using Google search, returning 3 results.
+
+Then we will use Gemini Flash to draft a report. The report should be rich, colorful, and professional.
+
+The report file should be created with the plain text file tool, but with an HTML extension.
+
+Finally, an email should be sent to me using the email yourself tool (not gmail), with the report attached. 
+```
+
+2.  Click send.
+
+::: callout-note
+
+**Why these specifications?** You'll learn to write prompts like this over time. Here's the reasoning behind a few of the choices:
+
+-   **"returning 3 results"**: The Google Search step defaults to about 5 results, which uses more AI credits than we need for this task. Two or three results is plenty.
+-   **"Gemini Flash"**: If you don't specify a model, Relay.app may default to a larger model like Anthropic's Sonnet, which is more powerful but also more expensive. The free plan only gives you **500 AI credits**, so it's worth being deliberate about which model you use. Gemini Flash is fast, cheap, and capable enough for th is task.
+-   **"email yourself tool (not gmail)"**: Relay.app has a built-in "Email Yourself" tool that lets you send an email to your own address without needing to connect your Google/Gmail account. This keeps things simple.
+
+:::
+
+3.  The assistant will respond with a plan, then ask you to connect to Google Sheets. Click **Connect** and log in with the same Google account.
+
+![Figure: Connect to Google Sheets.](images/connect_to_google_sheets_n.jpg){fig-alt="Connect to Google Sheets" width="390"}
+
+4.  Google will ask what permissions to grant. Grant all three.
+
+![Figure: Grant permissions to Relay.app.](images/grant_permissions.jpg){fig-alt="Grant permissions to Relay.app" width="461"}
+
+::: callout-note
+As mentioned above, these are broad permissions, but only your explicitly configured workflow actions will be taken.
+:::
+
+5.  Next, select the sheet that holds your contact form responses.
+
+![Figure: Select your sheet.](images/select_sheet_n.jpg){fig-alt="Select the sheet that holds your contact form responses" width="415"}
+
+6.  The assistant will then ask you to test the workflow.
+
+![Figure: Test the workflow.](images/test_workflow_n.jpg){fig-alt="Test the workflow" width="347"}
+
+7.  Click the test button and select the row you submitted earlier. The workflow will run and after a moment you should receive an email with the report attached. To view the HTML report, download it and open it in your browser.
+
+::: callout-tip
+The "Email Yourself" tool only sends to your own address. To email others, you can connect a Gmail or Outlook integration instead.
+:::
+
+Below is an example report:
+
+![Figure: Example report from Relay.app.](images/example_report_relay.jpg){fig-alt="Example report generated by Relay.app" width="520"}
+
+## 2.4 Make Any Final Adjustments
+
+If any step looks wrong, or if you don't like the final output, you can click to edit the workflow steps, or describe the problem and/or fix to the AI in the chat panel on the left. For example, you might say *"Tell the AI model in the workflow to draft a more concise report"*.
+
+::: callout-tip
+
+To learn more about customizing Relay.app automations, see this video with one of the Founders. (The building demo starts around minute 7):
+
+{{< video https://www.youtube.com/watch?v=JIkqjyKwJDk width="500" >}}
+
+:::
+
+## 2.5 Enable the Workflow
+
+1.  Once you're happy with the report, toggle the trigger from **Off** to **On**. The toggle turns green and the workflow is live.
+
+![Figure: Turn on instant trigger.](images/turn_on_instant_trigger.jpg){fig-alt="Turn on instant trigger" width="472"}
+
+Your automation is now active. Every new form submission will automatically trigger the full workflow.
+
+::: callout-note
+
+For reference, here is what each step of the workflow should roughly look like. Your specific steps may vary slightly, but the general idea should be the same.
+
+**Step 1: New contact form submission (trigger).** The trigger fires when a new row is added to your "Form Responses 1" sheet.
+
+![](images/step_1_new_row_trigger.jpg){fig-alt="Step 1: New row trigger" width="640"}
+
+**Step 2: Research company.** A Google search is run using the company name from the form, returning 2 to 3 results.
+
+![](images/step_2_research_company.jpg){fig-alt="Step 2: Research company" width="633"}
+
+**Step 3: Draft GenAI opportunities report.** Gemini Flash drafts a plain text (HTML)report based on the search results, with sections covering an executive summary, company overview and top GenAI opportunities.
+
+![](images/step_3_ai_drafter.jpg){fig-alt="Step 3: AI drafter" width="633"}
+
+**Step 4: Create HTML report file.** The AI output is saved as a plain text file with an `.html` extension, named after the client.
+
+![](images/step_4_create_text_file_with_html_extension.jpg){fig-alt="Step 4: Create text file with HTML extension" width="659"}
+
+**Step 5: Email report to me.** The report is emailed to you using the "Email Yourself" tool, with the HTML file attached and a summary of the submission details in the body.
+
+![](images/step_5_email_report_to_self.jpg){fig-alt="Step 5: Email report to self" width="692"}
+
+If any step looks wrong, click on it and edit it manually, or describe the fix to the AI in the chat panel on the left.
+
+:::
+
+------------------------------------------------------------------------
+
+# Part 3: Embedding the Form in Your Website
+
+## Get the Embed Code
+
+1.  Return to your Google Form
+2.  Click the three-dot menu (⋮) in the top right
+3.  Select **Embed HTML**
+4.  Copy the provided HTML embed code
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-06-06/390e2496-d4ca-4073-a977-ff9a638f18ff/File.webp)
+
+## Add to Your Portfolio Website
+
+You'll use an LLM to add the form to your portfolio HTML, then push the changes to GitHub.
+
+### Copy Your Current Website Code
+
+1.  Go to [github.com](https://github.com){target="_blank"}. Click your profile icon at the top right → **Your repositories**.
+
+    ![](images/github_repositories.jpg){width="324"}
+
+2.  Locate and click on your portfolio repository (it should be called something like `graph-ai-portfolio`).
+
+3.  Click on the `index.html` file.
+
+    ![](images/index_html.jpg){width="374"}
+
+4.  Copy all the code from the file using the **copy** button at the top right of the code view.
+
+    ![](images/copy_code_button.jpg){width="372"}
+
+### Ask an LLM to Update the HTML
+
+1.  Go to ChatGPT, Gemini, or your preferred LLM.
+
+2.  Paste a prompt like the one below, filling in your embed code and your current `index.html` code where indicated:
+
+```         
+I want to update my portfolio website to include a consultation form.
+
+Add a new section called "Contact for Consultation" and embed this Google Form:
+
+[PASTE YOUR GOOGLE FORM EMBED CODE HERE]
+
+Below is my current index.html code. Please return the FULL updated HTML file:
+
+[PASTE YOUR ENTIRE index.html CODE HERE]
+```
+
+3.  Review the LLM's output to make sure it looks reasonable (e.g., your existing content is still there and the embed code has been added).
+
+### Update Your Website on GitHub
+
+1.  Back in your repository on GitHub, navigate to `index.html` and click the **edit file** (pencil) button at the top right.
+
+    ![](images/edit_file_button.jpg){width="452"}
+
+2.  Select all the existing code in the editor and delete it, then paste in the new HTML from the LLM.
+
+3.  Click the **Commit changes** button at the top right to save.
+
+4.  Your live site will update automatically. This may take 3 to 5 minutes. You can track the deployment status by clicking the **Actions** tab in your repository.
+
+    ![](images/actions_tab.jpg){width="380"}
+
+5.  Once the build completes, visit your GitHub Pages URL and confirm the consultation form section appears on your site. You may need to hard-refresh the page (Ctrl+Shift+R or Cmd+Shift+R) to bypass your browser's cache.
+
+    ![](images/pages_build.jpg){width="353"}
+
+## Test the Full Pipeline
+
+Now test the entire pipeline end to end.
+
+1.  Visit your live GitHub Pages site and fill out the consultation form. Use a different company name than your earlier test so you can identify the new submission.
+
+2.  Wait a minute or two for Relay.app to pick it up (it uses event-based triggers, so it should be quick).
+
+3.  Check your email for the report and review the HTML attachment.
+
+If a report arrives, your automation is working end to end, from website visitor to delivered report!
+
+------------------------------------------------------------------------
+
+# Submission
+
+To submit your work, take a screenshot showing your completed workflow in Relay.app (showing all the steps) and upload it to the submission box on the course website.
+
+------------------------------------------------------------------------
+
+## Optional: Add Your Report to Your Portfolio
+
+If you received an HTML report from the automation, you can add it to your GitHub Pages portfolio website under a section for this week's workshop.
+
+1.  First, download the HTML report from the email attachment (if you haven't already).
+
+2.  Go to [github.com](https://github.com){target="_blank"}. Click your profile icon at the top right → **Your repositories**.
+
+    ![](images/github_repositories.jpg){width="324"}
+
+3.  Locate and click on your portfolio repository (e.g., `graph-ai-portfolio`).
+
+4.  Click **Add file** → **Upload files**. Drag in your HTML report file, then click **Commit changes**.
+
+    ![](images/add_file_button.jpg){width="459"}
+
+1.  Go to ChatGPT, Gemini, or your preferred LLM and paste a prompt like the one below, filling in the placeholders:
+
+```         
+I want to update my portfolio website. In your response, provide the FULL updated HTML code for the index.html file.
+
+The portfolio website is hosted at:
+
+[YOUR PORTFOLIO WEBSITE URL HERE]
+
+---
+
+I want to add a new link for the project page for "Workshop 5: Automation with Relay.app".
+
+For this project, I built an automated workflow that processes consultation form submissions, researches the client's company, and generates a professional GenAI opportunities report.
+
+The report is available at the link below. It is an HTML file, so reformat the link to be a clickable GitHub Pages link, since it is hosted on the same GitHub repo as the portfolio website.
+
+[PASTE THE DIRECT LINK TO YOUR UPLOADED REPORT FILE HERE]
+
+---
+
+Below is my current HTML file:
+
+[PASTE THE ENTIRE index.html CODE HERE]
+```
+
+2.  To get **your portfolio website URL**, go to your repository → **Settings** → scroll to **GitHub Pages**. Your URL will be listed there.
+
+3.  To get **the direct link to your report**, go back to your repository's main page and right-click on the name of your uploaded report file → **Copy link address**.
+
+4.  To get **your current index.html code**, navigate to your `index.html` file in the repository and use the **copy** button at the top right of the code view.
+
+5.  Once you have all three pieces, send the prompt to the LLM. Review the output, then update your `index.html` on GitHub: click the **edit file** (pencil) button, replace all the code, and click **Commit changes**.
+
+6.  After a few minutes, visit your GitHub Pages URL and confirm the new workshop entry and link appear. You may need to hard-refresh the page (Ctrl+Shift+R or Cmd+Shift+R).
+
+------------------------------------------------------------------------
+
+# Part 4: Optional Challenge: PubMed Literature Monitor *(ungraded)*
+
+Build an automation that monitors academic literature and sends you a weekly digest. You will:
+
+1.  Create a PubMed search query for a topic of your choice
+2.  Generate an RSS feed from that search
+3.  Build a Relay.app workflow that checks the feed every Monday, summarizes recent papers, and connects them to your research background
+
+::: callout-tip
+This challenge is less guided, with fewer screenshots. You'll need to be more independent.
+:::
+
+## Create Your PubMed RSS Feed
+
+### 1. Craft a search query
+
+PubMed searches use Boolean operators. You can write one yourself if you're familiar with the syntax, or use an LLM to help.
+
+Pick a topic, for example:
+
+-   Any paper about arboviruses in a top 5 medical journal
+-   Generative AI and epidemiology
+-   Clinical trials for a specific disease (e.g., malaria vaccine trials)
+
+Ask an LLM to help you craft the query. For example:
+
+```         
+Help me create a PubMed search query using Boolean operators.
+Return just the query string I can paste into PubMed.
+I will use this to create a weekly RSS feed eventually.
+The topic is:
+[YOUR TOPIC HERE]
+```
+
+Replace `[YOUR TOPIC HERE]` with the topic you picked. The model will respond with a query string you can copy.
+
+### 2. Search PubMed and create the RSS feed
+
+1.  Go to [pubmed.ncbi.nlm.nih.gov](https://pubmed.ncbi.nlm.nih.gov){target="_blank"}, paste your query into the search box, and press **Search**.
+
+::: callout-tip
+Aim for 100 to 1,000 total results. Too broad gives generic papers; too narrow means nothing new each week. Check the result count and refine with the LLM if needed.
+:::
+
+2.  Just below the search bar, click the **Create RSS** link.
+
+![Figure: Create RSS button on PubMed.](images/create_rss_button.jpg){fig-alt="Create RSS button on PubMed" width="539"}
+
+3.  Change *Number of items displayed* to **10**, then click **Create RSS**. A URL appears in the *Your RSS Feed Link* box. Copy it.
+
+![Figure: RSS feed settings.](images/rss_settings.jpg){fig-alt="RSS feed settings" width="629"}
+
+## Build the Relay.app Workflow
+
+1.  Create a new workflow in Relay.app as you did before.
+
+2.  Paste the prompt below into the AI assistant, replacing the placeholders with your RSS URL and a short summary of your professional background (you can use an LLM to summarize your CV).
+
+```         
+Every Monday morning, we want to get the latest 10 publications from this RSS feed:
+
+[PASTE YOUR PUBMED RSS URL HERE]
+
+Using Gemini Flash, summarize each one in a single line and include the link to the full publication.
+
+Then, at the end of the report, using my CV summary below as context,
+mention a few ways any of these publications might be relevant to my own work.
+
+Send the whole thing to me using the Email Yourself tool (not Gmail).
+
+My professional background:
+
+[PASTE YOUR OWN PROFESSIONAL BACKGROUND HERE]
+```
+
+3.  Review the steps, run a test, and if the output looks good, activate the workflow. You'll now get a literature digest every Monday morning.
+
+To submit, take a screenshot of the workflow and upload it to the submission box on the course website.

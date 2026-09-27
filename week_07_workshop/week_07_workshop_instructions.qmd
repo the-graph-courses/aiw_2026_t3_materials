@@ -1,0 +1,507 @@
+---
+title: "Introduction to Data Visualization with ggplot2"
+format:
+  html:
+    toc: true
+author: "The Graph Courses Team"
+---
+
+# Introduction
+
+Welcome to the world of data visualization with ggplot2! In this workshop, you'll learn how to create beautiful, informative visualizations using R's most popular plotting package. ggplot2 is built on the "Grammar of Graphics" - a systematic approach to creating plots by combining different components.
+
+By the end of this workshop, you'll be able to:
+
+1. Understand the basic structure of ggplot2 plots
+2. Create scatter plots, bar charts, histograms, and box plots
+3. Customize colors, themes, and labels
+4. Use faceting to create multiple subplots
+5. Apply best practices for effective data visualization
+
+::: {.callout-note}
+**Prerequisites:** This workshop assumes basic familiarity with R. If you're new to R, consider reviewing basic R syntax and data manipulation before proceeding.
+:::
+
+------------------------------------------------------------------------
+
+# Part 1: Understanding the Grammar of Graphics
+
+## The ggplot2 Philosophy
+
+ggplot2 follows a layered approach to building plots. Every ggplot2 visualization consists of:
+
+1. **Data**: The dataset you want to visualize
+2. **Aesthetics (aes)**: How variables map to visual properties (x, y, color, size, etc.)
+3. **Geometries (geom)**: The type of plot (points, bars, lines, etc.)
+4. **Additional layers**: Statistics, scales, coordinate systems, themes, and facets
+
+## Setting Up Your Environment
+
+First, let's install and load the necessary packages:
+
+```{r setup, eval=FALSE}
+# Install packages if you haven't already
+install.packages(c("ggplot2", "dplyr", "readr"))
+
+# Load the packages
+library(ggplot2)
+library(dplyr)
+library(readr)
+```
+
+## Your First ggplot2 Plot
+
+Let's start with the built-in `mpg` dataset, which contains fuel economy data for different car models:
+
+```{r first-plot, eval=FALSE}
+# Load the data
+data(mpg)
+
+# Examine the structure
+head(mpg)
+str(mpg)
+
+# Create a basic scatter plot
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
+  geom_point()
+```
+
+**What's happening here?**
+- `ggplot()` initializes the plot with data and aesthetic mappings
+- `aes(x = displ, y = hwy)` maps engine displacement to x-axis and highway mpg to y-axis
+- `geom_point()` adds points to create a scatter plot
+- The `+` operator adds layers to the plot
+
+------------------------------------------------------------------------
+
+# Part 2: Essential Plot Types
+
+## Scatter Plots
+
+Scatter plots are perfect for exploring relationships between two continuous variables:
+
+```{r scatter-plots, eval=FALSE}
+# Basic scatter plot
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point()
+
+# Add color by categorical variable
+ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point()
+
+# Add size aesthetic
+ggplot(mpg, aes(x = displ, y = hwy, color = class, size = cty)) +
+  geom_point()
+
+# Add transparency to handle overplotting
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point(alpha = 0.6)
+```
+
+## Bar Charts
+
+Bar charts are ideal for categorical data:
+
+```{r bar-charts, eval=FALSE}
+# Simple bar chart (count)
+ggplot(mpg, aes(x = class)) +
+  geom_bar()
+
+# Horizontal bar chart
+ggplot(mpg, aes(x = class)) +
+  geom_bar() +
+  coord_flip()
+
+# Stacked bar chart
+ggplot(mpg, aes(x = class, fill = drv)) +
+  geom_bar()
+
+# Side-by-side bars
+ggplot(mpg, aes(x = class, fill = drv)) +
+  geom_bar(position = "dodge")
+
+# Bar chart with calculated values
+mpg_summary <- mpg %>%
+  group_by(class) %>%
+  summarise(avg_hwy = mean(hwy))
+
+ggplot(mpg_summary, aes(x = class, y = avg_hwy)) +
+  geom_col()
+```
+
+## Histograms and Density Plots
+
+For exploring distributions of continuous variables:
+
+```{r histograms, eval=FALSE}
+# Basic histogram
+ggplot(mpg, aes(x = hwy)) +
+  geom_histogram()
+
+# Adjust bin width
+ggplot(mpg, aes(x = hwy)) +
+  geom_histogram(binwidth = 2)
+
+# Density plot
+ggplot(mpg, aes(x = hwy)) +
+  geom_density()
+
+# Multiple densities by group
+ggplot(mpg, aes(x = hwy, fill = drv)) +
+  geom_density(alpha = 0.7)
+```
+
+## Box Plots
+
+Box plots show distributions and identify outliers:
+
+```{r box-plots, eval=FALSE}
+# Basic box plot
+ggplot(mpg, aes(x = class, y = hwy)) +
+  geom_boxplot()
+
+# Add individual points
+ggplot(mpg, aes(x = class, y = hwy)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.2, alpha = 0.6)
+
+# Violin plots (combination of box plot and density)
+ggplot(mpg, aes(x = class, y = hwy)) +
+  geom_violin()
+```
+
+------------------------------------------------------------------------
+
+# Part 3: Customizing Your Plots
+
+## Adding Trend Lines
+
+```{r trend-lines, eval=FALSE}
+# Linear trend line
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+# Smooth trend line (loess)
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  geom_smooth()
+
+# Remove confidence interval
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+## Labels and Titles
+
+```{r labels, eval=FALSE}
+ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point() +
+  labs(
+    title = "Fuel Efficiency vs Engine Size",
+    subtitle = "Highway MPG decreases with larger engines",
+    x = "Engine Displacement (liters)",
+    y = "Highway Miles per Gallon",
+    color = "Vehicle Class",
+    caption = "Data source: EPA fuel economy data"
+  )
+```
+
+## Color and Fill Scales
+
+```{r colors, eval=FALSE}
+# Manual colors
+ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point() +
+  scale_color_manual(values = c("red", "blue", "green", "purple", 
+                               "orange", "brown", "pink"))
+
+# ColorBrewer palettes
+ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point() +
+  scale_color_brewer(type = "qual", palette = "Set2")
+
+# Viridis color scale (colorblind-friendly)
+ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point() +
+  scale_color_viridis_d()
+```
+
+## Themes
+
+```{r themes, eval=FALSE}
+# Built-in themes
+p <- ggplot(mpg, aes(x = displ, y = hwy)) + geom_point()
+
+p + theme_minimal()
+p + theme_classic()
+p + theme_dark()
+p + theme_void()
+
+# Custom theme modifications
+ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point() +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold"),
+    legend.position = "bottom",
+    panel.grid.minor = element_blank()
+  )
+```
+
+------------------------------------------------------------------------
+
+# Part 4: Faceting - Multiple Plots
+
+Faceting allows you to create multiple subplots based on categorical variables:
+
+```{r faceting, eval=FALSE}
+# Facet wrap - creates a grid of plots
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  facet_wrap(~ class)
+
+# Facet wrap with custom number of columns
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  facet_wrap(~ class, ncol = 3)
+
+# Facet grid - creates a matrix of plots
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  facet_grid(drv ~ cyl)
+
+# Free scales for better visibility
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  facet_wrap(~ class, scales = "free")
+```
+
+------------------------------------------------------------------------
+
+# Part 5: Working with Real Data
+
+Let's work with a more complex dataset to practice our skills. We'll create a sample dataset about student performance:
+
+```{r sample-data, eval=FALSE}
+# Create sample student performance data
+set.seed(123)
+students <- data.frame(
+  student_id = 1:200,
+  study_hours = round(rnorm(200, mean = 15, sd = 5), 1),
+  previous_grade = sample(c("A", "B", "C", "D"), 200, 
+                         replace = TRUE, prob = c(0.2, 0.3, 0.3, 0.2)),
+  subject = sample(c("Math", "Science", "English", "History"), 200, replace = TRUE),
+  final_score = round(pmax(0, pmin(100, 
+    50 + 2 * study_hours + 
+    ifelse(previous_grade == "A", 15, 
+           ifelse(previous_grade == "B", 10, 
+                  ifelse(previous_grade == "C", 5, 0))) + 
+    rnorm(200, 0, 8))), 1)
+)
+
+# Save the data
+write_csv(students, "data/student_performance.csv")
+
+# Examine the data
+head(students)
+summary(students)
+```
+
+## Comprehensive Analysis
+
+```{r analysis, eval=FALSE}
+# 1. Distribution of study hours
+ggplot(students, aes(x = study_hours)) +
+  geom_histogram(binwidth = 1, fill = "skyblue", color = "black", alpha = 0.7) +
+  labs(title = "Distribution of Study Hours",
+       x = "Study Hours per Week",
+       y = "Number of Students") +
+  theme_minimal()
+
+# 2. Relationship between study hours and final score
+ggplot(students, aes(x = study_hours, y = final_score)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", color = "red") +
+  labs(title = "Study Hours vs Final Score",
+       x = "Study Hours per Week",
+       y = "Final Score") +
+  theme_minimal()
+
+# 3. Performance by previous grade
+ggplot(students, aes(x = previous_grade, y = final_score, fill = previous_grade)) +
+  geom_boxplot() +
+  scale_fill_brewer(type = "qual", palette = "Set3") +
+  labs(title = "Final Score by Previous Grade",
+       x = "Previous Grade",
+       y = "Final Score",
+       fill = "Previous Grade") +
+  theme_minimal()
+
+# 4. Subject performance comparison
+ggplot(students, aes(x = subject, y = final_score, color = subject)) +
+  geom_jitter(width = 0.2, alpha = 0.6) +
+  geom_boxplot(alpha = 0.3) +
+  labs(title = "Performance by Subject",
+       x = "Subject",
+       y = "Final Score") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+# 5. Complex faceted plot
+ggplot(students, aes(x = study_hours, y = final_score, color = previous_grade)) +
+  geom_point(alpha = 0.7) +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~ subject) +
+  scale_color_brewer(type = "qual", palette = "Set1") +
+  labs(title = "Study Hours vs Final Score by Subject and Previous Grade",
+       x = "Study Hours per Week",
+       y = "Final Score",
+       color = "Previous Grade") +
+  theme_minimal() +
+  theme(strip.text = element_text(face = "bold"))
+```
+
+------------------------------------------------------------------------
+
+# Part 6: Best Practices and Tips
+
+## Do's and Don'ts
+
+### ✅ Do:
+- Choose appropriate plot types for your data
+- Use clear, descriptive labels and titles
+- Consider colorblind-friendly palettes
+- Keep plots simple and focused
+- Use consistent styling across related plots
+
+### ❌ Don't:
+- Overload plots with too much information
+- Use 3D effects or unnecessary decorations
+- Choose misleading scales or axes
+- Use too many colors or patterns
+- Forget to label axes and legends
+
+## Common ggplot2 Patterns
+
+```{r patterns, eval=FALSE}
+# Save a plot object for reuse
+base_plot <- ggplot(mpg, aes(x = displ, y = hwy))
+
+# Add different geoms to the same base
+base_plot + geom_point()
+base_plot + geom_smooth()
+base_plot + geom_point() + geom_smooth()
+
+# Reorder factors for better visualization
+mpg_reordered <- mpg %>%
+  mutate(class = fct_reorder(class, hwy, median))
+
+ggplot(mpg_reordered, aes(x = class, y = hwy)) +
+  geom_boxplot()
+
+# Create publication-ready plots
+final_plot <- ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point(size = 2, alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE, color = "black", linetype = "dashed") +
+  scale_color_brewer(type = "qual", palette = "Set2") +
+  labs(
+    title = "Fuel Efficiency Decreases with Engine Size",
+    subtitle = "Highway MPG vs Engine Displacement for Different Vehicle Classes",
+    x = "Engine Displacement (liters)",
+    y = "Highway Miles per Gallon",
+    color = "Vehicle Class",
+    caption = "Data: EPA fuel economy dataset"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12, color = "gray60"),
+    legend.position = "bottom",
+    panel.grid.minor = element_blank()
+  )
+
+# Save the plot
+ggsave("fuel_efficiency_plot.png", final_plot, width = 10, height = 6, dpi = 300)
+```
+
+------------------------------------------------------------------------
+
+# Part 7: Hands-On Exercises
+
+## Exercise 1: Basic Plotting
+Using the `mpg` dataset:
+1. Create a scatter plot of city mpg (`cty`) vs highway mpg (`hwy`)
+2. Color the points by fuel type (`fl`)
+3. Add appropriate labels and a title
+
+## Exercise 2: Categorical Data
+Using the `mpg` dataset:
+1. Create a bar chart showing the count of vehicles by manufacturer
+2. Rotate the x-axis labels for better readability
+3. Color the bars by drive type (`drv`)
+
+## Exercise 3: Distributions
+Using the student performance data:
+1. Create overlapping density plots of final scores by subject
+2. Use different colors for each subject
+3. Add a vertical line showing the overall mean score
+
+## Exercise 4: Advanced Visualization
+Combine multiple techniques:
+1. Create a faceted plot showing the relationship between study hours and final score
+2. Facet by subject
+3. Color points by previous grade
+4. Add trend lines for each previous grade group
+5. Apply a clean theme and proper labels
+
+------------------------------------------------------------------------
+
+# Part 8: Going Further
+
+## Additional Resources
+
+- **Official ggplot2 documentation**: [ggplot2.tidyverse.org](https://ggplot2.tidyverse.org/){target="_blank"}
+- **R Graphics Cookbook**: Comprehensive guide to ggplot2
+- **Data Visualization: A Practical Introduction**: By Kieran Healy
+- **ggplot2 extensions**: [exts.ggplot2.tidyverse.org](https://exts.ggplot2.tidyverse.org/){target="_blank"}
+
+## Advanced Topics to Explore
+
+1. **Interactive plots** with `plotly`
+2. **Animation** with `gganimate`
+3. **Maps** with `ggmap` and `sf`
+4. **Custom themes** and branding
+5. **Statistical transformations** and custom geoms
+
+## Next Steps
+
+1. Practice with your own datasets
+2. Explore different geom types and statistical transformations
+3. Learn about the underlying grid graphics system
+4. Contribute to the ggplot2 community
+
+------------------------------------------------------------------------
+
+# Submission
+
+For this workshop, create a portfolio of visualizations that demonstrates your understanding of ggplot2:
+
+1. **Create 5 different plots** using the techniques learned in this workshop
+2. **Include variety**: Use different geom types, color schemes, and themes
+3. **Document your code**: Add comments explaining your choices
+4. **Write brief interpretations**: What story does each plot tell?
+
+Submit your R script or R Markdown file containing:
+- Your code for all 5 plots
+- Brief explanations of what each plot shows
+- Any insights or patterns you discovered in the data
+
+**Bonus**: Create one "publication-ready" plot with custom styling, proper labels, and professional appearance.
+
+------------------------------------------------------------------------
+
+*Happy plotting! Remember, the best way to learn ggplot2 is through practice. Don't be afraid to experiment with different combinations of aesthetics, geoms, and themes.*
+
+

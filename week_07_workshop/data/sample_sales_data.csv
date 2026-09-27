@@ -1,0 +1,55 @@
+date,product,category,sales_amount,region,customer_type,units_sold
+2024-01-15,Laptop,Electronics,1299.99,North,Business,1
+2024-01-16,Coffee Maker,Appliances,89.99,South,Individual,1
+2024-01-17,Smartphone,Electronics,799.99,East,Individual,1
+2024-01-18,Desk Chair,Furniture,249.99,West,Business,1
+2024-01-19,Tablet,Electronics,399.99,North,Individual,1
+2024-01-20,Microwave,Appliances,149.99,South,Individual,1
+2024-01-21,Monitor,Electronics,299.99,East,Business,2
+2024-01-22,Sofa,Furniture,899.99,West,Individual,1
+2024-01-23,Headphones,Electronics,199.99,North,Individual,1
+2024-01-24,Blender,Appliances,79.99,South,Individual,1
+2024-01-25,Gaming Console,Electronics,499.99,East,Individual,1
+2024-01-26,Office Desk,Furniture,399.99,West,Business,1
+2024-01-27,Smart Watch,Electronics,299.99,North,Individual,1
+2024-01-28,Refrigerator,Appliances,1199.99,South,Individual,1
+2024-01-29,Bookshelf,Furniture,159.99,East,Individual,1
+2024-01-30,Printer,Electronics,199.99,West,Business,1
+2024-02-01,Laptop,Electronics,1499.99,North,Business,2
+2024-02-02,Toaster,Appliances,49.99,South,Individual,1
+2024-02-03,Smartphone,Electronics,899.99,East,Individual,1
+2024-02-04,Dining Table,Furniture,649.99,West,Individual,1
+2024-02-05,Tablet,Electronics,449.99,North,Individual,1
+2024-02-06,Dishwasher,Appliances,699.99,South,Individual,1
+2024-02-07,Monitor,Electronics,349.99,East,Business,1
+2024-02-08,Recliner,Furniture,799.99,West,Individual,1
+2024-02-09,Wireless Earbuds,Electronics,149.99,North,Individual,1
+2024-02-10,Air Fryer,Appliances,129.99,South,Individual,1
+2024-02-11,Gaming Console,Electronics,549.99,East,Individual,1
+2024-02-12,Standing Desk,Furniture,599.99,West,Business,1
+2024-02-13,Fitness Tracker,Electronics,199.99,North,Individual,1
+2024-02-14,Washing Machine,Appliances,899.99,South,Individual,1
+2024-02-15,Wardrobe,Furniture,449.99,East,Individual,1
+2024-02-16,Scanner,Electronics,149.99,West,Business,1
+2024-02-17,Laptop,Electronics,1199.99,North,Business,1
+2024-02-18,Espresso Machine,Appliances,299.99,South,Individual,1
+2024-02-19,Smartphone,Electronics,699.99,East,Individual,1
+2024-02-20,Bed Frame,Furniture,399.99,West,Individual,1
+2024-02-21,Tablet,Electronics,349.99,North,Individual,1
+2024-02-22,Vacuum Cleaner,Appliances,199.99,South,Individual,1
+2024-02-23,Monitor,Electronics,279.99,East,Business,1
+2024-02-24,Couch,Furniture,1199.99,West,Individual,1
+2024-02-25,Bluetooth Speaker,Electronics,99.99,North,Individual,1
+2024-02-26,Food Processor,Appliances,159.99,South,Individual,1
+2024-02-27,Gaming Console,Electronics,499.99,East,Individual,1
+2024-02-28,Office Chair,Furniture,299.99,West,Business,1
+2024-03-01,Smart TV,Electronics,799.99,North,Individual,1
+2024-03-02,Dryer,Appliances,749.99,South,Individual,1
+2024-03-03,Nightstand,Furniture,129.99,East,Individual,1
+2024-03-04,Webcam,Electronics,89.99,West,Business,1
+2024-03-05,Laptop,Electronics,1399.99,North,Business,1
+2024-03-06,Rice Cooker,Appliances,69.99,South,Individual,1
+2024-03-07,Smartphone,Electronics,799.99,East,Individual,1
+2024-03-08,Coffee Table,Furniture,249.99,West,Individual,1
+
+
