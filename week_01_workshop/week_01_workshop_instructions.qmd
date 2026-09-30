@@ -62,7 +62,7 @@ Let's get started!
     ```         
     Build an elegant one‑page portfolio website for my "Generative AI for Work & Research" course.
 
-    Use the course information and my CV, which are given below. The site should have at least the following sections:
+    Use the course information and my CV, which are attached. The site should have at least the following sections:
 
     - About me
     - About the course
@@ -133,7 +133,7 @@ The next step is going to be to try to get this HTML code to an online hosting s
 
 -   Switch from the preview back to the code so you can copy it.
     -   On Gemini, click the `Code` button at the top right of the canvas.
-    -   On ChatGPT, click the `Stop` button, or open the code view, to see the HTML.
+    -   On ChatGPT, open the canvas and switch to the code view to see the HTML.
 -   Select all the HTML inside the code box then copy it with `Ctrl/Cmd+C`.
 
 
@@ -230,6 +230,11 @@ In this section, we will add a profile picture to your website.
     Insert this image of me at the top of the page as a circular avatar.
     The image is at this address: [LINK TO YOUR IMAGE HERE]
     ```
+
+::: {.callout-note}
+
+**Side Note:** The image may not show in the ChatGPT or Gemini preview. Those tools sometimes block external image links inside the preview. Copy the HTML and publish it anyway. The image should appear correctly on the live site.
+:::
 
 -   Copy the new HTML that the model generated → return to your *index.html* on GitHub → click the **edit file** (✎) button at the top right.
 
