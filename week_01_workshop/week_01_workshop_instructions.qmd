@@ -13,7 +13,7 @@ Welcome to your first hands-on workshop! This guide will walk you through creati
 
 By the end of this session, you'll have a live, professional website which you will populate with your work each week.
 
-The steps in this guide, and the way we publish the site, are all meant to be accessible for free. A free ChatGPT or Gemini account is enough, and GitHub Pages hosts the site at no cost.
+The steps in this guide, and the way we publish the site, are all meant to be accessible for free. A free Gemini account is enough, and GitHub Pages will host the site at no cost.
 
 To see what your portfolio might look like by the end of the course, review:
 
@@ -45,7 +45,7 @@ Let's get started!
 **Side Note:** If you are very private and don't want a public website with your info online, you can use a pseudonym or use a random sample CV from the internet. e.g. [this one](https://careercenter.ucdavis.edu/sites/g/files/dgvnsk15461/files/media/documents/AES-Agriculture-and-Plants.pdf){target="_blank"}
 :::
 
--   You can use the chat tool you already know best. [ChatGPT](https://chatgpt.com){target="_blank"} and [Gemini](https://gemini.google.com){target="_blank"} are good choices here. Pick whichever you are more familiar with. You do not need a paid account; a free account is enough, but if you have a paid account, you're of course welcome to use it.
+-   Use [ChatGPT](https://chatgpt.com){target="_blank"} if you have a paid account. Free ChatGPT does not allow enough file uploads for this task. If you do not have paid ChatGPT, use [Gemini](https://gemini.google.com){target="_blank"}. A free Gemini account is enough.
 
 
 ::: {.callout-note}
@@ -56,10 +56,6 @@ Let's get started!
 -   **If you are using Gemini:** Before typing your message, click on the "Tools" button and select "Canvas" from the dropdown menu. This lets Gemini render your HTML as a live preview.
 
 ![Canvas tool selection in Gemini](images/canvas_tool_gemini.jpg){width="297"}
-
--   **If you are using ChatGPT:** In the message box, click **Think** before you send your prompt. 
-
-![Think button in ChatGPT](images/chatgpt_think.jpg){width="550"}
 
 -   Now, start a new message, then upload the course brochure **and** your CV to the chat window, and create an instruction similar to this:
 
@@ -102,6 +98,9 @@ Otherwise,  we recommend borrowing a theme from designers who have created and s
 
 -   Go to [themes.gohugo.io](https://themes.gohugo.io/){target="_blank"} and browse through the themes to find one you like.
 -   Take a screenshot of the hero, which is the large preview at the top of the theme page.
+
+![Where to screenshot the hero on a Hugo theme page](images/hugo_theme_hero.jpg){width="620"}
+
 -   Also copy the URL of the theme page and the author info box on the same page (license, author, and the other details). It should look something like this:
 
 ![Author info box on a Hugo theme page](images/hugo_theme_author_info.jpg){width="480"}
