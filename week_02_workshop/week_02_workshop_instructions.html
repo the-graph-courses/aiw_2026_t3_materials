@@ -86,6 +86,7 @@ window.Quarto = {
   <li><a href="#section-a-for-students-without-prior-coding-experience-using-chatgpt" id="toc-section-a-for-students-without-prior-coding-experience-using-chatgpt" class="nav-link" data-scroll-target="#section-a-for-students-without-prior-coding-experience-using-chatgpt">Section A: For Students WITHOUT Prior Coding Experience (Using ChatGPT)</a></li>
   <li><a href="#section-b-for-students-with-r-coding-experience-using-cursor-with-r" id="toc-section-b-for-students-with-r-coding-experience-using-cursor-with-r" class="nav-link" data-scroll-target="#section-b-for-students-with-r-coding-experience-using-cursor-with-r">Section B: For Students WITH R Coding Experience (Using Cursor with R)</a></li>
   </ul></li>
+  <li><a href="#verification" id="toc-verification" class="nav-link" data-scroll-target="#verification">Verification</a></li>
   <li><a href="#part-3-submission" id="toc-part-3-submission" class="nav-link" data-scroll-target="#part-3-submission">Part 3: Submission</a></li>
   <li><a href="#part-4-optional---add-to-your-github-pages-portfolio" id="toc-part-4-optional---add-to-your-github-pages-portfolio" class="nav-link" data-scroll-target="#part-4-optional---add-to-your-github-pages-portfolio">Part 4: Optional - Add to Your GitHub Pages Portfolio</a>
   <ul class="collapse">
@@ -136,7 +137,11 @@ window.Quarto = {
 <li>A world map visualization of your second selected indicator (for the chosen recent year).</li>
 <li>A scatterplot showing the relationship between your two chosen indicators.</li>
 <li>A description and interpretation of the relationship between the two indicators. This may include a correlation coefficient (e.g., Pearson’s <span class="math inline">\(r\)</span>) if appropriate, or a qualitative description based on the scatterplot.</li>
-<li>A short reflection written by you about the process of interacting with the AI tools. E.g. What was easy? What was difficult? What was surprising? What did you learn?</li>
+<li>A short section written by you (not the AI), with two parts:
+<ul>
+<li>A quick summary of findings you noticed about the data.</li>
+<li>A short reflection about working with the AI. E.g. What was easy? What was difficult? What was surprising? What did you learn?</li>
+</ul></li>
 </ol>
 <p>Note that rather than grading the technical precision of the report (we understand that you are not all data analysts), we will simply check that you have followed the overall instructions and written an honest reflection.</p>
 </section>
@@ -177,16 +182,43 @@ window.Quarto = {
 <section id="section-a-for-students-without-prior-coding-experience-using-chatgpt" class="level2">
 <h2 class="anchored" data-anchor-id="section-a-for-students-without-prior-coding-experience-using-chatgpt">Section A: For Students WITHOUT Prior Coding Experience (Using ChatGPT)</h2>
 <p>You will use ChatGPT, an AI chat-based tool, to analyze your data and generate content for your report.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Side Note:</strong> If you have paid Claude, paid Gemini, or paid Copilot, you can also try this there. The steps and screenshots below are written for ChatGPT, so you may have to transpose the instructions.</p>
+</div>
+</div>
 <ol type="1">
 <li><p><strong>Setup ChatGPT:</strong></p>
 <ul>
-<li><p>Go to <a href="https://chatgpt.com/" target="_blank">chatgpt.com</a> and sign in (or create a free account if you don’t already have one).</p></li>
-<li><p><strong>Select the thinking model:</strong> In the model selector, choose the <strong>thinking</strong> model. This model handles multi-step data analysis tasks more reliably than the instant model.</p></li>
+<li><p>This workshop needs a <strong>paid ChatGPT account</strong>. Go to <a href="https://chatgpt.com/" target="_blank">chatgpt.com</a> and sign in (or create an account if you don’t already have one).</p></li>
+<li><p><strong>If you don’t have a paid account:</strong> Give an instructor the email address you normally use for ChatGPT. We will grant you one month of access to The Graph Courses paid account. You will receive an invite in that email. Click the invite to join. Check your spam folder if you don’t see it.</p></li>
+<li><p><strong>If you are asked to download the desktop app:</strong> Click <strong>Maybe later</strong>.</p></li>
 </ul>
-<p><img src="images/change_ai_model.jpg" class="img-fluid" width="349"></p>
+<p><img src="images/skip_desktop_app.jpg" class="img-fluid" width="380"></p>
 <ul>
-<li><strong>If you don’t have access to the thinking model:</strong> The thinking model usually requires a paid plan. If you don’t have access, share your email address with one of the instructors and we will add you to our workspace for one month so that you can complete this workshop.</li>
-</ul></li>
+<li><strong>If you are asked to connect your tools:</strong> Click <strong>Skip for now</strong>.</li>
+</ul>
+<p><img src="images/skip_connect_tools.jpg" class="img-fluid" width="400"></p>
+<ul>
+<li><strong>If you are asked about memory:</strong> Select <strong>Use memory</strong>. That is fine.</li>
+</ul>
+<p><img src="images/use_memory.jpg" class="img-fluid" width="420"></p>
+<ul>
+<li><strong>Use Work:</strong> The toggle is at the top of the page. Select <strong>Work</strong>.</li>
+</ul>
+<p><img src="images/chatgpt_work.jpg" class="img-fluid" width="360"></p>
+<ul>
+<li><strong>The default model is usually strong enough for this task.</strong> The selector may show a name like <strong>GPT-6.1 Sol Medium</strong>. Leave that as it is.</li>
+</ul>
+<p><img src="images/default_model.jpg" class="img-fluid" width="320"></p></li>
 <li><p><strong>Starting Your Analysis in ChatGPT:</strong></p>
 <ul>
 <li>Start a new chat in ChatGPT.</li>
@@ -194,21 +226,23 @@ window.Quarto = {
 <li><p><strong>Chatting with ChatGPT:</strong></p>
 <ul>
 <li><p>First, upload your two CSV files to the conversation. This ensures ChatGPT has access to your data when you give it instructions. You can drag and drop them in, or you can click on the attachment (paperclip or “+”) button near the chat input and select your two CSV files.</p></li>
-<li><p>Now we will write a prompt to ChatGPT to help us create a report on the relationship between two indicators. Edit the prompt below to include the names of your two indicators, then send it to ChatGPT. The parts in square brackets should be replaced with your actual indicator names.</p></li>
+<li><p>Now we will write a prompt to ChatGPT to help us create a report on the relationship between two indicators. Replace <code>[FILL IN THOSE COUNTRIES]</code> with three countries from your data, then send the prompt to ChatGPT.</p></li>
 </ul>
 <pre><code>I am writing a report on the relationship between two indicators
-
-1. [TYPE YOUR INDICATOR 1 NAME HERE]
-2. [TYPE YOUR INDICATOR 2 NAME HERE]
 
 Both datasets have been added.
 
 Run the following steps for the report:
-1. For each indicator, briefly view and print the data to understand it first.
-2. Then subset the data to 2020.
-3. Create a world map for each indicator in 2020. (Before making the map, check the data input to make sure it is in the correct format, with one row per country.)
-4. Create a scatterplot showing the relationship between these two indicators in 2020.
-5. Provide a brief interpretation of the relationship between the two indicators.</code></pre></li>
+
+Create a world map for each indicator in 2020.
+
+Create a scatterplot showing the relationship between these two indicators in 2020.
+
+On the maps and the scatterplot, add labels and the actual amounts for these three countries: [XX, XX, XX]
+
+Provide both as PNG images to be downloaded.
+
+Do this in Python, and provide the Python script used, as a file to be downloaded.</code></pre></li>
 </ol>
 <ul>
 <li><p><strong>Review and Refine:</strong> ChatGPT will show its steps, data, and plots. Work with it to refine the figures and text until you are happy with the output plots. For example, you can ask it to change the title of a plot, or to use a different color scheme.</p></li>
@@ -217,7 +251,7 @@ Run the following steps for the report:
 <ol start="4" type="1">
 <li><strong>Creating Your Report Document:</strong>
 <ul>
-<li><strong>Download Outputs:</strong> Download the individual plots (as images, e.g., PNG) or take screenshots of the plots that ChatGPT generates. You can also copy any key text outputs, such as data summaries or interpretations.</li>
+<li><strong>Download Outputs:</strong> Download the individual plots (as images, e.g., PNG) and the Python script. You can also copy any key text outputs, such as data summaries or interpretations.</li>
 <li><strong>Create a DOCX/Google Docs file:</strong> Open a word processor (like Microsoft Word, Google Docs, or Pages) and create a new document.</li>
 <li><strong>Assemble report:</strong>
 <ul>
@@ -229,7 +263,11 @@ Run the following steps for the report:
 </ul></li>
 <li><strong>Add Your Reflection:</strong>
 <ul>
-<li>Before finalizing your report, add your short reflection written by you (not the AI) about the process of interacting with the AI tools. E.g. What was easy? What was difficult? What was surprising? What did you learn?</li>
+<li>Before finalizing your report, add two things written by you (not the AI):
+<ul>
+<li>A quick summary of findings you noticed about the data.</li>
+<li>A short reflection about working with the AI. E.g. What was easy? What was difficult? What was surprising? What did you learn?</li>
+</ul></li>
 </ul></li>
 <li><strong>Final Output:</strong>
 <ul>
@@ -266,7 +304,7 @@ Use plots, tables, and inline R code where appropriate.
 Be sure to view a sample of each dataset to understand the data before you write code pertaining to it.
 Code should be hidden from the output.
 Your task will be further described below.</code></pre></li>
-<li><p><strong>Specific Task Prompting Example:</strong></p>
+<li><p><strong>Specific Task Prompting Example:</strong> Replace the bracketed parts with your indicator names and three countries from your data.</p>
 <pre><code>Now create a data report in my Rmd file using the two datasets I've provided:
 
 They are:
@@ -277,14 +315,19 @@ The report should:
 1. For each indicator, subset the data to 2020.
 2. Create a world map visualization for each indicator in 2020.
 3. Create a scatterplot showing the relationship between these two indicators in 2020.
-4. Provide a brief interpretation of the relationship between the two indicators.</code></pre></li>
+4. On the maps and the scatterplot, add labels and the actual amounts for these three countries: [FILL IN THOSE COUNTRIES]
+5. Provide a brief interpretation of the relationship between the two indicators.</code></pre></li>
 <li><p><strong>Troubleshooting R Package Installations:</strong></p>
 <ul>
 <li>If Cursor has persistent trouble installing R packages, you might need to install them manually. Create a temporary R script (<code>.R</code>) file in your project. In this script, use the <code>install.packages("package_name")</code> command for each required package. Run this script. R might ask you to choose a CRAN mirror (a server to download from); pick any. Once the packages are installed, you can delete the temporary R script.</li>
 </ul></li>
 <li><p><strong>Iterate and Refine:</strong> Work with the agent to refine the figures and text until you are happy with the report. For example, you can ask it to change the title of a plot, or to use a different color scheme. If the AI seems to be going off track or taking too long, look for a “stop” button (often near the prompt input box) to interrupt it.</p></li>
 </ul></li>
-<li><p><strong>Add Your Reflection:</strong> Before your final knit, make sure to add your short reflection written by you (not the AI) about the process of interacting with the AI tools. E.g. What was easy? What was difficult? What was surprising? What did you learn? directly into your R Markdown file. This should be part of the narrative of your report.</p></li>
+<li><p><strong>Add Your Reflection:</strong> Before your final knit, add two things written by you (not the AI) directly into your R Markdown file. This should be part of the narrative of your report.</p>
+<ul>
+<li>A quick summary of findings you noticed about the data.</li>
+<li>A short reflection about working with the AI. E.g. What was easy? What was difficult? What was surprising? What did you learn?</li>
+</ul></li>
 <li><p><strong>Render the Final HTML:</strong> When you are happy with the report, you can ask the AI agent to change the output format to a self-contained HTML file. Or you can do this yourself manually by using the YAML below in your .Rmd file. Then knit the file to render the HTML file.</p>
 <pre><code>output:
     html_document:
@@ -292,6 +335,24 @@ The report should:
 </ol>
 <hr>
 </section>
+</section>
+<section id="verification" class="level1">
+<h1>Verification</h1>
+<p>Do this after you have your maps, whether you used ChatGPT or Cursor.</p>
+<ol type="1">
+<li><p><strong>Check the labeled countries against the data sheets.</strong></p>
+<ul>
+<li>On each map and on the scatterplot, find the three countries you asked the model to label.</li>
+<li>Compare each label and amount with the 2020 numbers in your CSV files.</li>
+<li>The plotted amounts should match the data sheets.</li>
+</ul></li>
+<li><p><strong>Cross-check with another agent, if you have time.</strong></p>
+<ul>
+<li>Try the same task in free <a href="https://gemini.google.com" target="_blank">Gemini</a>.</li>
+<li>Cross-checking between multiple agents is a great way to tell whether agents are generally capable, or whether they may be unreliable and making mistakes.</li>
+</ul></li>
+</ol>
+<hr>
 </section>
 <section id="part-3-submission" class="level1">
 <h1>Part 3: Submission</h1>

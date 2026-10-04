@@ -16,7 +16,9 @@ Welcome to another session of your Generative AI Workshop! In this session, you'
 2.  A world map visualization of your second selected indicator (for the chosen recent year).
 3.  A scatterplot showing the relationship between your two chosen indicators.
 4.  A description and interpretation of the relationship between the two indicators. This may include a correlation coefficient (e.g., Pearson's $r$) if appropriate, or a qualitative description based on the scatterplot.
-5.  A short reflection written by you about the process of interacting with the AI tools. E.g. What was easy? What was difficult? What was surprising? What did you learn?
+5.  A short section written by you (not the AI), with two parts:
+    -   A quick summary of findings you noticed about the data.
+    -   A short reflection about working with the AI. E.g. What was easy? What was difficult? What was surprising? What did you learn?
 
 Note that rather than grading the technical precision of the report (we understand that you are not all data analysts), we will simply check that you have followed the overall instructions and written an honest reflection.
 
@@ -56,15 +58,35 @@ Please follow the instructions for the tool assigned to your group.
 
 You will use ChatGPT, an AI chat-based tool, to analyze your data and generate content for your report.
 
+::: {.callout-note}
+**Side Note:** If you have paid Claude, paid Gemini, or paid Copilot, you can also try this there. The steps and screenshots below are written for ChatGPT, so you may have to transpose the instructions.
+:::
+
 1.  **Setup ChatGPT:**
 
-    -   Go to [chatgpt.com](https://chatgpt.com/){target="_blank"} and sign in (or create a free account if you don't already have one).
+    -   This workshop needs a **paid ChatGPT account**. Go to [chatgpt.com](https://chatgpt.com/){target="_blank"} and sign in (or create an account if you don't already have one).
 
-    -   **Select the thinking model:** In the model selector, choose the **thinking** model. This model handles multi-step data analysis tasks more reliably than the instant model.
+    -   **If you don't have a paid account:** Give an instructor the email address you normally use for ChatGPT. We will grant you one month of access to The Graph Courses paid account. You will receive an invite in that email. Click the invite to join. Check your spam folder if you don't see it.
 
-    ![](images/change_ai_model.jpg){width="349"}
+    -   **If you are asked to download the desktop app:** Click **Maybe later**.
 
-    -   **If you don't have access to the thinking model:** The thinking model usually requires a paid plan. If you don't have access, share your email address with one of the instructors and we will add you to our workspace for one month so that you can complete this workshop.
+    ![](images/skip_desktop_app.jpg){width="380"}
+
+    -   **If you are asked to connect your tools:** Click **Skip for now**.
+
+    ![](images/skip_connect_tools.jpg){width="400"}
+
+    -   **If you are asked about memory:** Select **Use memory**. That is fine.
+
+    ![](images/use_memory.jpg){width="420"}
+
+    -   **Use Work:** The toggle is at the top of the page. Select **Work**.
+
+    ![](images/chatgpt_work.jpg){width="360"}
+
+    -   **The default model is usually strong enough for this task.** The selector may show a name like **GPT-6.1 Sol Medium**. Leave that as it is.
+
+    ![](images/default_model.jpg){width="320"}
 
 2.  **Starting Your Analysis in ChatGPT:**
 
@@ -74,22 +96,24 @@ You will use ChatGPT, an AI chat-based tool, to analyze your data and generate c
 
     -   First, upload your two CSV files to the conversation. This ensures ChatGPT has access to your data when you give it instructions. You can drag and drop them in, or you can click on the attachment (paperclip or "+") button near the chat input and select your two CSV files.
 
-    -   Now we will write a prompt to ChatGPT to help us create a report on the relationship between two indicators. Edit the prompt below to include the names of your two indicators, then send it to ChatGPT. The parts in square brackets should be replaced with your actual indicator names.
+    -   Now we will write a prompt to ChatGPT to help us create a report on the relationship between two indicators. Replace `[FILL IN THOSE COUNTRIES]` with three countries from your data, then send the prompt to ChatGPT.
 
     ```
     I am writing a report on the relationship between two indicators
 
-    1. [TYPE YOUR INDICATOR 1 NAME HERE]
-    2. [TYPE YOUR INDICATOR 2 NAME HERE]
-
     Both datasets have been added.
 
     Run the following steps for the report:
-    1. For each indicator, briefly view and print the data to understand it first.
-    2. Then subset the data to 2020.
-    3. Create a world map for each indicator in 2020. (Before making the map, check the data input to make sure it is in the correct format, with one row per country.)
-    4. Create a scatterplot showing the relationship between these two indicators in 2020.
-    5. Provide a brief interpretation of the relationship between the two indicators.
+
+    Create a world map for each indicator in 2020.
+
+    Create a scatterplot showing the relationship between these two indicators in 2020.
+
+    On the maps and the scatterplot, add labels and the actual amounts for these three countries: [XX, XX, XX]
+
+    Provide both as PNG images to be downloaded.
+
+    Do this in Python, and provide the Python script used, as a file to be downloaded.
     ```
 
 -   **Review and Refine:** ChatGPT will show its steps, data, and plots. Work with it to refine the figures and text until you are happy with the output plots. For example, you can ask it to change the title of a plot, or to use a different color scheme.
@@ -97,7 +121,7 @@ You will use ChatGPT, an AI chat-based tool, to analyze your data and generate c
 -   If the AI seems to be going off track or taking too long, look for a "stop" button (often near the prompt input box) to interrupt it.
 
 4.  **Creating Your Report Document:**
-    -   **Download Outputs:** Download the individual plots (as images, e.g., PNG) or take screenshots of the plots that ChatGPT generates. You can also copy any key text outputs, such as data summaries or interpretations.
+    -   **Download Outputs:** Download the individual plots (as images, e.g., PNG) and the Python script. You can also copy any key text outputs, such as data summaries or interpretations.
     -   **Create a DOCX/Google Docs file:** Open a word processor (like Microsoft Word, Google Docs, or Pages) and create a new document.
     -   **Assemble report:**
         -   Add a title, your name, and the date.
@@ -105,7 +129,9 @@ You will use ChatGPT, an AI chat-based tool, to analyze your data and generate c
         -   Paste in the relevant text outputs from ChatGPT.
         -   Organize this content into a clean and readable report.
 5.  **Add Your Reflection:**
-    -   Before finalizing your report, add your short reflection written by you (not the AI) about the process of interacting with the AI tools. E.g. What was easy? What was difficult? What was surprising? What did you learn?
+    -   Before finalizing your report, add two things written by you (not the AI):
+        -   A quick summary of findings you noticed about the data.
+        -   A short reflection about working with the AI. E.g. What was easy? What was difficult? What was surprising? What did you learn?
 6.  **Final Output:**
     -   **Export as PDF** from your word processor. This PDF is your primary submission.
 
@@ -145,7 +171,7 @@ You will use Cursor to generate an R Markdown report. Cursor is an AI-powered co
         Your task will be further described below.
         ```
 
-    -   **Specific Task Prompting Example:**
+    -   **Specific Task Prompting Example:** Replace the bracketed parts with your indicator names and three countries from your data.
 
         ```         
         Now create a data report in my Rmd file using the two datasets I've provided:
@@ -158,7 +184,8 @@ You will use Cursor to generate an R Markdown report. Cursor is an AI-powered co
         1. For each indicator, subset the data to 2020.
         2. Create a world map visualization for each indicator in 2020.
         3. Create a scatterplot showing the relationship between these two indicators in 2020.
-        4. Provide a brief interpretation of the relationship between the two indicators.
+        4. On the maps and the scatterplot, add labels and the actual amounts for these three countries: [FILL IN THOSE COUNTRIES]
+        5. Provide a brief interpretation of the relationship between the two indicators.
         ```
 
     -   **Troubleshooting R Package Installations:**
@@ -167,7 +194,9 @@ You will use Cursor to generate an R Markdown report. Cursor is an AI-powered co
 
     -   **Iterate and Refine:** Work with the agent to refine the figures and text until you are happy with the report. For example, you can ask it to change the title of a plot, or to use a different color scheme. If the AI seems to be going off track or taking too long, look for a "stop" button (often near the prompt input box) to interrupt it.
 
-4.  **Add Your Reflection:** Before your final knit, make sure to add your short reflection written by you (not the AI) about the process of interacting with the AI tools. E.g. What was easy? What was difficult? What was surprising? What did you learn? directly into your R Markdown file. This should be part of the narrative of your report.
+4.  **Add Your Reflection:** Before your final knit, add two things written by you (not the AI) directly into your R Markdown file. This should be part of the narrative of your report.
+    -   A quick summary of findings you noticed about the data.
+    -   A short reflection about working with the AI. E.g. What was easy? What was difficult? What was surprising? What did you learn?
 
 5.  **Render the Final HTML:** When you are happy with the report, you can ask the AI agent to change the output format to a self-contained HTML file. Or you can do this yourself manually by using the YAML below in your .Rmd file. Then knit the file to render the HTML file.
 
@@ -176,6 +205,23 @@ You will use Cursor to generate an R Markdown report. Cursor is an AI-powered co
         html_document:
             self_contained: true
     ```
+
+------------------------------------------------------------------------
+
+# Verification
+
+Do this after you have your maps, whether you used ChatGPT or Cursor.
+
+1.  **Check the labeled countries against the data sheets.**
+
+    -   On each map and on the scatterplot, find the three countries you asked the model to label.
+    -   Compare each label and amount with the 2020 numbers in your CSV files.
+    -   The plotted amounts should match the data sheets.
+
+2.  **Cross-check with another agent, if you have time.**
+
+    -   Try the same task in free [Gemini](https://gemini.google.com){target="_blank"}.
+    -   Cross-checking between multiple agents is a great way to tell whether agents are generally capable, or whether they may be unreliable and making mistakes.
 
 ------------------------------------------------------------------------
 
