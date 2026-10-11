@@ -1,0 +1,41 @@
+---
+title: "Changes to the Botpress Workshop Instructions"
+format:
+  html:
+    toc: true
+---
+
+This document lists the changes from `week_04_workshop_instructions.qmd` to the updated copy, checked on 7 October 2026. The original wording, structure, chatbot behaviour, table instructions, and GitHub screenshots are retained except for the specific updates below.
+
+## Part 1: Account setup
+
+- **Free allowance:** Changed “up to 500 messages” to **100 conversations per month**, with a note to check limits on older workspaces. Changed adding credit to upgrading the plan. Sources: [Botpress pricing](https://botpress.com/pricing/) and [May 2026 pricing update](https://botpress.com/en/blog/pricing-update-may-2026).
+- **Signup route:** Updated the use-case option to **“Something else? Tell us what you're building”**, and added the follow-up onboarding questions. Added the observed **Viber → workspace → Agents → Create agent dropdown → Visual Editor** route into Studio. Made the old setup wizard conditional, because the checked route opened Home directly.
+- **Screenshots:** Replaced the old use-case and build-method screenshots with the current use-case screen and Visual Editor menu. Removed the old setup-wizard screenshot. Retained the Home icon screenshot.
+
+## Part 2: Bot instructions
+
+- **Showcase dates:** Replaced the 28 June and 1 July dates with **two date, time, and time-zone placeholders**, as requested. The rest of the example prompt is unchanged.
+
+## Part 3: Knowledge base
+
+- **Context-window claim:** Replaced the claim that all knowledge must fit within the LLM context window with a brief explanation that **Botpress searches the knowledge base for relevant information**.
+- **Upload route:** Added **Knowledge Bases → New Knowledge Base → Save → document icon → Add Documents** for accounts without an existing knowledge base. Added a screenshot of the upload dialog.
+- **Example CV link:** Removed the Oxford example PDF link because it **redirected to a general careers page**. Kept the suggestion to use a fake CV and added the option of a fictional plain text CV. The course syllabus link and PDF troubleshooting advice are unchanged.
+
+## Part 5: Testing and embedding
+
+- **Registration screenshot:** Added a screenshot showing a saved table row and the corresponding Emulator conversation using fictional details. The original test instructions are unchanged.
+- **Embed code:** Replaced **Share → Embed Code** with **Deploy Settings → Embed Code**, where the code appeared directly in the checked interface. Replaced the old embed-code screenshot with the current page. The publishing steps and appearance screenshot are retained.
+
+## Part 6: Website deployment
+
+- **Deployment timing:** Changed **3–5 minutes** to **up to 10 minutes**, and made automatic deployment conditional on GitHub Pages being configured to deploy the changes. Source: [GitHub Pages Quickstart](https://docs.github.com/en/pages/quickstart).
+
+No other sections were rewritten. Part 4, the remaining website integration steps, and the submission instructions are unchanged. Sixteen original screenshots are retained; five current screenshots are used for the changed steps and registration example.
+
+## What was checked
+
+The supplied Chrome signup flow was followed into Studio. A test agent retrieved fictional CV facts and successfully saved a fictional name and email through Create Rows. The upload dialog, publishing menu, and Webchat embed settings were inspected. The syllabus link opened successfully. GitHub editing, embedding, and deployment guidance were checked against official documentation.
+
+A real CV and the syllabus were not uploaded, Publish changes was not submitted during the review, and a live portfolio integration was not tested. The original Quarto file remains unchanged.
