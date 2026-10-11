@@ -57,7 +57,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#part-6a-add-bot-to-your-portfolio" id="toc-part-6a-add-bot-to-your-portfolio" class="nav-link" data-scroll-target="#part-6a-add-bot-to-your-portfolio">Part 6A: Add Bot to Your Portfolio</a></li>
   <li><a href="#part-6b-test-live-integration" id="toc-part-6b-test-live-integration" class="nav-link" data-scroll-target="#part-6b-test-live-integration">Part 6B: Test Live Integration</a></li>
   </ul></li>
-  <li><a href="#part-8-submission" id="toc-part-8-submission" class="nav-link" data-scroll-target="#part-8-submission">Part 8: Submission</a></li>
+  <li><a href="#part-7-submission" id="toc-part-7-submission" class="nav-link" data-scroll-target="#part-7-submission">Part 7: Submission</a></li>
   </ul>
 </nav>
 </div>
@@ -94,8 +94,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Your completed chatbot will be able to:</p>
 <ol type="1">
 <li><strong>Answer CV/Resume Questions</strong> - Provide information about your background using uploaded CV data</li>
-<li><strong>Share Course Information</strong> - Provide info about the Graph Courses GenAI syllabus and curriculum details<br>
-</li>
+<li><strong>Share Course Information</strong> - Provide info about the Graph Courses GenAI syllabus and curriculum details</li>
 <li><strong>Collect Visitor Information</strong> - Gather names and emails from interested visitors for showcase day registration</li>
 </ol>
 <hr>
@@ -103,21 +102,23 @@ ul.task-list li input[type="checkbox"] {
 <section id="part-1-setting-up-your-botpress-account-and-creating-your-bot" class="level1">
 <h1>Part 1: Setting Up Your Botpress Account and Creating Your Bot</h1>
 <p>Our first task is to set up a Botpress account and create a new bot.</p>
-<p>Note that Botpress interface changes from time to time, so the screenshots may not be exactly the same as the ones in the instructions.</p>
-<p>Also note that the free account will allow your chatbots to send/receive up to 500 messages. This should be enough for our course chatbots. But for serious use later on, you may need to add credit to your account)</p>
+<p>Note that the Botpress interface changes from time to time, so the screenshots may not be exactly the same as the ones in the instructions.</p>
+<p>Also note that the current <a href="https://botpress.com/pricing/">free plan</a> allows up to 100 conversations per month. This should be enough for our course chatbots.</p>
+<p>But for serious use later on, you may need to upgrade your plan.</p>
 <ol type="1">
 <li><p><strong>Create Your Botpress Account:</strong></p>
 <ul>
 <li><p>Go to <a href="https://botpress.com/" target="_blank">botpress.com</a></p></li>
 <li><p>Sign up for a free account using your email.</p></li>
-<li><p>You may be asked what is your main use case. You can select “Other” and say anything random.</p>
-<p><img src="images/main_use_case.jpg" class="img-fluid" width="500"></p></li>
-<li><p>If asked “How do you want to build?”, select Botpress Studio</p>
-<p><img src="images/how_to_build.jpg" class="img-fluid" width="331"></p></li>
-<li><p>You will then see a “What should your bot do” screen that tries to walk you through the setup process. This is not needed.Click skip setup at the top right.</p>
-<p><img src="images/skip_setup.jpg" class="img-fluid" width="536"></p></li>
-<li><p>Next, click on the Home icon at the top left to view the home page for the bot instructions.</p>
-<p><img src="images/home_button.jpg" class="img-fluid" width="198"></p></li>
+<li><p>You may be asked a bunch of onboarding questions. Your answers here do not matter too much. You can fill in quick responses. For example, when asked “your main use case”, you can enter “info chatbot” within the “Something else? Tell us what you’re building” field:</p>
+<p><img src="images/botpress_review_2026_10_07/onboarding_use_case.jpg" class="img-fluid" width="500"></p>
+<p>For your number of conversations you can enter “1 to 100”.</p></li>
+<li><p>The signup flow may open Botpress Viber, which is an automatic builder. We will not use this. Click the back arrow at the top right of the page to return to the workspace,</p>
+<p><img src="images/back_to_workspace.jpg" class="img-fluid" width="100"></p>
+<p>then click “Agents” on the sidebar.</p>
+<p><img src="images/agents_menu_option.jpg" class="img-fluid" width="100"></p>
+<p>Open the dropdown beside “Create agent” and select “Visual Editor” to open Botpress Studio.</p>
+<p><img src="images/botpress_review_2026_10_07/choose_studio.jpg" class="img-fluid" width="440"></p></li>
 </ul></li>
 </ol>
 </section>
@@ -138,24 +139,24 @@ ul.task-list li input[type="checkbox"] {
 
 - Answer questions about the student's CV and background using the knowledge base
 - Provide information about the Graph Courses GenAI syllabus and curriculum based on your knowledge base
-- After answering the user's query, politely ask them whether they might be interested in our upcoming showcase event. These take place on 
+- After answering the user's query, politely ask them whether they might be interested in our upcoming showcase event. These take place on:
 
--  Sunday, June 28, 5pm GMT
--  Wednesday, July 1, 3pm GMT
+- Sunday 15 November 2026, 11:00–13:00 GMT
+- Wednesday 18 November 2026, 15:00–17:00 GMT
 
 - If they express interest, collect their name and email for registration and record those in the Attendees table tool.
 - Try to be helpful while staying focused on these core topics. For other topics, politely decline to answer. </code></pre>
 </section>
 <section id="part-3-set-up-the-knowledge-base" class="level1">
 <h1>Part 3: Set up the Knowledge Base</h1>
-<p>Our next task is to set up a knowledge base for the bot to use to answer questions. As long as the knowledge we provide is not too long (not over the LLM’s context window limit), the bot will be able to use it proficiently to answer questions.</p>
+<p>Our next task is to set up a knowledge base for the bot to use to answer questions. Botpress searches the knowledge base for relevant information, so the uploaded documents do not all need to fit within the LLM’s context window.</p>
 <ol type="1">
-<li><strong>Navigate to Knowledge Base:</strong>
+<li><p><strong>Navigate to Knowledge Base:</strong></p>
 <ul>
-<li>Find the “Knowledge Base” section under the “Instructions” section</li>
-<li>Drag and drop your CV into the upload box. (If you don’t want any of your personal information online, you can use a fake example CV from the internet, like here: <a href="https://www.careers.ox.ac.uk/files/traditional-cv-examplepdf" target="_blank">https://www.careers.ox.ac.uk/files/traditional-cv-examplepdf</a>)</li>
-<li>Download the syllabus from: <a href="https://drive.google.com/file/d/1NV-Mo2UgXQwdTu_Jv-HtCVnB9Pf2Grng/view" target="_blank">https://drive.google.com/file/d/1NV-Mo2UgXQwdTu_Jv-HtCVnB9Pf2Grng/view</a>, and upload it to the knowledge base.</li>
-<li><strong>Note:</strong> If the bot does not process your PDF CV properly (e.g., it gives incorrect or nonsensical responses about your background), try deleting the PDF from the knowledge base and instead manually copying and pasting the text content of your CV into a plain text file, then uploading that instead.</li>
+<li><p>Find the “Knowledge bases” section under the “Instructions” section and click the button to create a new knowledge base.</p></li>
+<li><p>Drag and drop your CV into the knowledge base. If you do not want your personal information online, use a sample CV from the internet, or write a fictional CV and save it as a plain text file.</p>
+<p><img src="images/knowledge_base_drag.jpg" class="img-fluid" width="560"></p></li>
+<li><p>Download the syllabus from <a href="https://drive.google.com/file/d/1-BhMyhSU77Zfx9_TEkhQwq_DBAUlxs9z/view" target="_blank">https://drive.google.com/file/d/1-BhMyhSU77Zfx9_TEkhQwq_DBAUlxs9z/view</a> and upload it to the knowledge base as well.</p></li>
 </ul></li>
 </ol>
 </section>
@@ -182,7 +183,7 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="images/new_column_icon.jpg" class="img-fluid"></p></li>
 <li><p><strong>Configure Collection:</strong></p></li>
 </ol>
-<p>Now, we have created the table, we need to allow the bot to use this table to store data.</p>
+<p>Now that we have created the table, we need to allow the bot to use this table to store data.</p>
 <ul>
 <li>Return to the main configuration area, by clicking on the “Home” icon on the left sidebar</li>
 </ul>
@@ -202,18 +203,24 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li><p><strong>Use the Test Chat:</strong></p>
 <ul>
-<li>The Botpress interface has a test chat panel on the right side of the screen</li>
-<li>Try asking questions about:
+<li><p>The Botpress interface has a test chat panel on the right side of the screen</p></li>
+<li><p>Try asking questions about:</p>
 <ul>
 <li>Your background (“Tell me about the educational background of [your name]”)</li>
 <li>Course content (“What topics are covered in the GenAI course?”)</li>
 </ul></li>
-<li>The bot should interrupt at some point to ask if you might be interested in the event.</li>
-<li>Give your email and name, then check the Attendees table to see if the bot was successful in adding your information.</li>
+<li><p>The bot should interrupt at some point to ask if you might be interested in the event.</p></li>
+<li><p>Give your email and name, then check the Attendees table to see if the bot was successful in adding your information.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/botpress_review_2026_10_07/registration_test.jpg" class="img-fluid figure-img" width="660"></p>
+<figcaption>Example of a successful registration using fictional details</figcaption>
+</figure>
+</div></li>
 </ul></li>
 <li><p><strong>Publish:</strong></p>
 <ul>
-<li>Click “Publish” button in the top-right corner, then “Publish changes”</li>
+<li>Click the “Publish” button in the top-right corner, then “Publish changes”</li>
 <li>Wait for the publishing process to complete</li>
 </ul>
 <p><img src="images/publish_button.jpg" class="img-fluid" width="340"></p></li>
@@ -223,10 +230,10 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><img src="images/chat_bubble_icon.jpg" class="img-fluid" width="340"></p>
 <ul>
-<li>You’ll be taken to a section where you can edit the chat bubble settings.</li>
-<li>Next, navigate to the “Share” menu and copy the code under “Embed Code”</li>
+<li><p>You’ll be taken to a section where you can edit the chat bubble settings.</p></li>
+<li><p>On the “Deploy Settings” page, copy the code under “Embed Code”.</p></li>
 </ul>
-<p><img src="images/embed_code.jpg" class="img-fluid" width="613"></p>
+<p><img src="images/embed_code.jpg" class="img-fluid" width="560"></p>
 <ul>
 <li>Side note: Later you can come back to the “bot appearance” section to customize how your bot looks.</li>
 </ul>
@@ -262,7 +269,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Save your changes to the <code>index.html</code> file</li>
 <li>Commit the changes to your GitHub repository</li>
-<li>Your live site will update automatically (this may take 3-5 minutes)</li>
+<li>Your live site will update automatically if GitHub Pages is configured to deploy your changes (this may take up to 10 minutes)</li>
 <li>You can track the status of your deployment by clicking on the “Actions” tab in the menu of the GitHub repository page</li>
 <li>NOTE: Even after the site is done deploying, you may need to refresh the page a few times to see the bot appear, because your browser may be loading a cached version of the page.</li>
 </ul></li>
@@ -289,11 +296,11 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 </section>
 </section>
-<section id="part-8-submission" class="level1">
-<h1>Part 8: Submission</h1>
+<section id="part-7-submission" class="level1">
+<h1>Part 7: Submission</h1>
 <p>To submit:</p>
 <ul>
-<li>Upload a screenshot of your chatbot ‘in action’ on the graph courses website in the upload box.</li>
+<li>Upload a screenshot of your chatbot ‘in action’ on your portfolio website in the upload box.</li>
 <li>Paste a link to your website in the comments section.</li>
 </ul>
 </section>

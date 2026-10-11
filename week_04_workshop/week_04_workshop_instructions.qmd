@@ -13,7 +13,7 @@ Welcome! In this assignment, you'll create an LLM-powered chatbot using Botpress
 Your completed chatbot will be able to:
 
 1.  **Answer CV/Resume Questions** - Provide information about your background using uploaded CV data
-2.  **Share Course Information** - Provide info about the Graph Courses GenAI syllabus and curriculum details\
+2.  **Share Course Information** - Provide info about the Graph Courses GenAI syllabus and curriculum details
 3.  **Collect Visitor Information** - Gather names and emails from interested visitors for showcase day registration
 
 ------------------------------------------------------------------------
@@ -22,9 +22,11 @@ Your completed chatbot will be able to:
 
 Our first task is to set up a Botpress account and create a new bot.
 
-Note that Botpress interface changes from time to time, so the screenshots may not be exactly the same as the ones in the instructions.
+Note that the Botpress interface changes from time to time, so the screenshots may not be exactly the same as the ones in the instructions.
 
-Also note that the free account will allow your chatbots to send/receive up to 500 messages. This should be enough for our course chatbots. But for serious use later on, you may need to add credit to your account)
+Also note that the current [free plan](https://botpress.com/pricing/) allows up to 100 conversations per month. This should be enough for our course chatbots. 
+
+But for serious use later on, you may need to upgrade your plan. 
 
 1.  **Create Your Botpress Account:**
 
@@ -32,21 +34,24 @@ Also note that the free account will allow your chatbots to send/receive up to 5
 
     -   Sign up for a free account using your email.
 
-    -   You may be asked what is your main use case. You can select "Other" and say anything random.
+    -   You may be asked a bunch of onboarding questions. Your answers here do not matter too much. You can fill in quick responses. For example, when asked "your main use case", you can enter "info chatbot" within the "Something else? Tell us what you're building" field:
 
-        ![](images/main_use_case.jpg){width="500"}
+        ![](images/botpress_review_2026_10_07/onboarding_use_case.jpg){width="500"}
 
-    -   If asked "How do you want to build?", select Botpress Studio
+        For your number of conversations you can enter "1 to 100".
 
-        ![](images/how_to_build.jpg){width="331"}
+    -   The signup flow may open Botpress Viber, which is an automatic builder. We will not use this. Click the back arrow at the top right of the page to return to the workspace,
 
-    -   You will then see a "What should your bot do" screen that tries to walk you through the setup process. This is not needed.Click skip setup at the top right.
+        ![](images/back_to_workspace.jpg){width="100"}
 
-        ![](images/skip_setup.jpg){width="536"}
+        then click "Agents" on the sidebar.
 
-    -   Next, click on the Home icon at the top left to view the home page for the bot instructions.
+        ![](images/agents_menu_option.jpg){width="100"}
 
-        ![](images/home_button.jpg){width="198"}
+        Open the dropdown beside "Create agent" and select "Visual Editor" to open Botpress Studio.
+
+        ![](images/botpress_review_2026_10_07/choose_studio.jpg){width="440"}
+
 
 # Part 2: Setting Up the Bot Instructions
 
@@ -65,10 +70,10 @@ You are a portfolio assistant for a Generative AI course student. Your main task
 
 - Answer questions about the student's CV and background using the knowledge base
 - Provide information about the Graph Courses GenAI syllabus and curriculum based on your knowledge base
-- After answering the user's query, politely ask them whether they might be interested in our upcoming showcase event. These take place on 
+- After answering the user's query, politely ask them whether they might be interested in our upcoming showcase event. These take place on:
 
--  Sunday, June 28, 5pm GMT
--  Wednesday, July 1, 3pm GMT
+- Sunday 15 November 2026, 11:00–13:00 GMT
+- Wednesday 18 November 2026, 15:00–17:00 GMT
 
 - If they express interest, collect their name and email for registration and record those in the Attendees table tool.
 - Try to be helpful while staying focused on these core topics. For other topics, politely decline to answer. 
@@ -76,13 +81,17 @@ You are a portfolio assistant for a Generative AI course student. Your main task
 
 # Part 3: Set up the Knowledge Base
 
-Our next task is to set up a knowledge base for the bot to use to answer questions. As long as the knowledge we provide is not too long (not over the LLM's context window limit), the bot will be able to use it proficiently to answer questions.
+Our next task is to set up a knowledge base for the bot to use to answer questions. Botpress searches the knowledge base for relevant information, so the uploaded documents do not all need to fit within the LLM’s context window.
 
 1.  **Navigate to Knowledge Base:**
-    -   Find the "Knowledge Base" section under the "Instructions" section
-    -   Drag and drop your CV into the upload box. (If you don't want any of your personal information online, you can use a fake example CV from the internet, like here: [https://www.careers.ox.ac.uk/files/traditional-cv-examplepdf](https://www.careers.ox.ac.uk/files/traditional-cv-examplepdf){target="_blank"})
-    -   Download the syllabus from: [https://drive.google.com/file/d/1NV-Mo2UgXQwdTu_Jv-HtCVnB9Pf2Grng/view](https://drive.google.com/file/d/1NV-Mo2UgXQwdTu_Jv-HtCVnB9Pf2Grng/view){target="_blank"}, and upload it to the knowledge base.
-    -   **Note:** If the bot does not process your PDF CV properly (e.g., it gives incorrect or nonsensical responses about your background), try deleting the PDF from the knowledge base and instead manually copying and pasting the text content of your CV into a plain text file, then uploading that instead.
+
+    -   Find the "Knowledge bases" section under the "Instructions" section and click the button to create a new knowledge base.
+    -   Drag and drop your CV into the knowledge base. If you do not want your personal information online, use a sample CV from the internet, or write a fictional CV and save it as a plain text file.
+
+        ![](images/knowledge_base_drag.jpg){width="560"}
+
+    -   Download the syllabus from [https://drive.google.com/file/d/1-BhMyhSU77Zfx9_TEkhQwq_DBAUlxs9z/view](https://drive.google.com/file/d/1-BhMyhSU77Zfx9_TEkhQwq_DBAUlxs9z/view){target="_blank"} and upload it to the knowledge base as well.
+
 
 # Part 4: Set Up Data Collection
 
@@ -106,7 +115,7 @@ Next, we will create a table to store the data of the attendees of the showcase 
 
 2.  **Configure Collection:**
 
-Now, we have created the table, we need to allow the bot to use this table to store data.
+Now that we have created the table, we need to allow the bot to use this table to store data.
 
 -   Return to the main configuration area, by clicking on the "Home" icon on the left sidebar
 
@@ -133,9 +142,11 @@ Now, we have created the table, we need to allow the bot to use this table to st
     -   The bot should interrupt at some point to ask if you might be interested in the event.
     -   Give your email and name, then check the Attendees table to see if the bot was successful in adding your information.
 
+        ![Example of a successful registration using fictional details](images/botpress_review_2026_10_07/registration_test.jpg){width="660"}
+
 2.  **Publish:**
 
-    -   Click "Publish" button in the top-right corner, then "Publish changes"
+    -   Click the "Publish" button in the top-right corner, then "Publish changes"
     -   Wait for the publishing process to complete
 
     ![](images/publish_button.jpg){width="340"}
@@ -147,9 +158,10 @@ Now, we have created the table, we need to allow the bot to use this table to st
     ![](images/chat_bubble_icon.jpg){width="340"}
 
     -   You'll be taken to a section where you can edit the chat bubble settings.
-    -   Next, navigate to the "Share" menu and copy the code under "Embed Code"
 
-    ![](images/embed_code.jpg){width="613"}
+    -   On the "Deploy Settings" page, copy the code under "Embed Code". 
+
+    ![](images/embed_code.jpg){width="560"}
 
     -   Side note: Later you can come back to the "bot appearance" section to customize how your bot looks.
 
@@ -191,7 +203,7 @@ Now, we need to add this code to your portfolio website, so that a chat bubble a
 
     -   Save your changes to the `index.html` file
     -   Commit the changes to your GitHub repository
-    -   Your live site will update automatically (this may take 3-5 minutes)
+    -   Your live site will update automatically if GitHub Pages is configured to deploy your changes (this may take up to 10 minutes)
     -   You can track the status of your deployment by clicking on the "Actions" tab in the menu of the GitHub repository page
     -   NOTE: Even after the site is done deploying, you may need to refresh the page a few times to see the bot appear, because your browser may be loading a cached version of the page.
 
@@ -207,9 +219,9 @@ Now, we need to add this code to your portfolio website, so that a chat bubble a
 3.  **Making changes to your bot:**
     -   WATCH OUT: If you make any changes to your bot, be sure to click on "Publish" again in the top-right corner to save your changes.
 
-# Part 8: Submission
+# Part 7: Submission
 
 To submit:
 
--   Upload a screenshot of your chatbot ‘in action’ on the graph courses website in the upload box.
+-   Upload a screenshot of your chatbot ‘in action’ on your portfolio website in the upload box.
 -   Paste a link to your website in the comments section.
