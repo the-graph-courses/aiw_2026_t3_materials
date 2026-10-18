@@ -1,5 +1,5 @@
 ---
-title: "Workshop 3: Summarising a Body of Literature with Gemini Notebook"
+title: "Workshop: Summarising a Body of Literature with Gemini Notebook"
 format:
   html:
     toc: true
@@ -120,3 +120,101 @@ To submit, download the doc as a PDF (**File → Download → PDF document**) an
 # Part 6: Optional Challenge: Your Own PDFs *(ungraded)*
 
 Repeat Parts 1 to 4 on at least 10 PDFs you are allowed to upload. Design 4-7 short columns, as in Part 2, including one with a fixed set of answers you can chart, and add a figure and an AI-use statement. Skip the meta-analysis comparison and the summary template above. This is not part of the submission.
+
+# Part 7: Optional: Add to Your GitHub Pages Portfolio
+
+As a final step, you can add your PDF to the portfolio website you created earlier in the course.
+
+## Upload Your PDF to GitHub
+
+-   To get back to your repository home, visit github.com, click on your profile at the top right, then click on "Repositories"
+
+    ![](images/github_repositories.jpg){width="324"}
+
+-   Locate and click on your repository, which should be called something like `graph-ai-portfolio`
+
+-   Locate the button or icon to "Add file". Click on it and select "Upload file"
+
+    ![](images/add_file_button.jpg){width="459"}
+
+-   Drag the PDF you downloaded in Part 5 into the box, then click on "Commit changes"
+
+## Update Your Portfolio with ChatGPT or Gemini
+
+-   Go to ChatGPT or Gemini and start typing a prompt like the one below. The parts in square brackets will need to be filled in with information you'll gather in the next steps.
+
+    ```         
+    I want to update my portfolio website. In your response, you will provide the FULL updated HTML code for the index.html file.
+
+    The portfolio website is hosted at 
+
+    [YOUR PORTFOLIO WEBSITE URL HERE].
+
+    ---
+
+    I want to add a new link for the project page for "Workshop 3: AI-Assisted Literature Review".
+
+    For this project, I used Gemini Notebook to extract key details from 14 experiments on whether quitting or cutting down on social media improves mood, checked the AI's extraction against the original papers, made a figure of the results, and wrote a short summary of the evidence that I compared with a published meta-analysis.
+
+    The report is a PDF file, available at the link below. Embed the link directly.
+
+    [PASTE THE DIRECT LINK TO YOUR UPLOADED PDF HERE]
+
+    ---
+
+    Below is my current HTML file:
+
+    [PASTE THE ENTIRE HTML FILE HERE]
+    ```
+
+-   Now, gather the information you need to complete the prompt:
+
+## Get Your Portfolio Website URL
+
+-   To get your portfolio website URL, go to your portfolio repository on GitHub. You can do this by clicking on the "Repositories" button at the top right of the page and then clicking on your portfolio repository.
+
+-   Click on the "Settings" tab.
+
+-   Scroll down to the "GitHub Pages" section.
+
+-   Your portfolio website URL will be listed under "GitHub Pages". Copy and paste this into your prompt.
+
+    ![](images/github_pages_url.jpg){width="378"}
+
+## Get the Direct Link to Your PDF
+
+-   Go back to your portfolio repository's main page and right‑click on the name of your uploaded PDF then → **Copy link address**. Paste this into your prompt.
+
+    ![](images/copy_link_address_report.jpg){width="378"}
+
+## Copy Your Current index.html Code
+
+-   Still in your portfolio repository, navigate to your index.html file.
+
+    ![](images/index_html.jpg){width="374"}
+
+-   Copy all the code from the index.html file with the copy code button at the top right. Paste this into your prompt.
+
+    ![](images/copy_code_button.jpg){width="372"}
+
+## Send the Prompt and Update Your File
+
+-   Now that you've filled in all the placeholders, send the prompt to ChatGPT or Gemini
+
+-   Copy the new HTML that the LLM generated → return to your *index.html* on GitHub → click the **edit file** (✎) button at the top right.
+
+    ![](images/edit_file_button.jpg){width="452"}
+
+-   Delete all the existing code in the file, then paste in the new code from ChatGPT or Gemini.
+
+-   At the top right, click the **Commit changes** button.
+
+-   Go to Actions tab (if you have GitHub Pages set up with Actions).
+
+    ![](images/actions_tab.jpg){width="380"}
+
+-   Click on the latest build to observe the build process.
+
+    ![](images/pages_build.jpg){width="353"}
+
+-   After the build is complete, your live site, if refreshed, should now show the new project entry and the link should work!
