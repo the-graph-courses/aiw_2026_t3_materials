@@ -91,9 +91,11 @@ We would now like to summarise the evidence in a Google Doc. Go to [docs.new](ht
 
 ## Summary of the evidence
 
-Write 1-2 paragraphs yourself. Use your table, your figure, and the meta-analysis. Do not ask the AI to write them, and do not mention every study.
+Write 1-2 paragraphs yourself, using your table and figure. Do not ask the AI to write them. You can start from the template below: fill in each `[bracket]` from your table, then edit it so it reads naturally in your own words. You don't need to mention every study, and you can drop any sentence that doesn't fit your results.
 
-> We reviewed [xx] experiments in which people were asked to quit or cut down on social media. Some report.... others find little change.... while a few find a cost, such as ([Author, year]). 
+> We looked at [number] experiments in which people were asked to quit or cut down on social media. For positive mood, [number] found an improvement ([Author, year]), [number] found no clear effect ([Author, year]; [Author, year]), and [number] found that mood got worse ([Author, year]).
+>
+> The breaks were short, lasting between [shortest] and [longest] days, and most participants were [who, e.g. university students]. Studies that asked people to quit completely found [what you see in the table], while studies that asked people to cut down found [what you see]. The largest study, [Author, year], with [number] participants, found [result]. Overall, these studies suggest that [your conclusion, worded carefully, e.g. "the results are mixed"].
 
 ## Comparison with the meta-analysis
 
