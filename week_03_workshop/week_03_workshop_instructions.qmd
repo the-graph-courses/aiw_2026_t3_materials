@@ -1,368 +1,172 @@
 ---
-title: "Analyzing Job Market Data with LLMs in Sheets and AI Reporting Tools"
+title: "Workshop 3: Summarising a Body of Literature with Gemini Notebook"
 format:
   html:
     toc: true
+    toc-depth: 3
 author: "The Graph Courses"
 ---
 
+<!-- DRAFT v5. Fuses v4 (Gemini Notebook walkthrough, tested 18 Oct 2026 with an earlier set of 16 PDFs)
+with the v2 corpus work. Literature option only; the qualitative option was dropped. Bringing your own PDFs is an optional challenge under Submission, not an alternate path.
+Corpus: 14 free-to-read papers, 17 comparison rows, chosen to be comparable with Lemahieu et al. 2025 (Sci Rep), which
+pooled 10 studies of complete social media abstinence (positive affect g = 0.03, n.s.). 6 papers are in the review;
+4 are complete-break studies not in it (Asimovic 2021, Arceneaux 2024, Walsh 2024, Hartanto 2025); 4 are cut-down
+studies the review excluded by design (Collis 2022, Faulhaber 2023, Maerevoet 2025, van Wezel 2021). Not included:
+the review's 4 paywalled studies; studies with no control group or other outcomes (kept in the admin repo: aiw_2026_t3_admin/week_03_workshop_v2/data/_set_aside_lit_review/).
+TODO before release:
+  - Push data/lit_review_social_media_break.zip and data/reference/ to aiw_2026_t3_materials.
+  - Re-run Parts 2-3 in a fresh notebook with these 14 papers: check the table has 17 rows, re-test the figure prompt,
+    and replace images/gn_chart_example.png and the example paragraph (both from the earlier 16-paper set).
+  - Free plan limits seen in reviews (Aug 2026): 50 sources per notebook, 50 chats per day. Fine for 14 PDFs. -->
+
 # Introduction
 
-Welcome! In this assignment, you'll use Large Language Models (LLMs) directly within Google Sheets to extract specific information from hundreds of data analysis job postings. (This is the kind of analysis that we do at Graph Courses to inform our course offerings.)
+In this workshop you will use **Gemini Notebook** to do a short literature review on the question: **does quitting or cutting down on social media improve people's mood?**.
 
-::: {.callout-note}
+Prior to the workshop, we compiled a collection of 14 open-access papers on this question, roughly mirroring the set used in a recent meta-analysis by Lemahieu et al. (2025), but some more recent papers and some studies that were excluded from the meta-analysis.
 
-**Side Note:** The assignment will require using some snippets of code. Do not recoil from this, even if you are not a programmer. Because AI tools work primarily with code, you will maximize your use of these tools if you are not scared of working with code once in a while. Most of the time, the AI's themselves can help you generate the code you need. For example, the MYGPT function code was generated with the help of some LLM models.
+Our goal is to get a broad up-to-date understanding of the evidence of this question, using a table of key information from each paper plus a figure summarising the pattern of results.
+
+
+::: callout-note
+## Why Gemini Notebook instead of a general chatbot?
+
+The primary benefit of Gemini Notebook is that every claim comes with a numbered citation you can click to see the exact passage in the PDF. And it's possible to include these within tables of key information. This makes it easier to cross-check it's accuracy. 
+
+Other tools that have this feature include Scispace and Elicit, which you may want to try in your own time.
 :::
-
-Afterwards, you'll take this extracted data and use an AI-powered analysis tool (ChatGPT or Cursor, based on your experience from the previous workshop) to create visualizations and a concise report.
 
 ## Prerequisites
 
-1. **Review the Pre-work:** This assignment assumes you have reviewed the pre-work, which covers setting up and using LLMs in Google Sheets with OpenRouter. If you haven't, please briefly review the video here: [Using LLM APIs with OpenRouter and Google Sheets](https://vimeo.com/1086807545?share=copy&fl=sv&fe=ci){target="_blank"} to ensure you have the necessary context. You don't have to code/type along with the video; a brief review is enough.
-
-    - If the video mentions `google/gemini-2.5-flash-preview`, use `google/gemini-2.5-flash` instead. The preview model is no longer available on OpenRouter.
-
-2. **For Non-English Locales:** If your Google account is set to any language other than English, please set Google Sheets to display function names in English so you can follow along with this lesson.
-
-    - When you open a new spreadsheet, click `File` at the top left and then `Settings`.
-    - Under 'Display language', make sure the box 'Always use English function names' is checked/ticked.
-
-Then come back to this assignment.
-
-## Your Final Report Structure
-
-Your submitted report for this assignment should include the following sections:
-
-1.  A brief introduction (1-2 sentences) describing the data and the project's aim.
-2.  Analysis of "Years of Experience" (including a visualization and your interpretation).
-3.  Analysis of "Programming Language Requirements" (including a visualization and your interpretation).
-4.  A personal reflection on the process (see details in Part 2).
-
-(In your interpretations, be sure to note the limitations of the small sample size.)
+-   A Google account (for Gemini Notebook and Google Docs).
 
 ------------------------------------------------------------------------
 
-# Part 1: Data Extraction in Google Sheets
+# Part 0: Download the Papers
 
-You will begin by setting up Google Sheets to call an LLM API to extract specific information from job descriptions.
+Download and unzip the collection: [lit_review_social_media_break.zip](https://github.com/the-graph-courses/aiw_2026_t3_materials/raw/main/week_03_workshop/data/lit_review_social_media_break.zip){target="_blank"}. (On Windows: right-click → "Extract All". On Mac: double-click the zip.)
 
-## Part 1A. Setting Up Your Google Sheet
+All 14 papers are experiments in which adults were asked to **quit** social media, or to **cut down** on it, for between 1 and 28 days, and their mood and/or life satisfaction was compared with a control group. Some papers report more than one comparison (Przybylski 2021 ran three separate experiments; Hartanto 2025 had both a quit group and a cut-down group), so if done correctly, your table will have **17 rows**.
 
-1.  **Get the Data:**
-
-    -   The dataset for this assignment is a CSV file of Data Analyst job postings: [data_analyst_postings_sample.csv](https://github.com/the-graph-courses/aiw_2026_t3_materials/blob/main/week_03_workshop/data/data_analyst_postings_sample.csv){target="_blank"}. There is a download icon at the top right of the file
-
-    Screenshot: ![download icon](https://thegraphcourses.org/wp-content/uploads/2024/10/github_download_button.jpg){width="200px"}.
-
-    -   (This data was originally scraped from Glassdoor in June 2020. The scraping project and full dataset can be found here: [Original Data Source](https://github.com/picklesueat/data_jobs_data){target="_blank"})
-
-2.  **Import Data into Google Sheets:**
-
-    -   Create a new Google Sheet and give it a name like "Data Analyst Job Market Analysis". (You can quickly create a new sheet by going to "sheets.new" in your browser.)
-    -   Go to `File → Import`.
-    -   In the Import file dialog, select the `Upload` tab.
-    -   Drag the downloaded `data_analyst_postings_sample.csv` file into the upload area. The default import settings should be fine.
-    -   **Adjust Row Height (if needed):** If the rows are too tall due to long job descriptions, select all cells (press Ctrl+A or Cmd+A two times), then move your mouse to the divider line between any two row numbers on the left (e.g., between row 1 and row 2). Your cursor will change. Click and drag the divider upwards to resize all selected rows.
-
-3.  **Set Up Your API Key:**
-
-    -   In your Google Sheet, choose an empty cell that's out of the way (e.g., `M2`). Paste your personal OpenRouter API key into this cell.
-
-4.  **Add the `MYGPT` Apps Script Function:**
-
-    -   Go to `Extensions → Apps Script`.
-    -   Replace any starter code in the editor with the exact snippet below:
-
-    ``` javascript
-    function MYGPT(prompt, model, key) {
-      if (!prompt) return '';
-      if (!model) throw new Error('Model ID required (e.g. "google/gemini-2.5-flash").');
-      if (!key) throw new Error('OpenRouter API key required.');
-
-      const url = 'https://openrouter.ai/api/v1/chat/completions';
-      const body = {
-        model: model,
-        messages: [{ role: 'user', content: String(prompt) }]
-      };
-
-      const options = {
-        method: 'post',
-        contentType: 'application/json',
-        headers: { Authorization: 'Bearer ' + key },
-        payload: JSON.stringify(body),
-        muteHttpExceptions: true
-      };
-
-      try {
-        const res = UrlFetchApp.fetch(url, options);
-        const json = JSON.parse(res.getContentText());
-        if (json.error) { // Check for API errors returned in JSON
-          return 'GPT error: ' + json.error.message;
-        }
-        return json.choices[0].message.content.trim();
-      } catch (err) {
-        return 'GPT error: ' + err;
-      }
-    }
-    ```
-
-    -   Click the "Save project" icon (💾).
-    -   Click "Run" once. Google will ask you to authorize the script. Follow the prompts to allow it. You might see a "This app isn't verified" warning; you can proceed by clicking "Advanced" and then "Go to (your project name)".
-    -   You may need to go through the authorization process more than once. You will know it has worked when you see "Execution completed" after pressing "Run".
-
-## Part 1B. Extracting Years of Experience Required
-
-You'll use the LLM API to find the minimum years of experience mentioned in the `Job Description` column.
-
-1.  **Create New Column:** In your sheet, find the first empty column to the right of your data. Add a header like `Minimum Years Experience`.
-
-2.  **Formulate the Prompt & Apply `MYGPT`:**
-
-    -   We will use the `google/gemini-2.5-flash` model.
-    -   Assuming your first job description is in cell `C2` (adjust if it's in a different column for your imported data) and your API key is in cell `M2` , the formula in the first cell under your `Minimum Years Experience` header would be:
-
-    ```
-    =MYGPT(CONCATENATE("Extract the minimum years of experience required from this job description. Return ONLY a number. If a range is given, return the lower number. If no years of experience are explicitly mentioned, return 'NA'. Here's the job description: ", C2), "google/gemini-2.5-flash", $M$2)
-    ```
-
-    -   Test this on a few rows (e.g. 2-5) and manually verify that the outputs are reasonable.
-
-3.  **Apply to All Rows:**
-
-    -   Once you have tested the formula on a few rows, drag the fill handle (the small square at the bottom-right of the selected cell) down to apply it to all job descriptions. This will make an API call for each row, so it might take a moment.
-
-4.  **Lock in Results:** Once the LLM has processed the column and you have the results:
-
-    -   Select the column of results and copy them (Ctrl+C or Cmd+C).
-    -   Right-click on the column header again, then `Paste special → Values only`. This converts the formulas to static text, preventing accidental re-runs and saving API costs.
-
-## Part 1C. Extracting Programming Language Requirements
-
-Next, you'll ask the LLM to identify what programming languages are mentioned as being required in the job descriptions. In particular, we want to know whether R, Python, both or neither are mentioned.
-
-1.  **Create New Column:** Add another new column with a header like `Data Languages`.
-2.  **Craft Your Own Prompt:**
-    -   For this task, you need to write the prompt yourself.
-    -   Your prompt must clearly instruct the LLM to analyze the `Job Description` and return **ONLY one of these four specific strings** based on the data programming language requirements in the job description: R, Python, Both, or Neither.
-    -   **Hint:** Be very explicit. A good prompt will state the options clearly and tell the model to choose only one.
-3.  **Apply `MYGPT` Function:**
-    -   Use your crafted prompt with the `MYGPT` function, similar to Task 1, concatenating it with the relevant job description cell (e.g., `C2`) and using `google/gemini-2.5-flash` and your API key reference (e.g., `$M$2`).
-    -   Apply to a few rows first to validate that the model is doing what you want, then to all rows.
-4.  **Lock in Results:** Again, once processed, select all cells with results in your `Data Languages` column, copy them, and then paste special as values only.
-
-::: {.callout-note}
-
-**Side Note:** An interesting question at this point is "Is an LLM needed just to extract R and Python? Can't I just use a simple text search?" While this would work for Python, it would not work for R, unfortunately. 
-
-The challenge is that "R" is an extremely common letter in English text. A simple text search for "R" in job descriptions would return a lot of false positives like "R & D (research and development)", "H R (human resources)", "RA (research assistant)" and others. An LLM is more robust because it understands context, allowing it to accurately distinguish between what capital R means in "R programming" and what it means in "HR department".
+::: callout-tip
+These papers are all free to read, which is why we can use them. **Do not upload confidential documents** (unpublished manuscripts, your organisation's internal reports, identifiable data) to AI tools unless you have permission to do so. This applies especially if you bring your own PDFs.
 :::
 
+------------------------------------------------------------------------
+
+# Part 1: Create a Notebook and Add the Papers
+
+1.  Go to [notebook.google.com](https://notebook.google.com){target="_blank"} and sign in with your Google account.
+2.  Click **+ New notebook** (on the home page) or **+ Create notebook** (top right, from inside a notebook). You get an empty notebook with three panels: **Sources** (left), the chat (middle) and **Studio** (right).
+
+    ![](images/gn_new_notebook.jpg){width="650"}
+
+3.  Click **+ Add sources**, then **Upload files**, and select all 14 PDFs at once. (Or drag all 14 files onto the "Drag & drop your files" box.)
+
+    ![](images/gn_add_sources.jpg){width="450"}
+
+4.  Wait until all 14 files appear in the Sources panel, each with a tick. Rename the notebook by clicking "Untitled notebook" at the top left.
+
+------------------------------------------------------------------------
+
+# Part 2: Ask for an Extraction Table
+
+Click in the box at the bottom that says **"Ask a question or create something"**, paste the prompt below, and press Enter.
+
+::: callout-tip
+Paste with **Ctrl+Shift+V** (Windows) or **Cmd+Shift+V** (Mac) to paste as plain text. Formatted text can turn into giant headings in the chat.
+:::
+
+```
+Make a table of these 14 papers.
+If a paper has several experiments, or both a quit group and a social media reduction group, give each its own row.
+Cite the source passage for each cell.
+If a detail is not reported, write "Not stated".
+
+Columns:
+1. Study: first author(s) and year. If a paper has more than one row, name the group (e.g. "Przybylski et al. (2021), Experiment 2").
+2. Design: one of RCT, Non-randomised experiment, Within-person.
+3. Sample description (e.g. "78; university students, UAE").
+4. Intervention: Quit or Limit; platforms; length in days (e.g. "Limit; all social media, 30 min/day; 14").
+5. Positive affect result: effect on positive mood versus the control. One of: Improved, No clear effect, Worse, Not measured.
+```
+
+After a minute or two you should get an output table. Each small number in a cell is a **citation**: hover over or click it to see the passage in the PDF it came from. 
+
+Check at least 5 values and claims against the original papers to ensure they are correct. If you find any errors, ask the notebook to correct them.
+
+Also check that there are **17 rows** covering all 14 papers, and every cell in **Positive affect result** is one of the four allowed answers. 
 
 
 ------------------------------------------------------------------------
 
-# Part 2: Reporting with AI Tools (ChatGPT or Cursor)
+# Part 3: Make a Figure
 
-Now that you've extracted data in Sheets, you'll use an AI tool for visualization and reporting.
+A quick figure helps you see the overall pattern before you write. In the same chat, try to create a visualisation that you think would be helpful to understand the pattern of results. One option is given below:
 
-Ensure your Google Sheet has the original `Job Description` and `Median Salary Estimate` columns, plus your newly created and value-pasted `Minimum Years Experience` and `Data Languages` columns.
+```
+Make a bar chart from the table above with sample size on the y-axis. Color and group the bars by the Positive affect result (Improved, No clear effect, Worse).
+```
 
-Next, in Google Sheets, go to `File → Download → Comma Separated Values (.csv)`. Save this file to your computer.
+The chart should appear a file in the **Studio** panel on the right. Click it to open it. Check it against your table (every row there, in the right panel, with the right number), and ask for changes if needed ("Make the labels bigger", "Use blue for Quit and orange for Limit").
 
-Choose the same type of tool track you used in Workshop 2:
+To download it, open the chart in Studio and click **⋮** (top right) → **Download**.
 
--   **Students WITHOUT significant coding experience:** Use **ChatGPT**, a user-friendly AI chat tool with data analysis capabilities.
--   **Students WITH coding experience:** Use **Cursor**, an AI-assisted code editor.
+![](images/gn_chart_download.jpg){width="400"}
 
-Your goal is to create a report document that includes:
+# Part 4: Start Your Google Doc
 
--   A brief introduction (1-2 sentences) describing the data and project.
--   **Years of Experience Analysis:** A scatter plot of `Minimum Years Experience` (x-axis) vs. `Median Salary Estimate` (y-axis), plus a brief interpretation.
--   **Programming Language Analysis:** A box plot of `Median Salary Estimate` grouped by `Data Languages`, plus a brief interpretation.
--   **Reflection:** A short reflection (e.g., 1-2 paragraphs) written by you (not the AI). Consider what was easy or difficult, what was surprising, and what you learned.
+We would now like to summarise the evidence in a Google Doc. Go to [docs.new](https://docs.new){target="_blank"} and create a new Google Doc. Give it a title and add these headings (Format → Paragraph styles → Heading 2):
 
-## Section A: For Students WITHOUT Prior Coding Experience (Using ChatGPT)
-
-You will use ChatGPT to analyze your downloaded CSV and generate content for your report.
-
-1.  **Set up ChatGPT:**
-    -   Go to [chatgpt.com](https://chatgpt.com/){target="_blank"} and sign in.
-    -   Select the **thinking** model, as in Workshop 2. This model handles multi-step data analysis tasks more reliably than the instant model.
-    -   If you do not have access to the thinking model, share your email address with one of the instructors and we will add you to our workspace for one month so that you can complete this workshop.
-2.  **Start your analysis:**
-    -   Start a new chat in ChatGPT.
-    -   Upload your downloaded CSV file. You can drag and drop it in, or use the attachment button near the chat input.
-3.  **Prompt ChatGPT:**
-
-    ```
-    I have uploaded a CSV file with data from Data Analyst job postings.
-
-    It should include columns like:
-    - "Median Salary Estimate"
-    - "Minimum Years Experience" (numeric, but may include "NA" or non-numeric text if extraction failed)
-    - "Data Languages" (categorical: R, Python, Both, or Neither)
-
-    Please help me create the required visuals. 
-
-    Create:
-    1. A scatter plot of "Minimum Years Experience" on the x-axis vs. "Median Salary Estimate" on the y-axis.
-    2. A box plot of "Median Salary Estimate" grouped by "Data Languages".
-
-    ```
-
-4.  **Review and refine:** ChatGPT will show its steps, data, and plots. Work with it to refine the figures and text until you are happy with the output. For example, you can ask it to change a plot title, improve the axis labels, or use a different color scheme.
-5.  **Create your report document:**
-    -   Download the plots as images or take screenshots of them.
-    -   Copy the relevant text outputs from ChatGPT.
-    -   Assemble the introduction, plots, interpretations, and your own reflection in Word, Google Docs, Pages, or another word processor.
-    -   Export the final document as a PDF.
-
-## Section B: For Students WITH Coding Experience (Using Cursor)
-
-You will use Cursor to generate a coded report.
-
-1.  **Set up your project:**
-    -   Create a new project folder on your computer.
-    -   Put your downloaded CSV file in that folder.
-    -   Open the folder in Cursor.
-2.  **Create your report file:**
-    -   Create a new R Markdown (`.Rmd`) or Quarto (`.qmd`) file.
-    -   Use Cursor's Agent Mode to help you write the code and narrative.
-3.  **Prompt Cursor:**
-
-    ```
-    You are an AI agent that creates data reports.
-    - You create reports by writing code to an R Markdown or Quarto file, rendering that file, then reading the output to validate your work.
-    - You repeat this edit, render, review loop until the reporting task is achieved.
-    - Use plots, tables, and inline code where appropriate.
-    - Code should be hidden from the output.
-
-    Now, I have added a CSV which contains data from Data Analyst job postings. It contains columns like "Median Salary Estimate", "Minimum Years Experience" (numeric, may contain "NA" or non-numeric text if extraction failed), and "Data Languages" (categorical: R, Python, Both, or Neither).
-
-    Help me generate a report with:
-    - A scatter plot of "Minimum Years Experience" vs. "Median Salary Estimate".
-    - A box plot of "Median Salary Estimate" grouped by "Data Languages".
-    - A brief introduction and interpretation of each plot, noting the limitations of the small sample size.
-
-    I will add my own personal reflection.
-    ```
-
-4.  **Review, refine, and render:** Work with Cursor to refine the report, then render it to a single HTML or PDF file. Before your final render, add your short reflection written by you, not the AI.
-
-## Side Note: Why This Multi-Step Process?
-
-You might wonder: "Why not just upload the original, raw CSV of job postings directly into ChatGPT or Cursor and ask it to do everything?"
-
-While powerful, LLMs and AI tools have limitations, especially with large, unstructured inputs:
-
--   **Context Window Limits:** LLMs can only process a certain amount of text (the "context window") at once. A large CSV with many long job descriptions can easily exceed this limit. The model might then ignore parts of your data or fail to process it comprehensively.
-
--   **Focus and Accuracy:** Asking an LLM to perform many complex tasks (like reading hundreds of descriptions, identifying specific data points within each, cleaning them, and then visualizing) all from one massive, raw input can lead to confusion, errors, or "hallucinations." The model might struggle to keep all instructions and data points straight.
+```
+1. Summary of the evidence
+2. Comparison with the meta-analysis
+3. Use of AI
+4. Figure
+5. Appendix: Extraction table
+```
 
 ------------------------------------------------------------------------
 
-# Part 3: Submission
+# Part 5: Submission
 
--   **What to Submit:** Your final report as a **single PDF or HTML document**. This PDF or HTML should include all the sections outlined at the beginning: Introduction, Years of Experience Analysis (plot & interpretation), Programming Language Analysis (plot & interpretation), and your AI Reflection.
--   **You don't need to submit your Google Sheet.** That is for your own work.
+Submit the Google Doc from Part 4, as a link (**Share → Anyone with the link → Commenter**) or a PDF (**File → Download → PDF**).
+
+We are not grading the science. We will check that the five sections are there, that your summary matches your table, and that your AI-use statement matches what you did.
+
+## Comparison with the meta-analysis
+
+Your 14 papers are a hand-picked set. [Lemahieu et al. (2025)](https://doi.org/10.1038/s41598-025-90984-3){target="_blank"} is a systematic review and meta-analysis of complete breaks, and it includes 6 of them. Open the paper and look at **Figure 3** (each square is one study; the diamond is the combined estimate).
+
+Write 2-3 sentences on what that estimate shows that your table does not.
+
+## Summary of the evidence
+
+Write 1-2 paragraphs yourself. Use your table, your figure, and the meta-analysis. Do not ask the AI to write them, and do not mention every study.
+
+> Several experiments have asked people to quit or cut down on social media. Some report [a benefit] ([Author, year]; [Author, year]). Others find little change ([Author, year]), and a few find a cost, such as [lower life satisfaction] ([Author, year]). A meta-analysis of complete breaks found [the pooled result, in plain words] (Lemahieu et al., 2025). Most breaks lasted about a week and most participants were [who took part], so it is unclear whether [the limit of these findings].
+
+## Use of AI
+
+Name the tool, what it did, and what you checked. You remain responsible for the text.
+
+> I used Gemini Notebook (Google; accessed [date]) to extract details from 14 studies. I checked [X] of them against the articles and corrected [n]. I wrote the text myself. I take full responsibility for the content.
+
+## Figure and extraction table
+
+Paste the extraction table under **Appendix: Extraction table** (use the copy icon under the chat reply, then delete any leftover chat text). Under **Figure**, insert the PNG you downloaded.
+
+## Optional: add it to your portfolio
+
+Download the doc as a PDF, add it to your portfolio repository, and ask an AI tool to link it from `index.html` as an AI-assisted summary of these 14 experiments, including your check of the extraction, the meta-analysis comparison, and your AI-use statement.
+
+## Optional challenge: your own PDFs *(ungraded)*
+
+Repeat Parts 1 to 4 on at least 10 PDFs you are allowed to upload (see the warning in Part 0). Design 4-7 short columns, as in Part 2, including one with a fixed set of answers you can chart, and add a figure and an AI-use statement. Skip the meta-analysis comparison and the summary template above. This is not part of the submission.
 
 ------------------------------------------------------------------------
 
-# Part 4: Optional - Add to Your GitHub Pages Portfolio
+# Data Sources and Licences
 
-As a final step, you can add your report to your portfolio website which you created earlier in the course.
-
-## Upload Your Report to GitHub
-
--   To get back to your repository home, visit github.com, click on your profile at the top right, then click on "Repositories"
-
-    ![](images/github_repositories.jpg){width="324"}
-
--   Locate and click on your repository, which should be called something like `graph-ai-portfolio`
-
--   Locate the button or icon to "Add file". Click on it and select "Upload file"
-
-    ![](images/add_file_button.jpg){width="459"}
-
--   Drag your final report file (HTML or PDF) into the box, then click on "Commit changes"
-
-## Update Your Portfolio with ChatGPT or Gemini
-
--   Go to ChatGPT or Gemini and start typing a prompt like the one below. The parts in square brackets will need to be filled in with information you'll gather in the next steps.
-
-    ```         
-    I want to update my portfolio website. In your response, you will provide the FULL updated HTML code for the index.html file.
-
-    The portfolio website is hosted at 
-
-    [YOUR PORTFOLIO WEBSITE URL HERE].
-
-    ---
-
-    I want to add a new link for the project page for "Workshop 3: Job Market Data Analysis".
-
-    For this project, I used LLMs in Google Sheets to extract information from job postings, then analyzed the data with AI tools to explore relationships between experience requirements, programming languages, and salaries.
-
-    The report is available at the link below. (If the link is a PDF file, then we will embed the link directly. If it is an HTML file, we will reformat the link to be a clickable github pages link, as it is hosted on the same GitHub repo as the portfolio website.)
-
-    [PASTE THE DIRECT LINK TO YOUR UPLOADED REPORT FILE HERE]
-
-    ---
-
-    Below is my current HTML file:
-
-    [PASTE THE ENTIRE HTML FILE HERE]
-    ```
-
--   Now, gather the information you need to complete the prompt:
-
-## Get Your Portfolio Website URL
-
--   To get your portfolio website URL, go to your portfolio repository on GitHub. You can do this by clicking on the "Repositories" button at the top right of the page and then clicking on your portfolio repository.
-
--   Click on the "Settings" tab.
-
--   Scroll down to the "GitHub Pages" section.
-
--   Your portfolio website URL will be listed under "GitHub Pages". Copy and paste this into your prompt.
-
-    ![](images/github_pages_url.jpg){width="378"}
-
-## Get the Direct Link to Your Report
-
--   Go back to your portfolio repository's main page and right‑click on the name of your uploaded report then → **Copy link address**. Paste this into your prompt.
-
-    ![](images/copy_link_address_report.jpg){width="378"}
-
-## Copy Your Current index.html Code
-
--   Still in your portfolio repository, navigate to your index.html file.
-
-    ![](images/index_html.jpg){width="374"}
-
--   Copy all the code from the index.html file with the copy code button at the top right. Paste this into your prompt.
-
-    ![](images/copy_code_button.jpg){width="372"}
-
-## Send the Prompt and Update Your File
-
--   Now that you've filled in all the placeholders, send the prompt to ChatGPT or Gemini
-
--   Copy the new HTML that the LLM generated → return to your *index.html* on GitHub → click the **edit file** (✎) button at the top right.
-
-    ![](images/edit_file_button.jpg){width="452"}
-
--   Delete all the existing code in the file, then paste in the new code from ChatGPT or Gemini.
-
--   At the top right, click the **Commit changes** button.
-
--   Go to Actions tab (if you have GitHub Pages set up with Actions).
-
-    ![](images/actions_tab.jpg){width="380"}
-
--   Click on the latest build to observe the build process.
-
-    ![](images/pages_build.jpg){width="353"}
-
--   After the build is complete, your live site, if refreshed, should now show the new project entry and the link should work!
+Each paper remains under its publisher's licence. The PDFs in the zip are free-to-read versions (publisher open access, NBER working paper, or a copy posted by the authors or their institution). Meta-analysis: Lemahieu, L., Vander Zwalmen, Y., Mennes, M., Koster, E. H. W., Vanden Abeele, M. M. P. & Poels, K. (2025), *The effects of social media abstinence on affective well-being and life satisfaction: a systematic review and meta-analysis*, Scientific Reports 15: 7581, [doi:10.1038/s41598-025-90984-3](https://doi.org/10.1038/s41598-025-90984-3){target="_blank"}, CC BY 4.0.
