@@ -47,20 +47,18 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#part-0-download-the-papers" id="toc-part-0-download-the-papers" class="nav-link" data-scroll-target="#part-0-download-the-papers">Part 0: Download the Papers</a></li>
-  <li><a href="#part-1-create-a-notebook-and-add-the-papers" id="toc-part-1-create-a-notebook-and-add-the-papers" class="nav-link" data-scroll-target="#part-1-create-a-notebook-and-add-the-papers">Part 1: Create a Notebook and Add the Papers</a></li>
-  <li><a href="#part-2-ask-for-an-extraction-table" id="toc-part-2-ask-for-an-extraction-table" class="nav-link" data-scroll-target="#part-2-ask-for-an-extraction-table">Part 2: Ask for an Extraction Table</a></li>
-  <li><a href="#part-3-make-a-figure" id="toc-part-3-make-a-figure" class="nav-link" data-scroll-target="#part-3-make-a-figure">Part 3: Make a Figure</a></li>
-  <li><a href="#part-4-start-your-google-doc" id="toc-part-4-start-your-google-doc" class="nav-link" data-scroll-target="#part-4-start-your-google-doc">Part 4: Start Your Google Doc</a>
+  <li><a href="#part-1-download-the-papers" id="toc-part-1-download-the-papers" class="nav-link" data-scroll-target="#part-1-download-the-papers">Part 1: Download the Papers</a></li>
+  <li><a href="#part-2-create-a-notebook-and-add-the-papers" id="toc-part-2-create-a-notebook-and-add-the-papers" class="nav-link" data-scroll-target="#part-2-create-a-notebook-and-add-the-papers">Part 2: Create a Notebook and Add the Papers</a></li>
+  <li><a href="#part-3-ask-for-an-extraction-table" id="toc-part-3-ask-for-an-extraction-table" class="nav-link" data-scroll-target="#part-3-ask-for-an-extraction-table">Part 3: Ask for an Extraction Table</a></li>
+  <li><a href="#part-4-make-a-figure" id="toc-part-4-make-a-figure" class="nav-link" data-scroll-target="#part-4-make-a-figure">Part 4: Make a Figure</a></li>
+  <li><a href="#part-5-write-it-up" id="toc-part-5-write-it-up" class="nav-link" data-scroll-target="#part-5-write-it-up">Part 5: Write It Up</a>
   <ul class="collapse">
-  <li><a href="#summary-of-the-evidence" id="toc-summary-of-the-evidence" class="nav-link" data-scroll-target="#summary-of-the-evidence">Summary of the evidence</a></li>
-  <li><a href="#comparison-with-the-meta-analysis" id="toc-comparison-with-the-meta-analysis" class="nav-link" data-scroll-target="#comparison-with-the-meta-analysis">Comparison with the meta-analysis</a></li>
+  <li><a href="#draft-introduction-prior-evidence" id="toc-draft-introduction-prior-evidence" class="nav-link" data-scroll-target="#draft-introduction-prior-evidence">Draft Introduction: Prior Evidence</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   <li><a href="#use-of-ai" id="toc-use-of-ai" class="nav-link" data-scroll-target="#use-of-ai">Use of AI</a></li>
-  <li><a href="#figure-and-extraction-table" id="toc-figure-and-extraction-table" class="nav-link" data-scroll-target="#figure-and-extraction-table">Figure and extraction table</a></li>
   </ul></li>
-  <li><a href="#part-5-submission" id="toc-part-5-submission" class="nav-link" data-scroll-target="#part-5-submission">Part 5: Submission</a></li>
-  <li><a href="#part-6-optional-challenge-your-own-pdfs-ungraded" id="toc-part-6-optional-challenge-your-own-pdfs-ungraded" class="nav-link" data-scroll-target="#part-6-optional-challenge-your-own-pdfs-ungraded">Part 6: Optional Challenge: Your Own PDFs <em>(ungraded)</em></a></li>
-  <li><a href="#part-7-optional-add-to-your-github-pages-portfolio" id="toc-part-7-optional-add-to-your-github-pages-portfolio" class="nav-link" data-scroll-target="#part-7-optional-add-to-your-github-pages-portfolio">Part 7: Optional: Add to Your GitHub Pages Portfolio</a>
+  <li><a href="#part-6-submission" id="toc-part-6-submission" class="nav-link" data-scroll-target="#part-6-submission">Part 6: Submission</a></li>
+  <li><a href="#part-7-optional-add-to-your-github-pages-portfolio" id="toc-part-7-optional-add-to-your-github-pages-portfolio" class="nav-link" data-scroll-target="#part-7-optional-add-to-your-github-pages-portfolio">Part 7 (Optional): Add to Your GitHub Pages Portfolio</a>
   <ul class="collapse">
   <li><a href="#upload-your-pdf-to-github" id="toc-upload-your-pdf-to-github" class="nav-link" data-scroll-target="#upload-your-pdf-to-github">Upload Your PDF to GitHub</a></li>
   <li><a href="#update-your-portfolio-with-chatgpt-or-gemini" id="toc-update-your-portfolio-with-chatgpt-or-gemini" class="nav-link" data-scroll-target="#update-your-portfolio-with-chatgpt-or-gemini">Update Your Portfolio with ChatGPT or Gemini</a></li>
@@ -102,97 +100,111 @@ ul.task-list li input[type="checkbox"] {
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>In this workshop you will use <strong>Gemini Notebook</strong> to do a short literature review on the question: <strong>does quitting or cutting down on social media improve people’s mood?</strong></p>
-<p>Prior to the workshop, we compiled a collection of 14 open-access papers on this question, roughly mirroring the set used in a recent meta-analysis by Lemahieu et al.&nbsp;(2025), plus some more recent papers and some studies that the meta-analysis excluded.</p>
-<p>Our goal is to get a broad up-to-date understanding of the evidence of this question, using a table of key information from each paper plus a figure summarising the pattern of results.</p>
+<p>Prior to the workshop, we used ChatGPT and Claude to search for and compile a collection of 14 open-access papers on this question. Our selection roughly mirrors the set used in a recent meta-analysis by Lemahieu et al.&nbsp;(2025), but we also include some studies that fell outside its scope (their analysis was limited to complete breaks from social media, so it left out studies where people only cut down), plus a few that it missed and some more recent papers.</p>
+<p>Our goal is to get a broad up-to-date overview of the evidence on this question, using a table of key information from each paper, and then to summarise it in two paragraphs of a paper introduction.</p>
 <hr>
 </section>
-<section id="part-0-download-the-papers" class="level1">
-<h1>Part 0: Download the Papers</h1>
+<section id="part-1-download-the-papers" class="level1">
+<h1>Part 1: Download the Papers</h1>
 <p>Download and unzip the collection: <a href="https://github.com/the-graph-courses/aiw_2026_t3_materials/raw/main/week_03_workshop/data/lit_review_social_media_break.zip" target="_blank">lit_review_social_media_break.zip</a>. (On Windows: right-click → “Extract All”. On Mac: double-click the zip.)</p>
-<p>All 14 papers are experiments in which adults were asked to <strong>quit</strong> social media, or to <strong>cut down</strong> on it, for between 1 and 28 days, and their mood and/or life satisfaction was compared with a control group. Some papers report more than one comparison (for example, Przybylski 2021 ran three separate experiments, and Hartanto 2025 had both a quit group and a cut-down group), so your table will have more rows than papers.</p>
+<p>All 14 papers are experiments in which adults were asked to <strong>quit</strong> social media, or to <strong>cut down</strong> on it, for between 1 and 28 days, and their mood and/or life satisfaction was compared with a control group.</p>
+<p>Some papers report more than one comparison (for example, Przybylski 2021 ran three separate experiments, and Hartanto 2025 had both a quit group and a cut-down group), so your data extraction table may have more rows than papers.</p>
+<p>Next we will use Gemini Notebook to create a data extraction table.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why Gemini Notebook instead of a general chatbot?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The primary benefit of Gemini Notebook is that every claim comes with a numbered citation you can click to see the exact passage in the source.</p>
+<p>This makes it easy to have a human cross-check each claim against the original paper.</p>
+</div>
+</div>
 <hr>
 </section>
-<section id="part-1-create-a-notebook-and-add-the-papers" class="level1">
-<h1>Part 1: Create a Notebook and Add the Papers</h1>
+<section id="part-2-create-a-notebook-and-add-the-papers" class="level1">
+<h1>Part 2: Create a Notebook and Add the Papers</h1>
 <ol type="1">
 <li><p>Go to <a href="https://notebook.google.com" target="_blank">notebook.google.com</a> and sign in with your Google account.</p></li>
-<li><p>Click <strong>+ New notebook</strong> (on the home page) or <strong>+ Create notebook</strong> (top right, from inside a notebook). You get an empty notebook with three panels: <strong>Sources</strong> (left), the chat (middle) and <strong>Studio</strong> (right).</p></li>
-<li><p>Drag all 14 files onto the “Drag &amp; drop your files” box at the left hand side of the screen.</p></li>
-<li><p>Rename the notebook by clicking “Untitled notebook” at the top left.</p></li>
+<li><p>Click <strong>+ New notebook</strong> (on the home page) or <strong>+ Create notebook</strong> (top right, from inside a notebook). You get an empty notebook with three panels: <strong>Sources</strong> (left), the chat (middle) and <strong>Studio</strong> (right).</p>
+<p><img src="images/gn_new_notebook_button.jpg" class="img-fluid" width="450"></p></li>
+<li><p>Drag all 14 files onto the “Drag &amp; drop your files” box at the left hand side of the screen.</p>
+<p><img src="images/gn_drag_drop_sources.jpg" class="img-fluid" width="400"></p></li>
+<li><p>Rename the notebook by clicking “Untitled notebook” at the top left.</p>
+<p><img src="images/gn_rename_notebook.jpg" class="img-fluid" width="400"></p></li>
 </ol>
 <hr>
 </section>
-<section id="part-2-ask-for-an-extraction-table" class="level1">
-<h1>Part 2: Ask for an Extraction Table</h1>
+<section id="part-3-ask-for-an-extraction-table" class="level1">
+<h1>Part 3: Ask for an Extraction Table</h1>
 <p>Click in the box at the bottom that says <strong>“Ask a question or create something”</strong>, paste the prompt below, and press Enter.</p>
 <pre><code>Make a table of these 14 papers.
-If a paper has several experiments, or both a quit group and a social media reduction group, give each its own row.
-Cite the source passage for each cell.
+If a paper has several experiments or comparisons, give each its own row.
+Cite the source passage for the claim in each cell.
 If a detail is not reported, write "Not stated".
 
 Columns:
-1. Study: first author(s) and year. If a paper has more than one row, name the group (e.g. "Przybylski et al. (2021), Experiment 2").
+1. Study: first author(s) and year.
 2. Design: one of RCT, Non-randomised experiment, Within-person.
 3. Sample description (e.g. "78; university students, UAE").
-4. Intervention: Quit or Limit; platforms; length in days (e.g. "Limit; all social media, 30 min/day; 14").
+4. Short intervention description. 
 5. Positive affect result: effect on positive mood versus the control. One of: Improved, No clear effect, Worse, Not measured.</code></pre>
-<p>After a minute or two you should get an output table. Each small number in a cell is a <strong>citation</strong>: hover over or click it to see the passage in the PDF it came from.</p>
-<p>Check at least 5 values and claims against the original papers to ensure they are correct. If you find any errors, ask the notebook to correct them.</p>
-<p>Also check that all 14 papers appear in the table, and that every cell in <strong>Positive affect result</strong> is one of the four allowed answers.</p>
+<p>After a minute or two you should get an output table. Each small number in a cell is a <strong>citation</strong>: hover over or click it to see the passage in the source it came from. You’ll check the rows you rely on in Part 5.</p>
 <hr>
 </section>
-<section id="part-3-make-a-figure" class="level1">
-<h1>Part 3: Make a Figure</h1>
-<p>A quick figure helps you see the overall pattern before you write. In the same chat, try to create a visualisation that you think would be helpful to understand the pattern of results. One option is given below:</p>
-<pre><code>Make a bar chart from the table above with sample size on the y-axis. Color and group the bars by the Positive affect result (Improved, No clear effect, Worse, Not measured).</code></pre>
+<section id="part-4-make-a-figure" class="level1">
+<h1>Part 4: Make a Figure</h1>
+<p>A quick figure can help you see the overall pattern before you write.</p>
+<p>In the same chat, ask the AI to create a visualisation that you think would be helpful to understand the pattern of results. One option is given below:</p>
+<pre><code>Make a bar chart from the table above with sample size on the x-axis. 
+Color and group the bars by the Positive affect result (Improved, No clear effect, Worse, Not measured).</code></pre>
 <p>The chart should appear as a file in the <strong>Studio</strong> panel on the right. Click it to open it. Check it against your table (every row there, in the right panel, with the right number), and ask for changes if needed (“Make the labels bigger”, “Label each bar with the study name”).</p>
+<p><img src="images/gn_studio_chart_file.jpg" class="img-fluid" width="350"></p>
 <p>To download it, open the chart in Studio and click <strong>⋮</strong> (top right) → <strong>Download</strong>.</p>
-<p><img src="images/gn_chart_download.jpg" class="img-fluid" width="400"></p>
+<p><img src="images/gn_chart_download_menu.jpg" class="img-fluid" width="450"></p>
+<hr>
 </section>
-<section id="part-4-start-your-google-doc" class="level1">
-<h1>Part 4: Start Your Google Doc</h1>
-<p>We would now like to summarise the evidence in a Google Doc. Go to <a href="https://docs.new" target="_blank">docs.new</a> and create a new Google Doc. Give it a title and add these headings (Format → Paragraph styles → Heading 2):</p>
-<pre><code>1. Summary of the evidence
-2. Comparison with the meta-analysis
-3. Use of AI
-4. Figure
-5. Appendix: Extraction table</code></pre>
-<section id="summary-of-the-evidence" class="level2">
-<h2 class="anchored" data-anchor-id="summary-of-the-evidence">Summary of the evidence</h2>
-<p>Write 1-2 paragraphs yourself, using your table and figure. Do not ask the AI to write them. You can start from the template below: fill in each <code>[bracket]</code> from your table, then edit it so it reads naturally in your own words. You don’t need to mention every study, and you can drop any sentence that doesn’t fit your results.</p>
+<section id="part-5-write-it-up" class="level1">
+<h1>Part 5: Write It Up</h1>
+<p>We would now like to summarise the evidence in a Google Doc. Go to <a href="https://docs.new" target="_blank">docs.new</a> and create a new Google Doc. Give it a title and add these headings:</p>
+<pre><code>1. Draft Introduction: Prior Evidence
+2. References
+3. Use of AI</code></pre>
+<section id="draft-introduction-prior-evidence" class="level2">
+<h2 class="anchored" data-anchor-id="draft-introduction-prior-evidence">Draft Introduction: Prior Evidence</h2>
+<p>Imagine you’re writing part of the introduction to a research paper on whether taking a break from social media improves mood in <strong>adolescents</strong>. All 14 of your papers studied adults, so your job is to summarise what this adult evidence shows, then mention that it doesn’t answer the question for teenagers.</p>
+<p>You don’t need to cite all 14 papers. You might only need to cite one or two good examples for each point you make. Choose the largest or most relevant studies, or one quit study and one cut-down study. Use “e.g.” when you’re only giving examples.</p>
+<p><strong>Check every paper you cite.</strong> Before you cite a study, open the original PDF and check each cell in the corresponding row in the table (design, sample, intervention, result), cross-checking against the original paper source.</p>
+<p>You can start from the template below: fill in each <code>[bracket]</code> from your table, then edit it into your own words.</p>
 <blockquote class="blockquote">
-<p>We looked at [number] experiments in which people were asked to quit or cut down on social media. For positive mood, [number] found an improvement ([Author, year]), [number] found no clear effect ([Author, year]; [Author, year]), and [number] found that mood got worse ([Author, year]).</p>
-<p>The breaks were short, lasting between [shortest] and [longest] days, and most participants were [who, e.g.&nbsp;university students]. Studies that asked people to quit completely found [what you see in the table], while studies that asked people to cut down found [what you see]. The largest study, [Author, year], with [number] participants, found [result]. Overall, these studies suggest that [your conclusion, worded carefully, e.g.&nbsp;“the results are mixed”].</p>
+<p>Several experiments in adults have tested whether quitting or cutting down on social media improves mood, with mixed results. Some found improvements in positive mood (e.g.&nbsp;[Author, year]), others found no clear effect (e.g.&nbsp;[Author, year]), and [a few / one] found that mood got worse (e.g.&nbsp;[Author, year]). However, these studies recruited mainly [xxxxxx], and none included participants under 18. It therefore remains unclear whether [xxxxx].</p>
 </blockquote>
 </section>
-<section id="comparison-with-the-meta-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="comparison-with-the-meta-analysis">Comparison with the meta-analysis</h2>
-<p>Your 14 papers are a hand-picked set. <a href="https://doi.org/10.1038/s41598-025-90984-3" target="_blank">Lemahieu et al.&nbsp;(2025)</a> is a systematic review and meta-analysis of complete breaks. Briefly review the paper abstract and figure 3 to understand the main findings.</p>
-<p>Write 2-3 sentences on what that estimate shows that your table does not.</p>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Back in Gemini Notebook, ask for the references of only the papers you cited:</p>
+<pre><code>Give APA 7 references for: [Author, year; Author, year; ...]</code></pre>
+<p>Check each one against the paper’s first page, then paste the list under the heading <strong>References</strong> in your Google Doc.</p>
 </section>
 <section id="use-of-ai" class="level2">
 <h2 class="anchored" data-anchor-id="use-of-ai">Use of AI</h2>
 <p>An expectation when using AI tools within academic work is that you name the specific tool you used, what it did, and how you checked the results. You can use a template like this:</p>
 <blockquote class="blockquote">
-<p>I used Gemini Notebook (Google; accessed [date]) to extract details from 14 studies. I checked [X] of them against the articles and corrected [n]. I wrote the text myself.</p>
+<p>I used Gemini Notebook (Google; accessed [date]) as part of my literature review to extract details from 14 studies. I checked all cited claims against the original papers.</p>
 </blockquote>
-</section>
-<section id="figure-and-extraction-table" class="level2">
-<h2 class="anchored" data-anchor-id="figure-and-extraction-table">Figure and extraction table</h2>
-<p>Next, you need to paste the extraction table under <strong>Appendix: Extraction table</strong>. You can drag to highlight the table and copy it to the clipboard, then paste it into the Google Doc.</p>
-<p>Under <strong>Figure</strong>, download the PNG you created and insert it.</p>
+<hr>
 </section>
 </section>
-<section id="part-5-submission" class="level1">
-<h1>Part 5: Submission</h1>
+<section id="part-6-submission" class="level1">
+<h1>Part 6: Submission</h1>
 <p>To submit, download the doc as a PDF (<strong>File → Download → PDF document</strong>) and upload it to the submission form on the website.</p>
 </section>
-<section id="part-6-optional-challenge-your-own-pdfs-ungraded" class="level1">
-<h1>Part 6: Optional Challenge: Your Own PDFs <em>(ungraded)</em></h1>
-<p>Repeat Parts 1 to 4 on at least 10 PDFs you are allowed to upload. Design 4-7 short columns, as in Part 2, including one with a fixed set of answers you can chart, and add a figure and an AI-use statement. Skip the meta-analysis comparison and the summary template above. This is not part of the submission.</p>
-</section>
 <section id="part-7-optional-add-to-your-github-pages-portfolio" class="level1">
-<h1>Part 7: Optional: Add to Your GitHub Pages Portfolio</h1>
+<h1>Part 7 (Optional): Add to Your GitHub Pages Portfolio</h1>
 <p>As a final step, you can add your PDF to the portfolio website you created earlier in the course.</p>
 <section id="upload-your-pdf-to-github" class="level2">
 <h2 class="anchored" data-anchor-id="upload-your-pdf-to-github">Upload Your PDF to GitHub</h2>
@@ -202,7 +214,7 @@ Columns:
 <li><p>Locate and click on your repository, which should be called something like <code>graph-ai-portfolio</code></p></li>
 <li><p>Locate the button or icon to “Add file”. Click on it and select “Upload file”</p>
 <p><img src="images/add_file_button.jpg" class="img-fluid" width="459"></p></li>
-<li><p>Drag the PDF you downloaded in Part 5 into the box, then click on “Commit changes”</p></li>
+<li><p>Drag the PDF you downloaded in Part 6 into the box, then click on “Commit changes”</p></li>
 </ul>
 </section>
 <section id="update-your-portfolio-with-chatgpt-or-gemini" class="level2">
@@ -219,7 +231,7 @@ The portfolio website is hosted at
 
 I want to add a new link for the project page for "Workshop 3: AI-Assisted Literature Review".
 
-For this project, I used Gemini Notebook to extract key details from 14 experiments on whether quitting or cutting down on social media improves mood, checked the AI's extraction against the original papers, made a figure of the results, and wrote a short summary of the evidence that I compared with a published meta-analysis.
+For this project, I used Gemini Notebook to extract key details from 14 experiments on whether quitting or cutting down on social media improves mood, checked the AI's extraction against the original papers, and drafted two paragraphs of a paper introduction that summarise the adult evidence and set out the gap for adolescents.
 
 The report is a PDF file, available at the link below. Embed the link directly.
 
