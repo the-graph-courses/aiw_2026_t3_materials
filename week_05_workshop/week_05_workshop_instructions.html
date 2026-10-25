@@ -8,7 +8,7 @@
 
 <meta name="author" content="The Graph Courses Team">
 
-<title>Workshop: Automation with Relay.app</title>
+<title>Workshop: Automation with ChatGPT Scheduled Tasks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -47,21 +47,24 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#part-1-setting-up-your-google-form-and-data-collection" id="toc-part-1-setting-up-your-google-form-and-data-collection" class="nav-link" data-scroll-target="#part-1-setting-up-your-google-form-and-data-collection">Part 1: Setting Up Your Google Form and Data Collection</a>
+  <li><a href="#part-1-connecting-chatgpt-to-google" id="toc-part-1-connecting-chatgpt-to-google" class="nav-link" data-scroll-target="#part-1-connecting-chatgpt-to-google">Part 1: Connecting ChatGPT to Google</a>
+  <ul class="collapse">
+  <li><a href="#recommended-create-a-separate-google-account" id="toc-recommended-create-a-separate-google-account" class="nav-link" data-scroll-target="#recommended-create-a-separate-google-account">1.1 Recommended: Create a Separate Google Account</a></li>
+  <li><a href="#connect-google-drive-and-gmail" id="toc-connect-google-drive-and-gmail" class="nav-link" data-scroll-target="#connect-google-drive-and-gmail">1.2 Connect Google Drive and Gmail</a></li>
+  </ul></li>
+  <li><a href="#part-2-setting-up-your-google-form-and-data-collection" id="toc-part-2-setting-up-your-google-form-and-data-collection" class="nav-link" data-scroll-target="#part-2-setting-up-your-google-form-and-data-collection">Part 2: Setting Up Your Google Form and Data Collection</a>
   <ul class="collapse">
   <li><a href="#create-your-project-folder" id="toc-create-your-project-folder" class="nav-link" data-scroll-target="#create-your-project-folder">Create Your Project Folder</a></li>
   <li><a href="#build-your-consultation-form" id="toc-build-your-consultation-form" class="nav-link" data-scroll-target="#build-your-consultation-form">Build Your Consultation Form</a></li>
   <li><a href="#test-your-form-and-connect-to-sheets" id="toc-test-your-form-and-connect-to-sheets" class="nav-link" data-scroll-target="#test-your-form-and-connect-to-sheets">Test Your Form and Connect to Sheets</a></li>
   </ul></li>
-  <li><a href="#part-2-building-the-automation-with-relay.app" id="toc-part-2-building-the-automation-with-relay.app" class="nav-link" data-scroll-target="#part-2-building-the-automation-with-relay.app">Part 2: Building the Automation with Relay.app</a>
+  <li><a href="#part-3-building-the-automation-with-chatgpt" id="toc-part-3-building-the-automation-with-chatgpt" class="nav-link" data-scroll-target="#part-3-building-the-automation-with-chatgpt">Part 3: Building the Automation with ChatGPT</a>
   <ul class="collapse">
-  <li><a href="#sign-up-for-a-relay.app-account" id="toc-sign-up-for-a-relay.app-account" class="nav-link" data-scroll-target="#sign-up-for-a-relay.app-account">2.1 Sign Up for a Relay.app Account</a></li>
-  <li><a href="#start-creating-a-new-workflow" id="toc-start-creating-a-new-workflow" class="nav-link" data-scroll-target="#start-creating-a-new-workflow">2.2 Start Creating a New Workflow</a></li>
-  <li><a href="#use-the-ai-assistant-to-build-the-workflow" id="toc-use-the-ai-assistant-to-build-the-workflow" class="nav-link" data-scroll-target="#use-the-ai-assistant-to-build-the-workflow">2.3 Use the AI Assistant to Build the Workflow</a></li>
-  <li><a href="#make-any-final-adjustments" id="toc-make-any-final-adjustments" class="nav-link" data-scroll-target="#make-any-final-adjustments">2.4 Make Any Final Adjustments</a></li>
-  <li><a href="#enable-the-workflow" id="toc-enable-the-workflow" class="nav-link" data-scroll-target="#enable-the-workflow">2.5 Enable the Workflow</a></li>
+  <li><a href="#describe-your-scheduled-task" id="toc-describe-your-scheduled-task" class="nav-link" data-scroll-target="#describe-your-scheduled-task">3.1 Describe Your Scheduled Task</a></li>
+  <li><a href="#test-the-task-twice" id="toc-test-the-task-twice" class="nav-link" data-scroll-target="#test-the-task-twice">3.2 Test the Task Twice</a></li>
+  <li><a href="#leave-it-running" id="toc-leave-it-running" class="nav-link" data-scroll-target="#leave-it-running">3.3 Leave It Running</a></li>
   </ul></li>
-  <li><a href="#part-3-embedding-the-form-in-your-website" id="toc-part-3-embedding-the-form-in-your-website" class="nav-link" data-scroll-target="#part-3-embedding-the-form-in-your-website">Part 3: Embedding the Form in Your Website</a>
+  <li><a href="#part-4-embedding-the-form-in-your-website" id="toc-part-4-embedding-the-form-in-your-website" class="nav-link" data-scroll-target="#part-4-embedding-the-form-in-your-website">Part 4: Embedding the Form in Your Website</a>
   <ul class="collapse">
   <li><a href="#get-the-embed-code" id="toc-get-the-embed-code" class="nav-link" data-scroll-target="#get-the-embed-code">Get the Embed Code</a></li>
   <li><a href="#add-to-your-portfolio-website" id="toc-add-to-your-portfolio-website" class="nav-link" data-scroll-target="#add-to-your-portfolio-website">Add to Your Portfolio Website</a>
@@ -73,14 +76,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#test-the-full-pipeline" id="toc-test-the-full-pipeline" class="nav-link" data-scroll-target="#test-the-full-pipeline">Test the Full Pipeline</a></li>
   </ul></li>
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
-  <li><a href="#part-4-optional-challenge-pubmed-literature-monitor-ungraded" id="toc-part-4-optional-challenge-pubmed-literature-monitor-ungraded" class="nav-link" data-scroll-target="#part-4-optional-challenge-pubmed-literature-monitor-ungraded">Part 4: Optional Challenge: PubMed Literature Monitor <em>(ungraded)</em></a>
+  <li><a href="#part-5-optional-challenge-pubmed-literature-monitor-ungraded" id="toc-part-5-optional-challenge-pubmed-literature-monitor-ungraded" class="nav-link" data-scroll-target="#part-5-optional-challenge-pubmed-literature-monitor-ungraded">Part 5: Optional Challenge: PubMed Literature Monitor <em>(ungraded)</em></a>
   <ul class="collapse">
   <li><a href="#create-your-pubmed-rss-feed" id="toc-create-your-pubmed-rss-feed" class="nav-link" data-scroll-target="#create-your-pubmed-rss-feed">Create Your PubMed RSS Feed</a>
   <ul class="collapse">
   <li><a href="#craft-a-search-query" id="toc-craft-a-search-query" class="nav-link" data-scroll-target="#craft-a-search-query">1. Craft a search query</a></li>
   <li><a href="#search-pubmed-and-create-the-rss-feed" id="toc-search-pubmed-and-create-the-rss-feed" class="nav-link" data-scroll-target="#search-pubmed-and-create-the-rss-feed">2. Search PubMed and create the RSS feed</a></li>
   </ul></li>
-  <li><a href="#build-the-relay.app-workflow" id="toc-build-the-relay.app-workflow" class="nav-link" data-scroll-target="#build-the-relay.app-workflow">Build the Relay.app Workflow</a></li>
+  <li><a href="#build-the-chatgpt-scheduled-task" id="toc-build-the-chatgpt-scheduled-task" class="nav-link" data-scroll-target="#build-the-chatgpt-scheduled-task">Build the ChatGPT Scheduled Task</a></li>
   </ul></li>
   <li><a href="#optional-add-your-report-to-your-portfolio" id="toc-optional-add-your-report-to-your-portfolio" class="nav-link" data-scroll-target="#optional-add-your-report-to-your-portfolio">Optional: Add Your Report to Your Portfolio</a>
   <ul class="collapse">
@@ -98,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Workshop: Automation with Relay.app</h1>
+<h1 class="title">Workshop: Automation with ChatGPT Scheduled Tasks</h1>
 </div>
 
 
@@ -123,15 +126,8 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>In this workshop, you’ll add a consultation contact form to your portfolio website. When someone fills it out, mentioning their company and what they need help with, an automation will kick in behind the scenes: it will research the company, use an AI model to draft a professional report on GenAI opportunities for that organization, and email the report to you. That way, before you respond to the inquiry, you have useful context to work with.</p>
-<p>Specifically, the automation will:</p>
-<ol type="1">
-<li>Monitor a Google Sheets spreadsheet for new form submissions</li>
-<li>Research the potential client’s company using Google Search</li>
-<li>Use an AI model to generate a professional HTML report on GenAI opportunities</li>
-<li>Email you the report as an attachment</li>
-</ol>
-<p>You’ll build this using <a href="https://relay.app" target="_blank">Relay.app</a>, an automation platform that connects different web services with AI models. With its AI assistant, the whole setup takes just a few minutes.</p>
+<p>In this workshop, you’ll practice building an automation with ChatGPT scheduled tasks.</p>
+<p>You’ll embed a Google Form on your portfolio website that allows visitors to request a consultation. Then you’ll use ChatGPT scheduled tasks to check the form for new submissions, research the potential client’s organization, and email you a report on GenAI opportunities.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -142,33 +138,135 @@ Consulting? Me?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You may be thinking “I’m not qualified to be a GenAI consultant!”. But by now you have a decent understanding of how large language models work and what they can do. And you’re familiar with a range of tools for putting them into practice.</p>
-<p>That puts you in probably the <strong>top 5% of people</strong> in terms of GenAI literacy in most fields.</p>
+<p>You may be thinking “I’m not qualified to be a GenAI consultant!”. But by now you have a decent understanding of how large language models work, what they do well, and what many of their limitations are.</p>
+<p>You’re probably in the <strong>top 5% of people</strong> in terms of GenAI literacy in most fields.</p>
 </div>
 </div>
-<hr>
-</section>
-<section id="part-1-setting-up-your-google-form-and-data-collection" class="level1">
-<h1>Part 1: Setting Up Your Google Form and Data Collection</h1>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-A note on privacy and permissions
+Claude as an alternative
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Setting up this automation will involve granting Relay.app access to your Google Drive and Google Sheets.</p>
-<p>Relay.app is a trusted service that we have vetted, and only actions you explicitly set up will be taken: it won’t read or modify anything else in your account.</p>
-<p>If you’re still concerned though, you may want to create a separate Google account for this workshop.</p>
+<p>If you have a paid account with Claude you can also use it for this workshop exercise, but you’ll have to translate the instructions we give for ChatGPT here into the Claude equivalent.</p>
+<p>Claude will also not work for the optional PubMed challenge as the PubMed RSS URL is not on Claude’s allowed list of domains.</p>
 </div>
 </div>
+<hr>
+</section>
+<section id="part-1-connecting-chatgpt-to-google" class="level1">
+<h1>Part 1: Connecting ChatGPT to Google</h1>
+<section id="recommended-create-a-separate-google-account" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-create-a-separate-google-account">1.1 Recommended: Create a Separate Google Account</h2>
+<p>In this workshop, you will need to give ChatGPT access to a Google account so it can read form responses and send emails automatically on a schedule.</p>
+<p>The access ChatGPT asks for is broad. It covers all your Google Drive files, Docs, Sheets and Slides, your contacts and calendar, and the ability to send emails from your Gmail account.</p>
+<p>We therefore recommend creating a brand-new, separate Google account just for AI experiments (for example, <code>kene.assistant@gmail.com</code>), rather than connecting your personal or work Google account.</p>
+<p>Note that this does not mean you need a new ChatGPT account. Rather you will use your regular ChatGPT account (for example, <code>kene.regular.email@xyz.com</code>) to connect to the new Google AI assistant Gmail account you create.</p>
+<p>Please ask an instructor for clarity on this if you are unsure.</p>
+</section>
+<section id="connect-google-drive-and-gmail" class="level2">
+<h2 class="anchored" data-anchor-id="connect-google-drive-and-gmail">1.2 Connect Google Drive and Gmail</h2>
+<ol type="1">
+<li><p>Open <a href="https://chatgpt.com" target="_blank">ChatGPT</a> in your browser and log in with your regular ChatGPT account (for example, <code>kene.regular.email@xyz.com</code>). Note that this needs to be a paid account. You should have received paid access as part of a previous workshop. Let us know if you have not.</p></li>
+<li><p>Click <strong>Plugins</strong> in the sidebar.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chatgpt_plugins_sidebar.jpg" class="img-fluid figure-img" alt="ChatGPT sidebar with Plugins button" width="230"></p>
+<figcaption>Figure: Open Plugins in the sidebar.</figcaption>
+</figure>
+</div>
+<p>In some versions of ChatGPT, <strong>Plugins</strong> appears as an icon in the narrow left-hand bar instead:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chatgpt_plugins_icon_sidebar.jpg" class="img-fluid figure-img" alt="ChatGPT sidebar with the Plugins icon highlighted" width="500"></p>
+<figcaption>Figure: Plugins as an icon in the sidebar.</figcaption>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>Find <strong>Google Drive</strong> (under <strong>Popular</strong>, or search for it) and click the <strong>+</strong> next to it.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chatgpt_plugins_google_drive.jpg" class="img-fluid figure-img" alt="Plugins page with the Google Drive plugin and its plus button highlighted" width="620"></p>
+<figcaption>Figure: Add the Google Drive plugin.</figcaption>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>A window will list the Google plugins to install: Google Drive, Gmail, Google Calendar and Google Contacts. Leave them all switched on. This connects Gmail at the same time, so you don’t need to add it separately. Click <strong>Continue to Google</strong>.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chatgpt_google_plugins_install.jpg" class="img-fluid figure-img" alt="Choose Google plugins to install window with Drive, Gmail, Calendar and Contacts switched on and Continue to Google highlighted" width="420"></p>
+<figcaption>Figure: Choose Google plugins to install.</figcaption>
+</figure>
+</div>
+<ol start="5" type="1">
+<li>Choose your AI assistant Google account (for example, <code>kene.assistant@gmail.com</code>). If it isn’t listed, click <strong>Use another account</strong> and sign in to it.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chatgpt_google_choose_account.jpg" class="img-fluid figure-img" alt="Google account chooser with a note to select the AI assistant account" width="620"></p>
+<figcaption>Figure: Choose your Google account.</figcaption>
+</figure>
+</div>
+<ol start="6" type="1">
+<li>On the next screen, tick <strong>Select all</strong> so ChatGPT gets every permission listed, then scroll down and click <strong>Continue</strong>.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chatgpt_google_select_all.jpg" class="img-fluid figure-img" alt="Google access request with Select all and every permission ticked" width="520"></p>
+<figcaption>Figure: Grant all the requested permissions.</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you had already connected this plugin before, you’ll need to click <strong>Manage</strong> to check the account.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+If your scheduled task asks for approval before sending email
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Some versions of ChatGPT let you set how much each app can do without asking you first. If your test run in Part 3 stops to ask for approval before sending the email, look for a <strong>Permissions</strong> setting for Gmail and choose <strong>Allow all actions</strong> (sometimes shortened to <strong>Allow all</strong>). If you can’t find this setting, you can skip it. Ask your instructor if the email still doesn’t send.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="part-2-setting-up-your-google-form-and-data-collection" class="level1">
+<h1>Part 2: Setting Up Your Google Form and Data Collection</h1>
 <section id="create-your-project-folder" class="level2">
 <h2 class="anchored" data-anchor-id="create-your-project-folder">Create Your Project Folder</h2>
 <ol type="1">
-<li>In your browser, navigate to <a href="https://drive.google.com/" target="_blank">drive.google.com</a></li>
+<li><p>In your browser, navigate to <a href="https://drive.google.com/" target="_blank">drive.google.com</a></p></li>
+<li><p>Click the profile picture at the top right and check that you’re signed in to your AI assistant account (for example, <code>kene.assistant@gmail.com</code>). If not, switch to it. The folder, form and spreadsheet must all be in the same Google account you connected to ChatGPT.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/google_check_signed_in_account.jpg" class="img-fluid figure-img" alt="Google account menu with the profile picture and the signed-in AI assistant account highlighted" width="500"></p>
+<figcaption>Figure: Check which Google account you’re signed in to.</figcaption>
+</figure>
+</div>
+<ol start="3" type="1">
 <li>Click <strong>New</strong> at the top left, then click <strong>New folder</strong></li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
@@ -177,7 +275,7 @@ A note on privacy and permissions
 <figcaption>Figure: Create a new folder.</figcaption>
 </figure>
 </div>
-<ol start="3" type="1">
+<ol start="4" type="1">
 <li>Name the folder something like <code>GenAI Consultations</code></li>
 <li>Double-click to open the folder</li>
 </ol>
@@ -228,145 +326,111 @@ A note on privacy and permissions
 </figure>
 </div>
 <ol start="5" type="1">
-<li>Open the connected spreadsheet. You should see your test response as a row. Keep this tab open; you’ll need to point Relay.app to this spreadsheet shortly.</li>
+<li>Open the connected spreadsheet. You should see your test response as a row. Copy the spreadsheet URL from your browser’s address bar. You’ll paste this into ChatGPT shortly. Use the spreadsheet link, not the form’s responder link.</li>
 </ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/google_sheet_responses_url.jpg" class="img-fluid figure-img" alt="Connected Google Sheet with the test response in row 2 and the spreadsheet URL in the address bar" width="620"></p>
+<figcaption>Figure: Copy the spreadsheet URL from the address bar.</figcaption>
+</figure>
+</div>
 <hr>
 </section>
 </section>
-<section id="part-2-building-the-automation-with-relay.app" class="level1">
-<h1>Part 2: Building the Automation with Relay.app</h1>
-<section id="sign-up-for-a-relay.app-account" class="level2">
-<h2 class="anchored" data-anchor-id="sign-up-for-a-relay.app-account">2.1 Sign Up for a Relay.app Account</h2>
+<section id="part-3-building-the-automation-with-chatgpt" class="level1">
+<h1>Part 3: Building the Automation with ChatGPT</h1>
+<section id="describe-your-scheduled-task" class="level2">
+<h2 class="anchored" data-anchor-id="describe-your-scheduled-task">3.1 Describe Your Scheduled Task</h2>
 <ol type="1">
-<li><p>Navigate to <a href="https://relay.app" target="_blank">relay.app</a> and sign up with the same Google account you used for your Google Form.</p></li>
-<li><p>You may be asked to add your LinkedIn profile. Up to you whether you want to do this or skip.</p></li>
-</ol>
-</section>
-<section id="start-creating-a-new-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="start-creating-a-new-workflow">2.2 Start Creating a New Workflow</h2>
-<ol type="1">
-<li><p>You may land on a page asking you to create an “agent.” You can skip this by going directly to the workflow dashboard at <a href="https://run.relay.app/dashboard" target="_blank">https://run.relay.app/dashboard</a></p></li>
-<li><p>On the left-hand sidebar, click the plus icon to create a new <strong>Workflow</strong>.</p></li>
+<li>Open a new chat in <a href="https://chatgpt.com" target="_blank">ChatGPT</a>. The toggle at the top of the page lets you choose between <strong>Chat</strong> and <strong>Work</strong>. Select <strong>Work</strong>.</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/create_new_workflow_button_n.jpg" class="img-fluid figure-img" alt="Create a new workflow" width="318"></p>
-<figcaption>Figure: Create a new workflow.</figcaption>
+<p><img src="images/chatgpt_work.jpg" class="img-fluid figure-img" alt="Chat and Work toggle with Work highlighted" width="360"></p>
+<figcaption>Figure: Select Work.</figcaption>
 </figure>
 </div>
-<ol start="3" type="1">
-<li>Relay will open the workflow editor, with an AI assistant panel on the left.</li>
-</ol>
-</section>
-<section id="use-the-ai-assistant-to-build-the-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="use-the-ai-assistant-to-build-the-workflow">2.3 Use the AI Assistant to Build the Workflow</h2>
-<p>Rather than configuring each step manually, we’ll let the AI assistant build the workflow from a prompt.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We’ve written the prompt for you below. Writing these prompts takes some practice, but the steps can be described in plain language. You’ll learn how to craft these yourself over time as you build more workflows. For now, we’ll explain why we chose each specification after the prompt.</p>
-</div>
-</div>
-<ol type="1">
-<li>Copy the prompt below and paste it into the AI assistant text box.</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/paste_your_prompt_here_n.jpg" class="img-fluid figure-img" alt="Paste your prompt here" width="532"></p>
-<figcaption>Figure: Paste your prompt here.</figcaption>
-</figure>
-</div>
-<p><strong>Prompt to paste:</strong></p>
-<pre><code>I have a Google spreadsheet that is updated when clients fill out my contact form.
-
-For each new submission, I want a report of genAI opportunities for the client's organization emailed to me.
-
-First, our automation should research the company, using Google search, returning 3 results.
-
-Then we will use Gemini 3.1 Flash Lite to draft a report. The report should be rich, colorful, and professional.
-
-The report file should be created with the plain text file tool, but with an HTML extension.
-
-Finally, an email should be sent to me using the email yourself tool (not gmail), with the report attached. </code></pre>
 <ol start="2" type="1">
-<li>Click send.</li>
+<li>Check the model selector. The default model, shown as something like <strong>GPT-6.1 Sol Medium</strong>, is strong enough for this task. Leave it as it is.</li>
 </ol>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/default_model.jpg" class="img-fluid figure-img" alt="Model selector showing GPT-6.1 Sol Medium" width="320"></p>
+<figcaption>Figure: The default model.</figcaption>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>Paste the prompt below into the regular chat box. ChatGPT will build the scheduled task for you. Replace the two placeholders with your spreadsheet link and your AI assistant email address.</li>
+</ol>
+<p><strong>Prompt to paste:</strong></p>
+<pre><code>Create a scheduled task called "Client GenAI Reports".
+
+Once a day, check this Google Form response spreadsheet using my connected Google Drive:
+
+[PASTE YOUR SPREADSHEET LINK HERE]
+
+For each new submission, research the organization on the web and create a concise, colorful PDF report on GenAI opportunities. 
+
+Include an organization overview, 3 useful opportunities related to their request, practical next steps, and source links.
+
+Use my connected Gmail to email the report to me at [YOUR ASSISTANT GOOGLE EMAIL ADDRESS], with the PDF file attached. 
+
+On the first run, process the existing test submission too. 
+
+Leave the spreadsheet unchanged. 
+
+If there are no new submissions, do nothing.</code></pre>
+<ol start="4" type="1">
+<li><p>Send the prompt. Answer any setup questions and review the proposed task.</p></li>
+<li><p>Confirm that it checks <strong>once a day</strong>, reads the correct spreadsheet, and sends to <strong>your AI assistant email address</strong>. Then save or confirm the task.</p></li>
+<li><p>Go to <a href="https://chatgpt.com/scheduled" target="_blank">chatgpt.com/scheduled</a>. You should see your new task listed under <strong>Active</strong>.</p></li>
+<li><p>Open the task to check the saved prompt and the daily schedule. You can edit it from here if anything needs changing.</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Why these specifications?</strong> You’ll learn to write prompts like this over time. Here’s the reasoning behind a few of the choices:</p>
-<ul>
-<li><strong>“returning 3 results”</strong>: The Google Search step defaults to about 5 results, which uses more AI credits than we need for this task. Two or three results is plenty.</li>
-<li><strong>“Gemini 3.1 Flash Lite”</strong>: If you don’t specify a model, Relay.app may default to a larger model like Anthropic’s Opus or Sonnet, which is more powerful but also more expensive. The free plan only gives you <strong>500 AI credits</strong>, so it’s worth being deliberate about which model you use. Gemini 3.1 Flash Lite is fast, cheap, and capable enough for this task.</li>
-<li><strong>“email yourself tool (not gmail)”</strong>: Relay.app has a built-in “Email Yourself” tool that lets you send an email to your own address without needing to connect your Google/Gmail account. This keeps things simple.</li>
-</ul>
+<p>If ChatGPT cannot open the spreadsheet, ask: <code>Use the Google Drive connection to read this spreadsheet: [YOUR LINK]</code>. Check the connected Google account if it still fails. Keep the sheet private.</p>
 </div>
 </div>
-<ol start="3" type="1">
-<li>The assistant will respond with a plan, then ask you to connect to Google Sheets. Click <strong>Connect</strong> and log in with the same Google account.</li>
+</section>
+<section id="test-the-task-twice" class="level2">
+<h2 class="anchored" data-anchor-id="test-the-task-twice">3.2 Test the Task Twice</h2>
+<ol type="1">
+<li>On <a href="https://chatgpt.com/scheduled" target="_blank">chatgpt.com/scheduled</a>, click the three dots (<strong>…</strong>) beside your task and choose <strong>Run now</strong>. The menu may look like either of these:</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/connect_to_google_sheets_n.jpg" class="img-fluid figure-img" alt="Connect to Google Sheets" width="390"></p>
-<figcaption>Figure: Connect to Google Sheets.</figcaption>
+<p><img src="images/chatgpt_run_now_menu_a.jpg" class="img-fluid figure-img" alt="Task menu with Pause, Run now, Edit, Share and Delete" width="360"></p>
+<figcaption>Figure: Run now in the task menu.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chatgpt_run_now_menu_b.jpg" class="img-fluid figure-img" alt="Task menu with Run now, Share, Resume and Delete" width="620"></p>
+<figcaption>Figure: Run now in another version of the task menu.</figcaption>
+</figure>
+</div>
+<p>If <strong>Run now</strong> isn’t shown, ask in the task’s chat:</p>
+<pre><code>Run this task once now using my existing test submission, including emailing me the report.</code></pre>
+<ol start="2" type="1">
+<li>Review the run. If ChatGPT asks for access or permission to send, complete that step and run it again.</li>
+<li>Check your inbox and Sent mail. Download the PDF attachment and open it. Does it cover the right organization and the help requested?</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chatgpt_example_report.png" class="img-fluid figure-img" alt="Actual test report generated and emailed by the ChatGPT task" width="620"></p>
+<figcaption>Figure: Open the report attachment.</figcaption>
 </figure>
 </div>
 <ol start="4" type="1">
-<li>Google will ask what permissions to grant. Grant all three.</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/grant_permissions.jpg" class="img-fluid figure-img" alt="Grant permissions to Relay.app" width="461"></p>
-<figcaption>Figure: Grant permissions to Relay.app.</figcaption>
-</figure>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>As mentioned above, these are broad permissions, but only your explicitly configured workflow actions will be taken.</p>
-</div>
-</div>
-<ol start="5" type="1">
-<li>Next, select the sheet that holds your contact form responses.</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/select_sheet_n.jpg" class="img-fluid figure-img" alt="Select the sheet that holds your contact form responses" width="415"></p>
-<figcaption>Figure: Select your sheet.</figcaption>
-</figure>
-</div>
-<ol start="6" type="1">
-<li>The assistant will then ask you to test the workflow.</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/test_workflow_n.jpg" class="img-fluid figure-img" alt="Test the workflow" width="347"></p>
-<figcaption>Figure: Test the workflow.</figcaption>
-</figure>
-</div>
-<ol start="7" type="1">
-<li>Click the test button and select the row you submitted earlier. The workflow will run and after a moment you should receive an email with the report attached. To view the HTML report, download it and open it in your browser.</li>
+<li>Run the task again without adding a new form response. You should <strong>not</strong> receive the same report twice.</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -378,76 +442,22 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The “Email Yourself” tool only sends to your own address. To email others, you can connect a Gmail or Outlook integration instead.</p>
-</div>
-</div>
-<p>Below is an example report:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/example_report_relay.jpg" class="img-fluid figure-img" alt="Example report generated by Relay.app" width="520"></p>
-<figcaption>Figure: Example report from Relay.app.</figcaption>
-</figure>
-</div>
-</section>
-<section id="make-any-final-adjustments" class="level2">
-<h2 class="anchored" data-anchor-id="make-any-final-adjustments">2.4 Make Any Final Adjustments</h2>
-<p>If any step looks wrong, or if you don’t like the final output, you can click to edit the workflow steps, or describe the problem and/or fix to the AI in the chat panel on the left. For example, you might say <em>“Tell the AI model in the workflow to draft a more concise report”</em>.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>To learn more about customizing Relay.app automations, see this video with one of the Founders. (The building demo starts around minute 7):</p>
-<div class="quarto-video"><iframe data-external="1" src="https://www.youtube.com/embed/JIkqjyKwJDk" width="500" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>If the report needs work, describe the change in the task’s chat. For example: <code>Update the scheduled task so reports are shorter and include more concrete examples.</code> Check that the saved task prompt has updated too.</p>
 </div>
 </div>
 </section>
-<section id="enable-the-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="enable-the-workflow">2.5 Enable the Workflow</h2>
+<section id="leave-it-running" class="level2">
+<h2 class="anchored" data-anchor-id="leave-it-running">3.3 Leave It Running</h2>
 <ol type="1">
-<li>Once you’re happy with the report, toggle the trigger from <strong>Off</strong> to <strong>On</strong>. The toggle turns green and the workflow is live.</li>
+<li>Go to <a href="https://chatgpt.com/scheduled" target="_blank">chatgpt.com/scheduled</a> and check that your task is listed under <strong>Active</strong>.</li>
+<li>Open <strong>Edit</strong> to check the saved prompt and daily schedule. You can pause the task here when you no longer need it.</li>
 </ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/turn_on_instant_trigger.jpg" class="img-fluid figure-img" alt="Turn on instant trigger" width="472"></p>
-<figcaption>Figure: Turn on instant trigger.</figcaption>
-</figure>
-</div>
-<p>Your automation is now active. Every new form submission will automatically trigger the full workflow.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>For reference, here is what each step of the workflow should roughly look like. Your specific steps may vary slightly, but the general idea should be the same.</p>
-<p><strong>Step 1: New contact form submission (trigger).</strong> The trigger fires when a new row is added to your “Form Responses 1” sheet.</p>
-<p><img src="images/step_1_new_row_trigger.jpg" class="img-fluid" alt="Step 1: New row trigger" width="640"></p>
-<p><strong>Step 2: Research company.</strong> A Google search is run using the company name from the form, returning 2 to 3 results.</p>
-<p><img src="images/step_2_research_company.jpg" class="img-fluid" alt="Step 2: Research company" width="633"></p>
-<p><strong>Step 3: Draft GenAI opportunities report.</strong> Gemini 3.1 Flash Lite drafts a plain text (HTML)report based on the search results, with sections covering an executive summary, company overview and top GenAI opportunities.</p>
-<p><img src="images/step_3_ai_drafter.jpg" class="img-fluid" alt="Step 3: AI drafter" width="633"></p>
-<p><strong>Step 4: Create HTML report file.</strong> The AI output is saved as a plain text file with an <code>.html</code> extension, named after the client.</p>
-<p><img src="images/step_4_create_text_file_with_html_extension.jpg" class="img-fluid" alt="Step 4: Create text file with HTML extension" width="659"></p>
-<p><strong>Step 5: Email report to me.</strong> The report is emailed to you using the “Email Yourself” tool, with the HTML file attached and a summary of the submission details in the body.</p>
-<p><img src="images/step_5_email_report_to_self.jpg" class="img-fluid" alt="Step 5: Email report to self" width="692"></p>
-<p>If any step looks wrong, click on it and edit it manually, or describe the fix to the AI in the chat panel on the left.</p>
-</div>
-</div>
+<p>Your automation is now ready. New responses will be picked up at the next scheduled check, which may be up to a day later.</p>
 <hr>
 </section>
 </section>
-<section id="part-3-embedding-the-form-in-your-website" class="level1">
-<h1>Part 3: Embedding the Form in Your Website</h1>
+<section id="part-4-embedding-the-form-in-your-website" class="level1">
+<h1>Part 4: Embedding the Form in Your Website</h1>
 <section id="get-the-embed-code" class="level2">
 <h2 class="anchored" data-anchor-id="get-the-embed-code">Get the Embed Code</h2>
 <ol type="1">
@@ -511,8 +521,8 @@ Below is my current index.html code. Please return the FULL updated HTML file:
 <p>Now test the entire pipeline end to end.</p>
 <ol type="1">
 <li><p>Visit your live GitHub Pages site and fill out the consultation form. Use a different company name than your earlier test so you can identify the new submission.</p></li>
-<li><p>Wait for Relay.app to pick up the new submission. Note that this can take sometime, up to 15 minutes. (When you tested the workflow manually in Relay.app, it ran right away. But with the live trigger enabled, Relay.app checks your spreadsheet for new rows on a schedule rather than instantly.)</p></li>
-<li><p>Check your email for the report and review the HTML attachment.</p></li>
+<li><p>Open your task in ChatGPT and run it once now, as you did earlier. Otherwise, wait for the next daily check.</p></li>
+<li><p>Check your email for the report and review the PDF attachment.</p></li>
 </ol>
 <p>If a report arrives, your automation is working end to end, from website visitor to delivered report!</p>
 <hr>
@@ -520,16 +530,17 @@ Below is my current index.html code. Please return the FULL updated HTML file:
 </section>
 <section id="submission" class="level1">
 <h1>Submission</h1>
-<p>To submit your work, take a screenshot showing your completed workflow in Relay.app (showing all the steps) and upload it to the submission box on the course website.</p>
+<p>To submit your work, upload one of the PDF reports your automation emailed you.</p>
 <hr>
 </section>
-<section id="part-4-optional-challenge-pubmed-literature-monitor-ungraded" class="level1">
-<h1>Part 4: Optional Challenge: PubMed Literature Monitor <em>(ungraded)</em></h1>
-<p>Build an automation that monitors academic literature and sends you a weekly digest. You will:</p>
+<section id="part-5-optional-challenge-pubmed-literature-monitor-ungraded" class="level1">
+<h1>Part 5: Optional Challenge: PubMed Literature Monitor <em>(ungraded)</em></h1>
+<p>Here, you will build an automation that monitors academic literature and sends you a weekly digest.</p>
+<p>The steps are as follows:</p>
 <ol type="1">
 <li>Create a PubMed search query for a topic of your choice</li>
 <li>Generate an RSS feed from that search</li>
-<li>Build a Relay.app workflow that checks the feed every Monday, summarizes recent papers, and connects them to your research background</li>
+<li>Create a ChatGPT scheduled task that uses Python to read the feed every Monday, summarizes recent papers, and connects them to your research background</li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -557,9 +568,11 @@ Tip
 </ul>
 <p>Ask an LLM to help you craft the query. For example:</p>
 <pre><code>Help me create a PubMed search query using Boolean operators.
+
 Return just the query string I can paste into PubMed.
-I will use this to create a weekly RSS feed eventually.
-The topic is:
+
+I will use this to create a weekly RSS feed that will get emailed to me. 
+
 [YOUR TOPIC HERE]</code></pre>
 <p>Replace <code>[YOUR TOPIC HERE]</code> with the topic you picked. The model will respond with a query string you can copy.</p>
 </section>
@@ -601,46 +614,68 @@ Tip
 </div>
 </section>
 </section>
-<section id="build-the-relay.app-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="build-the-relay.app-workflow">Build the Relay.app Workflow</h2>
+<section id="build-the-chatgpt-scheduled-task" class="level2">
+<h2 class="anchored" data-anchor-id="build-the-chatgpt-scheduled-task">Build the ChatGPT Scheduled Task</h2>
 <ol type="1">
-<li><p>Create a new workflow in Relay.app as you did before.</p></li>
-<li><p>Paste the prompt below into the AI assistant, replacing the placeholders with your RSS URL and a short summary of your professional background (you can use an LLM to summarize your CV).</p></li>
+<li>Open a new chat in <a href="https://chatgpt.com" target="_blank">ChatGPT</a> with <strong>Work</strong> selected and <strong>GPT-6.1 Sol Medium</strong> as the model, as in section 3.1.</li>
+<li>Paste the prompt below, replacing the placeholders with your RSS URL, email address, time zone, and a short summary of your professional background.</li>
 </ol>
-<pre><code>Every Monday morning, we want to get the latest 10 publications from this RSS feed:
+<pre><code>Create a scheduled task called "PubMed Literature Digest".
+
+Every Monday at 9 am in [YOUR TIME ZONE], use Python to download and parse this PubMed RSS feed:
 
 [PASTE YOUR PUBMED RSS URL HERE]
 
-Using Gemini 3.1 Flash Lite, summarize each one in a single line and include the link to the full publication.
+Use Python to access the RSS feed directly, rather than opening it as a web page.
 
-Then, at the end of the report, using my CV summary below as context,
-mention a few ways any of these publications might be relevant to my own work.
+For up to 10 papers added to the feed in the last 7 days, give the title, a one-line summary, and the publication link. 
 
-Send the whole thing to me using the Email Yourself tool (not Gmail).
+End the report with a few ways these papers relate to my background below. Do not repeat papers from previous digests.
 
-My professional background:
+Email the digest to me at my address below using my connected Gmail:
 
-[PASTE YOUR OWN PROFESSIONAL BACKGROUND HERE]</code></pre>
+[YOUR ASSISTANT GOOGLE EMAIL ADDRESS]
+
+I authorize sending this weekly email automatically. If there are no new papers, say so briefly in the email, without any attachments. 
+
+My CV/professional summary is pasted below:
+
+[PASTE YOUR PROFESSIONAL BACKGROUND HERE]
+</code></pre>
 <ol start="3" type="1">
-<li>Review the steps, run a test, and if the output looks good, activate the workflow. You’ll now get a literature digest every Monday morning.</li>
+<li>You can open the saved task to review the Monday schedule and your email address.</li>
 </ol>
-<p>To submit, take a screenshot of the workflow and upload it to the submission box on the course website.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chatgpt_pubmed_created.jpg" class="img-fluid figure-img" alt="Created PubMed scheduled task card showing Mondays at 9 AM" width="620"></p>
+<figcaption>Figure: Confirm the Monday morning schedule.</figcaption>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>Run the task once now and check the email.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chatgpt_pubmed_email.jpg" class="img-fluid figure-img" alt="Example PubMed digest email with Python RSS retrieval, a supported paper summary, and publication links" width="720"></p>
+<figcaption>Figure: A test literature digest delivered by Gmail.</figcaption>
+</figure>
+</div>
 <hr>
 </section>
 </section>
 <section id="optional-add-your-report-to-your-portfolio" class="level1">
 <h1>Optional: Add Your Report to Your Portfolio</h1>
-<p>If you received an HTML report from the automation, you can add it to your GitHub Pages portfolio website under a section for this week’s workshop.</p>
+<p>If you received a PDF report from the automation, you can add it to your GitHub Pages portfolio website under a section for this week’s workshop.</p>
 <section id="upload-your-report-to-github" class="level3">
 <h3 class="anchored" data-anchor-id="upload-your-report-to-github">Upload Your Report to GitHub</h3>
 <ol type="1">
-<li><p>First, download the HTML report from the email attachment (if you haven’t already).</p></li>
+<li><p>First, download the PDF report from the email attachment (if you haven’t already).</p></li>
 <li><p>Go to <a href="https://github.com" target="_blank">github.com</a>. Click your profile icon at the top right → <strong>Your repositories</strong>.</p>
 <p><img src="images/github_repositories.jpg" class="img-fluid" width="324"></p></li>
 <li><p>Locate and click on your portfolio repository (e.g., <code>graph-ai-portfolio</code>).</p></li>
 <li><p>Click <strong>Add file</strong> → <strong>Upload files</strong>.</p>
 <p><img src="images/add_file_button.jpg" class="img-fluid" width="459"></p></li>
-<li><p>Drag your HTML report file into the box, then click <strong>Commit changes</strong>.</p></li>
+<li><p>Drag your PDF report file into the box, then click <strong>Commit changes</strong>.</p></li>
 </ol>
 </section>
 <section id="update-your-portfolio-with-chatgpt-or-gemini" class="level3">
@@ -656,11 +691,11 @@ The portfolio website is hosted at
 
 ---
 
-I want to add a new link and description for the project page for "Workshop 5: Automation with Relay.app".
+I want to add a new link and description for the project page for "Workshop 5: Automation with ChatGPT Scheduled Tasks".
 
-For this project, I built an automated workflow that processes consultation form submissions, researches the client's company, and generates a professional GenAI opportunities report.
+For this project, I built a ChatGPT scheduled task that checks consultation form responses once a day, researches new clients, and emails me a GenAI opportunities report.
 
-The report is available at the link below. It is an HTML file, so reformat the link to be a clickable GitHub Pages link, since it is hosted on the same GitHub repo as the portfolio website.
+The report is available at the link below. It is a PDF file, so reformat the link to be a clickable GitHub Pages link, since it is hosted on the same GitHub repo as the portfolio website.
 
 [PASTE THE DIRECT LINK TO YOUR UPLOADED REPORT FILE HERE]
 

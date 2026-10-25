@@ -1,5 +1,5 @@
 ---
-title: "Workshop: Automation with Relay.app"
+title: "Workshop: Automation with ChatGPT Scheduled Tasks"
 format:
   html:
     toc: true
@@ -9,49 +9,103 @@ author: "The Graph Courses Team"
 
 # Introduction
 
-In this workshop, you'll add a consultation contact form to your portfolio website. When someone fills it out, mentioning their company and what they need help with, an automation will kick in behind the scenes: it will research the company, use an AI model to draft a professional report on GenAI opportunities for that organization, and email the report to you. That way, before you respond to the inquiry, you have useful context to work with.
+In this workshop, you'll practice building an automation with ChatGPT scheduled tasks. 
 
-Specifically, the automation will:
-
-1.  Monitor a Google Sheets spreadsheet for new form submissions
-2.  Research the potential client's company using Google Search
-3.  Use an AI model to generate a professional HTML report on GenAI opportunities
-4.  Email you the report as an attachment
-
-You'll build this using [Relay.app](https://relay.app){target="_blank"}, an automation platform that connects different web services with AI models. With its AI assistant, the whole setup takes just a few minutes.
+You'll embed a Google Form on your portfolio website that allows visitors to request a consultation. Then you'll use ChatGPT scheduled tasks to check the form for new submissions, research the potential client's organization, and email you a report on GenAI opportunities.
 
 ::: callout-tip
 ## Consulting? Me?
 
-You may be thinking "I'm not qualified to be a GenAI consultant!". But by now you have a decent understanding of how large language models work and what they can do. And you're familiar with a range of tools for putting them into practice.
+You may be thinking "I'm not qualified to be a GenAI consultant!". But by now you have a decent understanding of how large language models work, what they do well, and what many of their limitations are. 
 
-That puts you in probably the **top 5% of people** in terms of GenAI literacy in most fields.
+You're probably in the **top 5% of people** in terms of GenAI literacy in most fields. 
+
+:::
+
+::: callout-note
+## Claude as an alternative
+
+If you have a paid account with Claude you can also use it for this workshop exercise, but you'll have to translate the instructions we give for ChatGPT here into the Claude equivalent.
+
+Claude will also not work for the optional PubMed challenge as the PubMed RSS URL is not on Claude's allowed list of domains.
 
 :::
 
 ------------------------------------------------------------------------
 
-# Part 1: Setting Up Your Google Form and Data Collection
 
-::: callout-tip
-## A note on privacy and permissions
 
-Setting up this automation will involve granting Relay.app access to your Google Drive and Google Sheets. 
+# Part 1: Connecting ChatGPT to Google
 
-Relay.app is a trusted service that we have vetted, and only actions you explicitly set up will be taken: it won't read or modify anything else in your account. 
+## 1.1 Recommended: Create a Separate Google Account
 
-If you're still concerned though, you may want to create a separate Google account for this workshop.
+In this workshop, you will need to give ChatGPT access to a Google account so it can read form responses and send emails automatically on a schedule. 
+
+The access ChatGPT asks for is broad. It covers all your Google Drive files, Docs, Sheets and Slides, your contacts and calendar, and the ability to send emails from your Gmail account.
+
+We therefore recommend creating a brand-new, separate Google account just for AI experiments (for example, `kene.assistant@gmail.com`), rather than connecting your personal or work Google account.
+
+Note that this does not mean you need a new ChatGPT account. Rather you will use your regular ChatGPT account (for example, `kene.regular.email@xyz.com`) to connect to the new Google AI assistant Gmail account you create.
+
+Please ask an instructor for clarity on this if you are unsure.
+
+## 1.2 Connect Google Drive and Gmail
+
+1.  Open [ChatGPT](https://chatgpt.com){target="_blank"} in your browser and log in with your regular ChatGPT account (for example, `kene.regular.email@xyz.com`). Note that this needs to be a paid account. You should have received paid access as part of a previous workshop. Let us know if you have not.
+
+
+2. Click **Plugins** in the sidebar.
+
+![Figure: Open Plugins in the sidebar.](images/chatgpt_plugins_sidebar.jpg){fig-alt="ChatGPT sidebar with Plugins button" width="230"}
+
+In some versions of ChatGPT, **Plugins** appears as an icon in the narrow left-hand bar instead:
+
+![Figure: Plugins as an icon in the sidebar.](images/chatgpt_plugins_icon_sidebar.jpg){fig-alt="ChatGPT sidebar with the Plugins icon highlighted" width="500"}
+
+3.  Find **Google Drive** (under **Popular**, or search for it) and click the **+** next to it.
+
+![Figure: Add the Google Drive plugin.](images/chatgpt_plugins_google_drive.jpg){fig-alt="Plugins page with the Google Drive plugin and its plus button highlighted" width="620"}
+
+4.  A window will list the Google plugins to install: Google Drive, Gmail, Google Calendar and Google Contacts. Leave them all switched on. This connects Gmail at the same time, so you don't need to add it separately. Click **Continue to Google**.
+
+![Figure: Choose Google plugins to install.](images/chatgpt_google_plugins_install.jpg){fig-alt="Choose Google plugins to install window with Drive, Gmail, Calendar and Contacts switched on and Continue to Google highlighted" width="420"}
+
+5.  Choose your AI assistant Google account (for example, `kene.assistant@gmail.com`). If it isn't listed, click **Use another account** and sign in to it.
+
+![Figure: Choose your Google account.](images/chatgpt_google_choose_account.jpg){fig-alt="Google account chooser with a note to select the AI assistant account" width="620"}
+
+6.  On the next screen, tick **Select all** so ChatGPT gets every permission listed, then scroll down and click **Continue**.
+
+![Figure: Grant all the requested permissions.](images/chatgpt_google_select_all.jpg){fig-alt="Google access request with Select all and every permission ticked" width="520"}
+
+::: callout-note
+If you had already connected this plugin before, you'll need to click **Manage** to check the account. 
 :::
+
+::: callout-note
+## If your scheduled task asks for approval before sending email
+
+Some versions of ChatGPT let you set how much each app can do without asking you first. If your test run in Part 3 stops to ask for approval before sending the email, look for a **Permissions** setting for Gmail and choose **Allow all actions** (sometimes shortened to **Allow all**). If you can't find this setting, you can skip it. Ask your instructor if the email still doesn't send.
+:::
+
+------------------------------------------------------------------------
+
+# Part 2: Setting Up Your Google Form and Data Collection
 
 ## Create Your Project Folder
 
 1.  In your browser, navigate to [drive.google.com](https://drive.google.com/){target="_blank"}
-2.  Click **New** at the top left, then click **New folder**
+
+2.  Click the profile picture at the top right and check that you're signed in to your AI assistant account (for example, `kene.assistant@gmail.com`). If not, switch to it. The folder, form and spreadsheet must all be in the same Google account you connected to ChatGPT.
+
+![Figure: Check which Google account you're signed in to.](images/google_check_signed_in_account.jpg){fig-alt="Google account menu with the profile picture and the signed-in AI assistant account highlighted" width="500"}
+
+3.  Click **New** at the top left, then click **New folder**
 
 ![Figure: Create a new folder.](images/new_folder.jpg){fig-alt="Create a new folder" width="300"}
 
-3.  Name the folder something like `GenAI Consultations`
-4.  Double-click to open the folder
+4.  Name the folder something like `GenAI Consultations`
+5.  Double-click to open the folder
 
 ![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-06-06/6e163120-758c-4186-b7f3-be06417a2cd6/File.jpeg?tl_px=0,0&br_px=1376,769&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=337,171){width="619"}
 
@@ -91,150 +145,94 @@ If you're still concerned though, you may want to create a separate Google accou
 
 ![Figure: Link to Sheets.](images/link_to_sheets_n.jpg){fig-alt="Link to Sheets" width="300"}
 
-5.  Open the connected spreadsheet. You should see your test response as a row. Keep this tab open; you'll need to point Relay.app to this spreadsheet shortly.
+5.  Open the connected spreadsheet. You should see your test response as a row. Copy the spreadsheet URL from your browser's address bar. You'll paste this into ChatGPT shortly. Use the spreadsheet link, not the form's responder link.
+
+![Figure: Copy the spreadsheet URL from the address bar.](images/google_sheet_responses_url.jpg){fig-alt="Connected Google Sheet with the test response in row 2 and the spreadsheet URL in the address bar" width="620"}
 
 ------------------------------------------------------------------------
 
-# Part 2: Building the Automation with Relay.app
+# Part 3: Building the Automation with ChatGPT
 
+## 3.1 Describe Your Scheduled Task
 
-## 2.1 Sign Up for a Relay.app Account
+1.  Open a new chat in [ChatGPT](https://chatgpt.com){target="_blank"}. The toggle at the top of the page lets you choose between **Chat** and **Work**. Select **Work**.
 
-1.  Navigate to [relay.app](https://relay.app){target="_blank"} and sign up with the same Google account you used for your Google Form.
+![Figure: Select Work.](images/chatgpt_work.jpg){fig-alt="Chat and Work toggle with Work highlighted" width="360"}
 
-2.  You may be asked to add your LinkedIn profile. Up to you whether you want to do this or skip. 
+2.  Check the model selector. The default model, shown as something like **GPT-6.1 Sol Medium**, is strong enough for this task. Leave it as it is.
 
-## 2.2 Start Creating a New Workflow
+![Figure: The default model.](images/default_model.jpg){fig-alt="Model selector showing GPT-6.1 Sol Medium" width="320"}
 
-1.  You may land on a page asking you to create an "agent." You can skip this by going directly to the workflow dashboard at [https://run.relay.app/dashboard](https://run.relay.app/dashboard){target="_blank"}
-
-2.  On the left-hand sidebar, click the plus icon to create a new **Workflow**.
-
-![Figure: Create a new workflow.](images/create_new_workflow_button_n.jpg){fig-alt="Create a new workflow" width="318"}
-
-3.  Relay will open the workflow editor, with an AI assistant panel on the left.
-
-## 2.3 Use the AI Assistant to Build the Workflow
-
-Rather than configuring each step manually, we'll let the AI assistant build the workflow from a prompt.
-
-::: callout-note
-We've written the prompt for you below. Writing these prompts takes some practice, but the steps can be described in plain language. You'll learn how to craft these yourself over time as you build more workflows. For now, we'll explain why we chose each specification after the prompt.
-:::
-
-1.  Copy the prompt below and paste it into the AI assistant text box.
-
-![Figure: Paste your prompt here.](images/paste_your_prompt_here_n.jpg){fig-alt="Paste your prompt here" width="532"}
+3.  Paste the prompt below into the regular chat box. ChatGPT will build the scheduled task for you. Replace the two placeholders with your spreadsheet link and your AI assistant email address.
 
 **Prompt to paste:**
 
-```         
-I have a Google spreadsheet that is updated when clients fill out my contact form.
+```
+Create a scheduled task called "Client GenAI Reports".
 
-For each new submission, I want a report of genAI opportunities for the client's organization emailed to me.
+Once a day, check this Google Form response spreadsheet using my connected Google Drive:
 
-First, our automation should research the company, using Google search, returning 3 results.
+[PASTE YOUR SPREADSHEET LINK HERE]
 
-Then we will use Gemini 3.1 Flash Lite to draft a report. The report should be rich, colorful, and professional.
+For each new submission, research the organization on the web and create a concise, colorful PDF report on GenAI opportunities. 
 
-The report file should be created with the plain text file tool, but with an HTML extension.
+Include an organization overview, 3 useful opportunities related to their request, practical next steps, and source links.
 
-Finally, an email should be sent to me using the email yourself tool (not gmail), with the report attached. 
+Use my connected Gmail to email the report to me at [YOUR ASSISTANT GOOGLE EMAIL ADDRESS], with the PDF file attached. 
+
+On the first run, process the existing test submission too. 
+
+Leave the spreadsheet unchanged. 
+
+If there are no new submissions, do nothing.
 ```
 
-2.  Click send.
+4.  Send the prompt. Answer any setup questions and review the proposed task.
+5.  Confirm that it checks **once a day**, reads the correct spreadsheet, and sends to **your AI assistant email address**. Then save or confirm the task.
 
-::: callout-note
+6.  Go to [chatgpt.com/scheduled](https://chatgpt.com/scheduled){target="_blank"}. You should see your new task listed under **Active**.
 
-**Why these specifications?** You'll learn to write prompts like this over time. Here's the reasoning behind a few of the choices:
-
--   **"returning 3 results"**: The Google Search step defaults to about 5 results, which uses more AI credits than we need for this task. Two or three results is plenty.
--   **"Gemini 3.1 Flash Lite"**: If you don't specify a model, Relay.app may default to a larger model like Anthropic's Opus or Sonnet, which is more powerful but also more expensive. The free plan only gives you **500 AI credits**, so it's worth being deliberate about which model you use. Gemini 3.1 Flash Lite is fast, cheap, and capable enough for this task.
--   **"email yourself tool (not gmail)"**: Relay.app has a built-in "Email Yourself" tool that lets you send an email to your own address without needing to connect your Google/Gmail account. This keeps things simple.
-
-:::
-
-3.  The assistant will respond with a plan, then ask you to connect to Google Sheets. Click **Connect** and log in with the same Google account.
-
-![Figure: Connect to Google Sheets.](images/connect_to_google_sheets_n.jpg){fig-alt="Connect to Google Sheets" width="390"}
-
-4.  Google will ask what permissions to grant. Grant all three.
-
-![Figure: Grant permissions to Relay.app.](images/grant_permissions.jpg){fig-alt="Grant permissions to Relay.app" width="461"}
-
-::: callout-note
-As mentioned above, these are broad permissions, but only your explicitly configured workflow actions will be taken.
-:::
-
-5.  Next, select the sheet that holds your contact form responses.
-
-![Figure: Select your sheet.](images/select_sheet_n.jpg){fig-alt="Select the sheet that holds your contact form responses" width="415"}
-
-6.  The assistant will then ask you to test the workflow.
-
-![Figure: Test the workflow.](images/test_workflow_n.jpg){fig-alt="Test the workflow" width="347"}
-
-7.  Click the test button and select the row you submitted earlier. The workflow will run and after a moment you should receive an email with the report attached. To view the HTML report, download it and open it in your browser.
+7.  Open the task to check the saved prompt and the daily schedule. You can edit it from here if anything needs changing.
 
 ::: callout-tip
-The "Email Yourself" tool only sends to your own address. To email others, you can connect a Gmail or Outlook integration instead.
+If ChatGPT cannot open the spreadsheet, ask: `Use the Google Drive connection to read this spreadsheet: [YOUR LINK]`. Check the connected Google account if it still fails. Keep the sheet private.
 :::
 
-Below is an example report:
+## 3.2 Test the Task Twice
 
-![Figure: Example report from Relay.app.](images/example_report_relay.jpg){fig-alt="Example report generated by Relay.app" width="520"}
+1.  On [chatgpt.com/scheduled](https://chatgpt.com/scheduled){target="_blank"}, click the three dots (**...**) beside your task and choose **Run now**. The menu may look like either of these:
 
-## 2.4 Make Any Final Adjustments
+![Figure: Run now in the task menu.](images/chatgpt_run_now_menu_a.jpg){fig-alt="Task menu with Pause, Run now, Edit, Share and Delete" width="360"}
 
-If any step looks wrong, or if you don't like the final output, you can click to edit the workflow steps, or describe the problem and/or fix to the AI in the chat panel on the left. For example, you might say *"Tell the AI model in the workflow to draft a more concise report"*.
+![Figure: Run now in another version of the task menu.](images/chatgpt_run_now_menu_b.jpg){fig-alt="Task menu with Run now, Share, Resume and Delete" width="620"}
+
+If **Run now** isn't shown, ask in the task's chat:
+
+```
+Run this task once now using my existing test submission, including emailing me the report.
+```
+
+2.  Review the run. If ChatGPT asks for access or permission to send, complete that step and run it again.
+3.  Check your inbox and Sent mail. Download the PDF attachment and open it. Does it cover the right organization and the help requested?
+
+![Figure: Open the report attachment.](images/chatgpt_example_report.png){fig-alt="Actual test report generated and emailed by the ChatGPT task" width="620"}
+
+4.  Run the task again without adding a new form response. You should **not** receive the same report twice.
 
 ::: callout-tip
-
-To learn more about customizing Relay.app automations, see this video with one of the Founders. (The building demo starts around minute 7):
-
-{{< video https://www.youtube.com/watch?v=JIkqjyKwJDk width="500" >}}
-
+If the report needs work, describe the change in the task's chat. For example: `Update the scheduled task so reports are shorter and include more concrete examples.` Check that the saved task prompt has updated too.
 :::
 
-## 2.5 Enable the Workflow
+## 3.3 Leave It Running
 
-1.  Once you're happy with the report, toggle the trigger from **Off** to **On**. The toggle turns green and the workflow is live.
+1.  Go to [chatgpt.com/scheduled](https://chatgpt.com/scheduled){target="_blank"} and check that your task is listed under **Active**.
+2.  Open **Edit** to check the saved prompt and daily schedule. You can pause the task here when you no longer need it.
 
-![Figure: Turn on instant trigger.](images/turn_on_instant_trigger.jpg){fig-alt="Turn on instant trigger" width="472"}
-
-Your automation is now active. Every new form submission will automatically trigger the full workflow.
-
-::: callout-note
-
-For reference, here is what each step of the workflow should roughly look like. Your specific steps may vary slightly, but the general idea should be the same.
-
-**Step 1: New contact form submission (trigger).** The trigger fires when a new row is added to your "Form Responses 1" sheet.
-
-![](images/step_1_new_row_trigger.jpg){fig-alt="Step 1: New row trigger" width="640"}
-
-**Step 2: Research company.** A Google search is run using the company name from the form, returning 2 to 3 results.
-
-![](images/step_2_research_company.jpg){fig-alt="Step 2: Research company" width="633"}
-
-**Step 3: Draft GenAI opportunities report.** Gemini 3.1 Flash Lite drafts a plain text (HTML)report based on the search results, with sections covering an executive summary, company overview and top GenAI opportunities.
-
-![](images/step_3_ai_drafter.jpg){fig-alt="Step 3: AI drafter" width="633"}
-
-**Step 4: Create HTML report file.** The AI output is saved as a plain text file with an `.html` extension, named after the client.
-
-![](images/step_4_create_text_file_with_html_extension.jpg){fig-alt="Step 4: Create text file with HTML extension" width="659"}
-
-**Step 5: Email report to me.** The report is emailed to you using the "Email Yourself" tool, with the HTML file attached and a summary of the submission details in the body.
-
-![](images/step_5_email_report_to_self.jpg){fig-alt="Step 5: Email report to self" width="692"}
-
-If any step looks wrong, click on it and edit it manually, or describe the fix to the AI in the chat panel on the left.
-
-:::
+Your automation is now ready. New responses will be picked up at the next scheduled check, which may be up to a day later.
 
 ------------------------------------------------------------------------
 
-# Part 3: Embedding the Form in Your Website
+# Part 4: Embedding the Form in Your Website
 
 ## Get the Embed Code
 
@@ -309,9 +307,9 @@ Now test the entire pipeline end to end.
 
 1.  Visit your live GitHub Pages site and fill out the consultation form. Use a different company name than your earlier test so you can identify the new submission.
 
-2.  Wait for Relay.app to pick up the new submission. Note that this can take sometime, up to 15 minutes. (When you tested the workflow manually in Relay.app, it ran right away. But with the live trigger enabled, Relay.app checks your spreadsheet for new rows on a schedule rather than instantly.)
+2.  Open your task in ChatGPT and run it once now, as you did earlier. Otherwise, wait for the next daily check.
 
-3.  Check your email for the report and review the HTML attachment.
+3.  Check your email for the report and review the PDF attachment.
 
 If a report arrives, your automation is working end to end, from website visitor to delivered report!
 
@@ -319,17 +317,19 @@ If a report arrives, your automation is working end to end, from website visitor
 
 # Submission
 
-To submit your work, take a screenshot showing your completed workflow in Relay.app (showing all the steps) and upload it to the submission box on the course website.
+To submit your work, upload one of the PDF reports your automation emailed you.
 
 ------------------------------------------------------------------------
 
-# Part 4: Optional Challenge: PubMed Literature Monitor *(ungraded)*
+# Part 5: Optional Challenge: PubMed Literature Monitor *(ungraded)*
 
-Build an automation that monitors academic literature and sends you a weekly digest. You will:
+Here, you will build an automation that monitors academic literature and sends you a weekly digest. 
+
+The steps are as follows:
 
 1.  Create a PubMed search query for a topic of your choice
 2.  Generate an RSS feed from that search
-3.  Build a Relay.app workflow that checks the feed every Monday, summarizes recent papers, and connects them to your research background
+3.  Create a ChatGPT scheduled task that uses Python to read the feed every Monday, summarizes recent papers, and connects them to your research background
 
 ::: callout-tip
 This challenge is less guided, with fewer screenshots. You'll need to be more independent.
@@ -351,9 +351,11 @@ Ask an LLM to help you craft the query. For example:
 
 ```         
 Help me create a PubMed search query using Boolean operators.
+
 Return just the query string I can paste into PubMed.
-I will use this to create a weekly RSS feed eventually.
-The topic is:
+
+I will use this to create a weekly RSS feed that will get emailed to me. 
+
 [YOUR TOPIC HERE]
 ```
 
@@ -375,42 +377,53 @@ Aim for 100 to 1,000 total results. Too broad gives generic papers; too narrow m
 
 ![Figure: RSS feed settings.](images/rss_settings.jpg){fig-alt="RSS feed settings" width="629"}
 
-## Build the Relay.app Workflow
+## Build the ChatGPT Scheduled Task
 
-1.  Create a new workflow in Relay.app as you did before.
+1.  Open a new chat in [ChatGPT](https://chatgpt.com){target="_blank"} with **Work** selected and **GPT-6.1 Sol Medium** as the model, as in section 3.1.
+2.  Paste the prompt below, replacing the placeholders with your RSS URL, email address, time zone, and a short summary of your professional background.
 
-2.  Paste the prompt below into the AI assistant, replacing the placeholders with your RSS URL and a short summary of your professional background (you can use an LLM to summarize your CV).
+```
+Create a scheduled task called "PubMed Literature Digest".
 
-```         
-Every Monday morning, we want to get the latest 10 publications from this RSS feed:
+Every Monday at 9 am in [YOUR TIME ZONE], use Python to download and parse this PubMed RSS feed:
 
 [PASTE YOUR PUBMED RSS URL HERE]
 
-Using Gemini 3.1 Flash Lite, summarize each one in a single line and include the link to the full publication.
+Use Python to access the RSS feed directly, rather than opening it as a web page.
 
-Then, at the end of the report, using my CV summary below as context,
-mention a few ways any of these publications might be relevant to my own work.
+For up to 10 papers added to the feed in the last 7 days, give the title, a one-line summary, and the publication link. 
 
-Send the whole thing to me using the Email Yourself tool (not Gmail).
+End the report with a few ways these papers relate to my background below. Do not repeat papers from previous digests.
 
-My professional background:
+Email the digest to me at my address below using my connected Gmail:
 
-[PASTE YOUR OWN PROFESSIONAL BACKGROUND HERE]
+[YOUR ASSISTANT GOOGLE EMAIL ADDRESS]
+
+I authorize sending this weekly email automatically. If there are no new papers, say so briefly in the email, without any attachments. 
+
+My CV/professional summary is pasted below:
+
+[PASTE YOUR PROFESSIONAL BACKGROUND HERE]
+
 ```
 
-3.  Review the steps, run a test, and if the output looks good, activate the workflow. You'll now get a literature digest every Monday morning.
+3.  You can open the saved task to review the Monday schedule and your email address.
 
-To submit, take a screenshot of the workflow and upload it to the submission box on the course website.
+![Figure: Confirm the Monday morning schedule.](images/chatgpt_pubmed_created.jpg){fig-alt="Created PubMed scheduled task card showing Mondays at 9 AM" width="620"}
+
+4.  Run the task once now and check the email.
+
+![Figure: A test literature digest delivered by Gmail.](images/chatgpt_pubmed_email.jpg){fig-alt="Example PubMed digest email with Python RSS retrieval, a supported paper summary, and publication links" width="720"}
 
 ------------------------------------------------------------------------
 
 # Optional: Add Your Report to Your Portfolio
 
-If you received an HTML report from the automation, you can add it to your GitHub Pages portfolio website under a section for this week's workshop.
+If you received a PDF report from the automation, you can add it to your GitHub Pages portfolio website under a section for this week's workshop.
 
 ### Upload Your Report to GitHub
 
-1.  First, download the HTML report from the email attachment (if you haven't already).
+1.  First, download the PDF report from the email attachment (if you haven't already).
 
 2.  Go to [github.com](https://github.com){target="_blank"}. Click your profile icon at the top right → **Your repositories**.
 
@@ -422,7 +435,7 @@ If you received an HTML report from the automation, you can add it to your GitHu
 
     ![](images/add_file_button.jpg){width="459"}
 
-5.  Drag your HTML report file into the box, then click **Commit changes**.
+5.  Drag your PDF report file into the box, then click **Commit changes**.
 
 ### Update Your Portfolio with ChatGPT or Gemini
 
@@ -437,11 +450,11 @@ The portfolio website is hosted at
 
 ---
 
-I want to add a new link and description for the project page for "Workshop 5: Automation with Relay.app".
+I want to add a new link and description for the project page for "Workshop 5: Automation with ChatGPT Scheduled Tasks".
 
-For this project, I built an automated workflow that processes consultation form submissions, researches the client's company, and generates a professional GenAI opportunities report.
+For this project, I built a ChatGPT scheduled task that checks consultation form responses once a day, researches new clients, and emails me a GenAI opportunities report.
 
-The report is available at the link below. It is an HTML file, so reformat the link to be a clickable GitHub Pages link, since it is hosted on the same GitHub repo as the portfolio website.
+The report is available at the link below. It is a PDF file, so reformat the link to be a clickable GitHub Pages link, since it is hosted on the same GitHub repo as the portfolio website.
 
 [PASTE THE DIRECT LINK TO YOUR UPLOADED REPORT FILE HERE]
 
