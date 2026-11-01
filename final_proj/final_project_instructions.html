@@ -3043,10 +3043,42 @@ vertical-align: -.125em;
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#course-themes" id="toc-course-themes" class="nav-link" data-scroll-target="#course-themes">Course Themes</a></li>
+  <li><a href="#project-ideas" id="toc-project-ideas" class="nav-link" data-scroll-target="#project-ideas">Project Ideas</a></li>
+  <li><a href="#submission-instructions" id="toc-submission-instructions" class="nav-link" data-scroll-target="#submission-instructions">Submission Instructions</a>
+  <ul class="collapse">
+  <li><a href="#written-document-main-submission" id="toc-written-document-main-submission" class="nav-link" data-scroll-target="#written-document-main-submission">1. Written document (main submission)</a>
+  <ul class="collapse">
+  <li><a href="#issues-to-consider" id="toc-issues-to-consider" class="nav-link" data-scroll-target="#issues-to-consider">Issues to consider</a></li>
+  </ul></li>
+  <li><a href="#live-presentation" id="toc-live-presentation" class="nav-link" data-scroll-target="#live-presentation">2. Live presentation</a></li>
+  <li><a href="#share-your-link" id="toc-share-your-link" class="nav-link" data-scroll-target="#share-your-link">3. Share your link</a></li>
+  </ul></li>
+  <li><a href="#presentation-dates" id="toc-presentation-dates" class="nav-link" data-scroll-target="#presentation-dates">Presentation Dates</a></li>
+  <li><a href="#instructor-feedback-sessions" id="toc-instructor-feedback-sessions" class="nav-link" data-scroll-target="#instructor-feedback-sessions">Instructor Feedback Sessions</a></li>
+  <li><a href="#grading-rubric" id="toc-grading-rubric" class="nav-link" data-scroll-target="#grading-rubric">Grading Rubric</a></li>
+  <li><a href="#frequently-asked-questions" id="toc-frequently-asked-questions" class="nav-link" data-scroll-target="#frequently-asked-questions">Frequently Asked Questions</a>
+  <ul class="collapse">
+  <li><a href="#how-do-i-show-that-i-used-ai-tools-during-the-project" id="toc-how-do-i-show-that-i-used-ai-tools-during-the-project" class="nav-link" data-scroll-target="#how-do-i-show-that-i-used-ai-tools-during-the-project"><strong>How do I show that I used AI tools during the project?</strong></a></li>
+  <li><a href="#why-must-i-write-the-document-partly-myself-if-this-is-an-ai-course" id="toc-why-must-i-write-the-document-partly-myself-if-this-is-an-ai-course" class="nav-link" data-scroll-target="#why-must-i-write-the-document-partly-myself-if-this-is-an-ai-course"><strong>Why must I write the document partly myself if this is an AI course?</strong></a></li>
+  <li><a href="#can-i-use-ai-tools-not-covered-in-the-course" id="toc-can-i-use-ai-tools-not-covered-in-the-course" class="nav-link" data-scroll-target="#can-i-use-ai-tools-not-covered-in-the-course"><strong>Can I use AI tools not covered in the course?</strong></a></li>
+  <li><a href="#what-if-my-project-doesnt-work-perfectly" id="toc-what-if-my-project-doesnt-work-perfectly" class="nav-link" data-scroll-target="#what-if-my-project-doesnt-work-perfectly"><strong>What if my project doesn’t work perfectly?</strong></a></li>
+  <li><a href="#can-i-present-preliminary-results-or-a-work-in-progress" id="toc-can-i-present-preliminary-results-or-a-work-in-progress" class="nav-link" data-scroll-target="#can-i-present-preliminary-results-or-a-work-in-progress"><strong>Can I present preliminary results or a work-in-progress?</strong></a></li>
+  <li><a href="#how-strict-is-the-4-minute-time-limit" id="toc-how-strict-is-the-4-minute-time-limit" class="nav-link" data-scroll-target="#how-strict-is-the-4-minute-time-limit"><strong>How strict is the 4-minute time limit?</strong></a></li>
+  <li><a href="#can-i-use-the-same-dataproject-from-another-course" id="toc-can-i-use-the-same-dataproject-from-another-course" class="nav-link" data-scroll-target="#can-i-use-the-same-dataproject-from-another-course"><strong>Can I use the same data/project from another course?</strong></a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -3074,63 +3106,161 @@ vertical-align: -.125em;
 </header>
 
 
+<style>
+.pill { display: inline-block; padding: 0.05em 0.6em; margin: 0 0.15em; border-radius: 999px; font-size: 0.8em; font-weight: 600; white-space: nowrap; }
+.w1 { background: #dbeafe; color: #1e40af; }
+.w2 { background: #dcfce7; color: #166534; }
+.w3 { background: #f3e8ff; color: #6b21a8; }
+.w4 { background: #fef3c7; color: #92400e; }
+.w5 { background: #fee2e2; color: #991b1b; }
+.w6 { background: #ccfbf1; color: #115e59; }
+.any { background: #e5e7eb; color: #374151; }
+</style>
 <section id="overview" class="level1">
 <h1>Overview</h1>
-<p>For your final project, you will design and present an AI solution relevant to your work, research or personal life, building on at least two modules from this course. You will deliver a <strong>4-minute live presentation</strong> that includes a <strong>live demonstration</strong> of your tool or application, supported by a short slide deck.</p>
-<p>We recommend that your project should use <em>at least two</em> different modules of the course:</p>
+<p>For your final project, you will design and build an AI solution relevant to your work, research or personal life, combining <strong>at least two themes</strong> from this course.</p>
+<p>You will submit a <strong>1–2 page document</strong> describing your solution and linking to it, and give a <strong>4-minute live presentation</strong> with a demo in class.</p>
+</section>
+<section id="course-themes" class="level1">
+<h1>Course Themes</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 25%">
+<col style="width: 53%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Week</th>
+<th>Theme</th>
+<th>Example tools</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>W1 <span class="pill w1">Web</span></td>
+<td>Websites and apps</td>
+<td>GitHub Pages. Lovable, Replit, etc for more complex apps.</td>
+</tr>
+<tr class="even">
+<td>W2 <span class="pill w2">Data</span></td>
+<td>Data analysis and dashboards</td>
+<td>ChatGPT Data Analysis, or code through Cursor/VS Code</td>
+</tr>
+<tr class="odd">
+<td>W3 <span class="pill w3">Chatbot</span></td>
+<td>Customized chatbots</td>
+<td>Botpress, internal-facing custom GPTs in ChatGPT, Claude, Gemini.</td>
+</tr>
+<tr class="even">
+<td>W4 <span class="pill w4">Text</span></td>
+<td>Text analysis and literature synthesis</td>
+<td>Iterative text analysis in Google Sheets; literature synthesis and qualitative analysis with NotebookLM. Elicit and SciSpace as alternatives.</td>
+</tr>
+<tr class="odd">
+<td>W5 <span class="pill w5">Automation</span></td>
+<td>Automations</td>
+<td>ChatGPT, Claude scheduled tasks</td>
+</tr>
+<tr class="even">
+<td>W6 <span class="pill w6">Visuals</span></td>
+<td>Visual design and video</td>
+<td>SVG and image-based designs (ChatGPT, Gemini), Canva, PowerPoint, AI-generated video</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="project-ideas" class="level1">
+<h1>Project Ideas</h1>
+<p>The colored tags show which course themes each idea covers. Feel free to adapt any of these or come up with your own.</p>
 <ul>
-<li><strong>Websites, documents and presentations</strong> (Week 1)</li>
-<li><strong>Data analytics</strong> (Week 2)</li>
-<li><strong>Deep research and text analysis</strong> using LLMs (Week 3)</li>
-<li><strong>Chatbots/agents</strong> (Week 4)</li>
-<li><strong>Automation workflows</strong> (Week 5)</li>
-<li><strong>Designs, images and videos</strong> (Week 6)</li>
+<li><p><strong>Paper or thesis “digital twin”</strong>: Turn one paper into a website, a chatbot that answers questions about it, a plain-language summary and an explainer video. <span class="pill w1">Web</span> <span class="pill w3">Chatbot</span> <span class="pill w4">Text</span> <span class="pill w6">Visuals</span></p></li>
+<li><p><strong>Staff training kit</strong>: A mini course with slides, a tutor chatbot, AI visuals and auto-generated quizzes. <span class="pill w1">Web</span> <span class="pill w3">Chatbot</span> <span class="pill w4">Text</span> <span class="pill w6">Visuals</span></p></li>
+<li><p><strong>Model selection study for your organization</strong>: Benchmark 3 or 4 models on a real internal task, analyze cost against quality, and add a privacy assessment and a recommendation page. <span class="pill w1">Web</span> <span class="pill w2">Data</span> <span class="pill w4">Text</span></p></li>
+<li><p><strong>Tool comparison</strong>: Do one real task in three tools (for example, ChatGPT Data Analysis vs. Claude in Excel vs. Cursor, or NotebookLM vs. Elicit vs. SciSpace). Measure time, errors and cost, then write a recommendation for your organization. <span class="pill any">Any 2+</span></p></li>
+<li><p><strong>Situation monitor</strong>: A scheduled news or policy scan feeds structured extraction into Google Sheets, with trend charts and a briefing page. <span class="pill w1">Web</span> <span class="pill w2">Data</span> <span class="pill w4">Text</span> <span class="pill w5">Automation</span></p></li>
+<li><p><strong>Conference companion</strong>: For a conference you have already attended, summarize the most interesting abstracts into a website, with a chatbot that answers questions about them and visual summaries of the highlights. <span class="pill w1">Web</span> <span class="pill w3">Chatbot</span> <span class="pill w4">Text</span> <span class="pill w6">Visuals</span></p></li>
+<li><p><strong>Team “front door”</strong>: A lab or department website with a Botpress bot trained on its SOPs and FAQs, plus an intake form that sends automatic triage emails. <span class="pill w1">Web</span> <span class="pill w3">Chatbot</span> <span class="pill w5">Automation</span></p></li>
+<li><p><strong>Job search copilot</strong>: A daily automated scan with ChatGPT searches job boards for roles that match your profile, extracts them into a Google Sheet, and drafts tailored notes for each application, linked from your portfolio site. <span class="pill w1">Web</span> <span class="pill w4">Text</span> <span class="pill w5">Automation</span></p></li>
+<li><p><strong>Qualitative mini-study</strong>: Transcribe and translate interviews or public podcasts. AI codes the themes, you hand-code a subset, and you report how often the two agree. <span class="pill w2">Data</span> <span class="pill w4">Text</span></p></li>
+<li><p><strong>Data story for a specific audience</strong>: Choose a public dataset and one audience, such as local officials or community members. Use ChatGPT Data Analysis or Cursor to clean and explore the data, then use Gamma to combine the narrative and charts. <span class="pill w1">Web</span> <span class="pill w2">Data</span></p></li>
+<li><p><strong>Data journalism piece</strong>: Analyze a public dataset and publish an illustrated scrollytelling page with an “ask the data” chatbot. <span class="pill w1">Web</span> <span class="pill w2">Data</span> <span class="pill w3">Chatbot</span> <span class="pill w6">Visuals</span></p></li>
+<li><p><strong>Data-driven public information pack</strong>: Use ChatGPT Data Analysis or Cursor to analyze one public dataset and produce accurate charts, then create supporting illustrations or graphics. <span class="pill w2">Data</span> <span class="pill w6">Visuals</span></p></li>
+<li><p><strong>Community health snapshot</strong>: Analyze public data on one health issue, create a simple dashboard or visual summary, and prepare an accessible information page. <span class="pill w1">Web</span> <span class="pill w2">Data</span> <span class="pill w6">Visuals</span></p></li>
+<li><p><strong>Health campaign</strong>: Use local data to pick a key message on one health issue, then create campaign visuals (flyers, social media graphics), a landing page and a short explainer video. <span class="pill w1">Web</span> <span class="pill w2">Data</span> <span class="pill w6">Visuals</span></p></li>
+<li><p><strong>NGO impact showcase</strong>: Turn program data into a clear account of results for potential supporters. <span class="pill w1">Web</span> <span class="pill w2">Data</span> <span class="pill w6">Visuals</span></p></li>
 </ul>
-</section>
-<section id="instructor-feedback-sessions" class="level1">
-<h1>Instructor Feedback Sessions</h1>
-<p>Our Week 5 workshop (the second-to-last session) will include optional time for work-in-progress presentations and feedback on your final project. Try to make sure you have at least a draft of the presentation by then.</p>
-</section>
-<section id="presentation-dates" class="level1">
-<h1>Presentation Dates</h1>
-<p>The final presentation will be on either <strong>Sunday, June 28, 5pm GMT</strong> or <strong>Wednesday, July 1, 3pm GMT</strong>. You will be expected to present in your corresponding class time, which you have been attending. If you need to switch, please let us know with at least one week’s notice.</p>
 </section>
 <section id="submission-instructions" class="level1">
 <h1>Submission Instructions</h1>
-<ol type="1">
-<li><strong>Prepare a short slide deck</strong> (PDF, PPTX or HTML) to frame your presentation. Your slides should briefly cover:
+<section id="written-document-main-submission" class="level2">
+<h2 class="anchored" data-anchor-id="written-document-main-submission">1. Written document (main submission)</h2>
+<p>Upload a <strong>1–2 page document</strong> (PDF or Word) to the submission page. It should:</p>
 <ul>
-<li>The problem or opportunity you are addressing</li>
-<li>The AI tools and course modules you used</li>
-<li>Current limitations and opportunities for improvement</li>
-</ul></li>
-<li><strong>Give a live demo</strong> of your tool or application during the presentation. This should be the centerpiece of your talk. We recommend the following approximate structure:
+<li><strong>Describe your solution</strong>: the problem or opportunity, who it is for, and what you built.</li>
+<li><strong>Link to your solution.</strong> The format depends on your project: it might be a website, a slide deck showing the workflow, a video, or a Google Drive folder with different reports.</li>
+<li><strong>Include a table of the tools you used</strong>, with columns for the tool, the course theme it relates to, how you used it, and how you went beyond the standard course content.</li>
+<li><strong>Include a section on issues and mitigations</strong>, covering at least two issues.</li>
+</ul>
+<p><strong>The document must be mostly written by you.</strong> We will check it with <a href="https://www.pangram.com/" target="_blank">Pangram</a>, an AI-text detector, and it should score <strong>under 50% AI-generated</strong>. Of course, you should use AI to build your solution itself!</p>
+<section id="issues-to-consider" class="level3">
+<h3 class="anchored" data-anchor-id="issues-to-consider">Issues to consider</h3>
+<p>For the issues and mitigations section, discuss <strong>at least two</strong> issues that apply to your solution and how you would mitigate them. Some options:</p>
 <ul>
-<li>Introduction and context using slides (~1 minute)</li>
-<li><strong>Live demonstration of your tool/application</strong> (~2 minutes)</li>
-<li>Wrap-up: limitations, reflections, and next steps using slides (~1 minute)</li>
-</ul></li>
-<li><strong>Present live</strong> in your assigned session (4 minutes total)</li>
-<li><strong>Upload your slide deck</strong> to the submission page.</li>
-</ol>
+<li><strong>Hallucinations</strong>: Confident-sounding but wrong outputs.</li>
+<li><strong>Verifiability</strong>: How hard it is to check whether an output is correct.</li>
+<li><strong>Rubber-stamping</strong> (“meat proxy-ism”): A human signs off on AI output they haven’t really checked.</li>
+<li><strong>AI slop</strong>: Low-effort, generic output, and growing audience fatigue with content that “smells like AI”.</li>
+<li><strong>Impoverishment of visual diversity</strong>: Everything starts to look the same.</li>
+<li><strong>Bias toward training data</strong>: Outputs reflect the stereotypes and gaps in the data models were trained on.</li>
+<li><strong>Data privacy</strong>: Sensitive data shared with third-party tools.</li>
+<li><strong>Prompt injection</strong>: Untrusted input (emails, forms, web pages) giving the AI instructions.</li>
+<li><strong>Cost</strong>: Fine for one person, but some models get expensive at scale.</li>
+<li><strong>Lack of reproducibility</strong>: Models are non-deterministic, so the same prompt can give different results.</li>
+<li><strong>Lack of explainability</strong>: It is often hard to find out why the model produced a given output.</li>
+<li><strong>Skill rot</strong>: Losing skills you no longer practice yourself.</li>
+<li><strong>Job displacement</strong>: Effects on the people who used to do this work.</li>
+</ul>
+</section>
+</section>
+<section id="live-presentation" class="level2">
+<h2 class="anchored" data-anchor-id="live-presentation">2. Live presentation</h2>
+<p>Present your project live in your assigned session (<strong>4 minutes total</strong>). We recommend:</p>
+<ul>
+<li>Introduction and context (~1 minute)</li>
+<li><strong>Live demonstration of your solution</strong> (~2 minutes)</li>
+<li>Issues, reflections and next steps (~1 minute)</li>
+</ul>
+<p>You can use a few slides or your document to frame the presentation, but the demo should be the centerpiece.</p>
 <p><strong>Tip:</strong> Have a backup plan (screenshots or a short recorded video) in case of technical difficulties during the live demo.</p>
+</section>
+<section id="share-your-link" class="level2">
+<h2 class="anchored" data-anchor-id="share-your-link">3. Share your link</h2>
+<p>If your project has a URL (for example, a live website, app or chatbot), post it in the comment box on the final project page so classmates and instructors can find it after your presentation.</p>
+</section>
+</section>
+<section id="presentation-dates" class="level1">
+<h1>Presentation Dates</h1>
+<p>The final presentations will be on either <strong>Sunday, November 15</strong> or <strong>Wednesday, November 18</strong>. You will be expected to present in your corresponding class time, which you have been attending. If you need to switch, please let us know with at least one week’s notice.</p>
+</section>
+<section id="instructor-feedback-sessions" class="level1">
+<h1>Instructor Feedback Sessions</h1>
+<p>Our Week 5 workshop (the second-to-last session) will include optional time for work-in-progress presentations and feedback on your final project. Try to make sure you have at least a draft by then.</p>
 </section>
 <section id="grading-rubric" class="level1">
 <h1>Grading Rubric</h1>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Criteria</th>
-<th>Excellent (4)</th>
-<th>Good (3)</th>
-<th>Satisfactory (2)</th>
+<th>Excellent (3)</th>
+<th>Good (2)</th>
 <th>Needs Improvement (1)</th>
 </tr>
 </thead>
@@ -3139,58 +3269,62 @@ vertical-align: -.125em;
 <td><strong>Relevance</strong></td>
 <td>Highly relevant to work/research; clear real-world value</td>
 <td>Relevant; some real-world value</td>
-<td>Somewhat relevant; value not fully clear</td>
 <td>Not relevant or unclear value</td>
 </tr>
 <tr class="even">
-<td><strong>AI Integration</strong></td>
-<td>Creative, effective use of GenAI tools; integrates multiple features</td>
-<td>Good use of GenAI tools; some integration</td>
-<td>Basic use of GenAI tools</td>
-<td>Minimal or unclear use of GenAI</td>
+<td><strong>Integration of course themes</strong></td>
+<td>Three or more themes, well connected into one solution</td>
+<td>Two themes, at least loosely connected</td>
+<td>Fewer than two themes</td>
 </tr>
 <tr class="odd">
-<td><strong>Originality/Enhancement</strong></td>
-<td>Strongly extends or customizes course example</td>
-<td>Some extension/customization</td>
-<td>Minor changes to example</td>
-<td>Direct copy, little change</td>
+<td><strong>Going beyond the course</strong></td>
+<td>Two or more substantial extensions beyond the core course content</td>
+<td>One extension, limited ambition</td>
+<td>Direct copy of course examples</td>
 </tr>
 <tr class="even">
-<td><strong>Presentation &amp; Demo Quality</strong></td>
-<td>Clear, engaging presentation; compelling live demo of tool/application</td>
-<td>Clear presentation; good demo with minor issues</td>
-<td>Adequate presentation; demo somewhat unclear</td>
-<td>Disorganized; no demo or demo fails without backup</td>
+<td><strong>Issues &amp; mitigations</strong></td>
+<td>Two or more relevant issues with concrete, realistic mitigations</td>
+<td>Two issues, with generic or weak mitigations</td>
+<td>Little or no discussion of issues</td>
 </tr>
 <tr class="odd">
-<td><strong>Reflection &amp; Next Steps</strong></td>
-<td>Insightful reflection; clear next steps</td>
-<td>Some reflection; next steps mentioned</td>
-<td>Basic reflection</td>
-<td>Little or no reflection</td>
+<td><strong>Written document</strong></td>
+<td>Clear, concise, complete; tools table and link included; under 50% AI on Pangram</td>
+<td>Minor gaps or a missing element; or 50% AI or more on Pangram</td>
+<td>Disorganized or missing several required elements</td>
+</tr>
+<tr class="even">
+<td><strong>Presentation &amp; demo</strong></td>
+<td>Clear, engaging presentation; compelling live demo</td>
+<td>Clear presentation; demo with minor issues</td>
+<td>Disorganized; no demo, or demo fails without backup</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="frequently-asked-questions" class="level1">
 <h1>Frequently Asked Questions</h1>
-<section id="how-do-i-prove-i-used-an-ai-tool-during-the-project" class="level2">
-<h2 class="anchored" data-anchor-id="how-do-i-prove-i-used-an-ai-tool-during-the-project"><strong>How do I prove I used an AI tool during the project?</strong></h2>
-<p>“Work on problems that used to be impossible, but are now really hard.” — Kevin Scott, Chief Technology Officer, Microsoft (2024)</p>
-<p>While lots of people are trying to prove they <em>didn’t</em> use AI in their work, we actually want to see that you <em>did</em> use it! This can be tricky to show, especially for things like data analysis where you could have done it all yourself. Here’s how to handle this:</p>
+<section id="how-do-i-show-that-i-used-ai-tools-during-the-project" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-i-show-that-i-used-ai-tools-during-the-project"><strong>How do I show that I used AI tools during the project?</strong></h2>
+<p>While lots of people are trying to prove they <em>didn’t</em> use AI in their work, we actually want to see that you <em>did</em> use it (just not for writing your document)! This can be tricky to show, especially for things like data analysis where you could have done it all yourself. Here’s how to handle this:</p>
 <ol type="1">
-<li><p><strong>Keep Track</strong>: Take some screenshots or short videos of you working with AI tools, like keeping receipts to show what you did!</p></li>
-<li><p><strong>Show the Difference</strong>: Show how it helped you do more than you could have done on your own. The CEO of Microsoft, Kevin Scott, said this: “Work on problems that used to be impossible, but are now really hard.” Apply this to your project. Build a project that you would not have been able to achieve (at least not within two weeks) without the help of AI tools.</p></li>
+<li><p><strong>Keep track</strong>: Take some screenshots or short videos of you working with AI tools, like keeping receipts to show what you did.</p></li>
+<li><p><strong>Show the difference</strong>: Show how AI helped you do more than you could have done on your own. Kevin Scott, Chief Technology Officer at Microsoft, put it this way: “Work on problems that used to be impossible, but are now really hard.” Build a project that you would not have been able to achieve (at least not within two weeks) without the help of AI tools.</p></li>
 </ol>
+</section>
+<section id="why-must-i-write-the-document-partly-myself-if-this-is-an-ai-course" class="level2">
+<h2 class="anchored" data-anchor-id="why-must-i-write-the-document-partly-myself-if-this-is-an-ai-course"><strong>Why must I write the document partly myself if this is an AI course?</strong></h2>
+<p>The document is where you show your own understanding: what you built, why, and what its limitations are. Use AI as much as you like for the solution itself.</p>
 </section>
 <section id="can-i-use-ai-tools-not-covered-in-the-course" class="level2">
 <h2 class="anchored" data-anchor-id="can-i-use-ai-tools-not-covered-in-the-course"><strong>Can I use AI tools not covered in the course?</strong></h2>
-<p>Yes! While you should use at least one tool covered in the course, you’re encouraged to explore additional AI tools that enhance your project.</p>
+<p>Yes! You’re encouraged to explore additional AI tools. Just make sure at least two course themes are clearly represented.</p>
 </section>
 <section id="what-if-my-project-doesnt-work-perfectly" class="level2">
 <h2 class="anchored" data-anchor-id="what-if-my-project-doesnt-work-perfectly"><strong>What if my project doesn’t work perfectly?</strong></h2>
-<p>That’s completely fine and expected! Part of the reflection component is discussing what didn’t work well. Failed experiments and limitations are valuable learning experiences.</p>
+<p>That’s completely fine and expected! Discuss what didn’t work in your issues section and presentation. Failed experiments and limitations are valuable learning experiences.</p>
 </section>
 <section id="can-i-present-preliminary-results-or-a-work-in-progress" class="level2">
 <h2 class="anchored" data-anchor-id="can-i-present-preliminary-results-or-a-work-in-progress"><strong>Can I present preliminary results or a work-in-progress?</strong></h2>
@@ -3203,10 +3337,6 @@ vertical-align: -.125em;
 <section id="can-i-use-the-same-dataproject-from-another-course" class="level2">
 <h2 class="anchored" data-anchor-id="can-i-use-the-same-dataproject-from-another-course"><strong>Can I use the same data/project from another course?</strong></h2>
 <p>Yes, but you must add significant AI components that weren’t part of your original work. The focus should be on the AI enhancement/integration.</p>
-</section>
-<section id="what-if-i-miss-the-feedback-session" class="level2">
-<h2 class="anchored" data-anchor-id="what-if-i-miss-the-feedback-session"><strong>What if I miss the feedback session?</strong></h2>
-<p>The feedback sessions are optional but highly recommended. If you can’t attend, you can reach out via email or during regular office hours for guidance.</p>
 </section>
 </section>
 

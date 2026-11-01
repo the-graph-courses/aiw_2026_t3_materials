@@ -12,7 +12,7 @@ author: "The Graph Courses"
 In this session you will turn a research paper into a **visual abstract** using two different GenAI design workflows, then compare them:
 
 1.  **SVG-based**: ChatGPT writes the visual abstract as SVG code, which you then edit in **PowerPoint**.
-2.  **Image-based**: ChatGPT generates the visual abstract as an image, which you then edit in **Canva**.
+2.  **Image-based**: ChatGPT generates the visual abstract as a pixel-based image, which you then edit in **Canva**.
 
 A visual abstract is a pictorial summary of the main findings of a research paper. It's a great way to communicate key results in an appealing visual format.
 
@@ -99,9 +99,15 @@ For SVG-based visual abstracts, we can convert from SVG to Powerpoint shapes. We
 
 # Step 3: Image-Based Visual Abstract
 
+::: {.callout-important}
+## Start a new chat
+
+Open a **new ChatGPT conversation** for this image-based visual abstract. Keep it separate from the SVG chat you used in Step 2, so the two workflows stay independent, and you get distinct design styles.
+:::
+
 ### 3-A Generate the Image with ChatGPT
 
-1.  Start a new chat in ChatGPT.
+1.  Start a **new chat** in ChatGPT (a fresh conversation, separate from the SVG one).
 
 2.  Attach your paper PDF and your inspiration screenshot again.
 
