@@ -44,31 +44,23 @@ Here is a reminder of the main course themes:
 
 The colored tags show which course themes each idea covers. Feel free to adapt any of these or come up with your own.
 
--   **Paper "digital twin"**: Turn one paper into a website, a chatbot that answers questions about it, a plain-language summary and an explainer video. [Website/app]{.pill .w1} [Chatbot]{.pill .w3} [Visuals]{.pill .w6}
+-   **Paper "digital twin"**: Turn a research paper into a website, perhaps with interactives and simulations. You could then include a graphical abstract, a explainer video, or a chatbot that answers questions about the paper. [Website/app]{.pill .w1} [Chatbot]{.pill .w3} [Visuals]{.pill .w6}
 
--   **Staff training kit**: A mini course with slides, a tutor chatbot, AI visuals and auto-generated quizzes. [Website/app]{.pill .w1} [Chatbot]{.pill .w3} [Visuals]{.pill .w6}
+-   **Staff training kit**: You could build a short online mini-course perhaps slides, quizzes, a tutor chatbot, some AI visual aids. [Website/app]{.pill .w1} [Chatbot]{.pill .w3} [Visuals]{.pill .w6}
 
--   **Model selection study for your organization**: Benchmark 3 or 4 models on a real internal task, analyze cost against quality, and add a privacy assessment and a recommendation page. [Website/app]{.pill .w1} [Data]{.pill .w2}
+-   **Model selection study**: Benchmark 3 or 4 models on a task for your organization or personal project, analyze cost, quality and performance. [Website/app]{.pill .w1} [Data]{.pill .w2}
 
--   **Tool comparison**: Do one real task in three tools (for example, ChatGPT Data Analysis vs. Claude in Excel vs. Cursor, or NotebookLM vs. Elicit vs. SciSpace). Measure time, errors and cost, then write a recommendation for your organization. [Any 2+]{.pill .any}
+-   **Tool comparison**: Do one real task in two or three tools (for example, for a data anaylysis task, compare ChatGPT Data Analysis vs. ChatGPT Excel Plugin vs  vs. Codex in VSCode. Or for a literature synthesis task, compare NotebookLM vs. Elicit vs. SciSpace). Measure accuracy and cost, then write up a recommendation report. Share the findings with a website or a video. [Any 2+]{.pill .any}
 
--   **Situation monitor**: A scheduled news or policy scan feeds structured extraction into Google Sheets, with trend charts and a briefing page. [Website/app]{.pill .w1} [Data]{.pill .w2} [Research synthesis]{.pill .w4} [Automation]{.pill .w5}
+-   **News monitor**: Build an automation that scans news or policy feeds on a specific topic and structures the information into Google Sheets. Set that sheet to be visible publicly, then use it as the live data source for a website that shows trend charts and a briefing page. [Website/app]{.pill .w1} [Data]{.pill .w2} [Research synthesis]{.pill .w4} [Automation]{.pill .w5}
 
--   **Conference companion**: For a conference you have already attended, summarize the most interesting abstracts into a website, with a chatbot that answers questions about them and visual summaries of the highlights. [Website/app]{.pill .w1} [Chatbot]{.pill .w3} [Research synthesis]{.pill .w4} [Visuals]{.pill .w6}
+-   **Website for your lab or department**: Set up a lab or department website with a Botpress bot trained on its SOPs and FAQs, plus perhaps an intake form that sends automatic triage emails to members of the team. [Website/app]{.pill .w1} [Chatbot]{.pill .w3} [Automation]{.pill .w5}
 
--   **Team "front door"**: A lab or department website with a Botpress bot trained on its SOPs and FAQs, plus an intake form that sends automatic triage emails. [Website/app]{.pill .w1} [Chatbot]{.pill .w3} [Automation]{.pill .w5}
-
--   **Job search copilot**: A daily automated scan with ChatGPT searches job boards for roles that match your profile, extracts them into a Google Sheet, and drafts tailored notes for each application, linked from your portfolio site. [Website/app]{.pill .w1} [Automation]{.pill .w5}
-
--   **Qualitative mini-study**: Transcribe and translate interviews or public podcasts. AI codes the themes, you hand-code a subset, and you report how often the two agree. [Data]{.pill .w2} [Research synthesis]{.pill .w4}
+-   **Job search copilot**: Set up a daily automated scan with ChatGPT that searches job boards for roles that match your profile, extracts them into a Google Sheet, and drafts some notes for each application. Then build an interview-prep chatbot (custom GPT or Botpress) that knows your CV and the saved job ads, and runs mock interviews for each role. [Chatbot]{.pill .w3} [Automation]{.pill .w5}
 
 -   **Data story for a specific audience**: Choose a public dataset and one audience, such as local officials or community members. Use ChatGPT Data Analysis or Cursor to clean and explore the data, then use Gamma to combine the narrative and charts. [Website/app]{.pill .w1} [Data]{.pill .w2}
 
 -   **Data journalism piece**: Analyze a public dataset and publish an illustrated scrollytelling page with an "ask the data" chatbot. [Website/app]{.pill .w1} [Data]{.pill .w2} [Chatbot]{.pill .w3} [Visuals]{.pill .w6}
-
--   **Data-driven public information pack**: Use ChatGPT Data Analysis or Cursor to analyze one public dataset and produce accurate charts, then create supporting illustrations or graphics. [Data]{.pill .w2} [Visuals]{.pill .w6}
-
--   **Community health snapshot**: Analyze public data on one health issue, create a simple dashboard or visual summary, and prepare an accessible information page. [Website/app]{.pill .w1} [Data]{.pill .w2} [Visuals]{.pill .w6}
 
 -   **Health campaign**: Use local data to pick a key message on one health issue, then create campaign visuals (flyers, social media graphics), a landing page and a short explainer video. [Website/app]{.pill .w1} [Data]{.pill .w2} [Visuals]{.pill .w6}
 
@@ -107,9 +99,11 @@ For the issues and mitigations section, discuss **at least two** issues that app
 -   **Skill rot**: Losing skills you no longer practice yourself.
 -   **Job displacement**: Effects on the people who used to do this work.
 
+This is a non-exhaustive list. There are many other issues and mitigations that you might consider.
+
 ## 2. Live presentation
 
-Present your project live in your assigned session (**4 minutes total**). We recommend:
+On the assigned date, you will present your project live in your assigned session (**4 minutes total**). We recommend:
 
 -   Introduction and context (~1 minute)
 -   **Live demonstration of your solution** (~2 minutes)
