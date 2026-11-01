@@ -179,15 +179,19 @@ Now let's go one step further and have ChatGPT turn your paper into a short narr
 
 1.  Start a new chat in ChatGPT and upload the final version of your favorite visual abstract (SVG-based or image-based), along with the paper PDF for context.
 
-2.  Paste the following prompt, replacing the placeholder with the OpenAI API key we share in class:
+2.  Pick a narration voice. You can listen to samples of the OpenAI text-to-speech voices at [texttolab.com/openai](https://texttolab.com/openai){target="_blank"}.
+
+    Side Note: For the most lifelike voices, plus voice cloning (e.g., narrating in your own voice), [ElevenLabs](https://elevenlabs.io/){target="_blank"} is better. We use OpenAI here because it's simpler to set up for the class.
+
+3.  Paste the following prompt, replacing the placeholders with your chosen voice and the OpenAI API key we share in class:
 
 ```
 Make a 1-minute, 16:9 video introducing and animating the findings of the attached paper, for a general audience. Use the attached visual abstract as the main visual.
 
-For the narration, use OpenAI text-to-speech with the "marin" voice. Here is an API key: [API KEY FROM CLASS]
+For the narration, use OpenAI text-to-speech with the "[VOICE NAME]" voice. Here is an API key: [API KEY FROM CLASS]
 ```
 
-3.  Watch the result and ask for changes if needed (e.g., "slow down the narration" or "zoom in on the results panel when they are mentioned"), then download the video.
+4.  Watch the result and ask for changes if needed (e.g., "slow down the narration" or "zoom in on the results panel when they are mentioned"), then download the video.
 
 **How does ChatGPT make the video?** It doesn't have a video generation model here. Instead, it writes and runs code behind the scenes: it crops and zooms into parts of your visual abstract (and may draw simple titles or animations), generates the narration audio with the TTS API, and then stitches the frames and audio together into an MP4, typically with a tool called **ffmpeg**.
 
