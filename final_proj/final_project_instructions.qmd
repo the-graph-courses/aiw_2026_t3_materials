@@ -23,18 +23,20 @@ author: "The Graph Courses"
 
 # Overview
 
-For your final project, you will design and build an AI solution relevant to your work, research or personal life, combining **at least two themes** from this course.
+For your final project, you will design and build an AI solution relevant to your work, research or personal projects, combining **at least two themes** from this course.
 
 You will submit a **1–2 page document** describing your solution and linking to it, and give a **4-minute live presentation** with a demo in class.
 
 # Course Themes
 
+Here is a reminder of the main course themes:
+
 | Week | Theme | Example tools |
 |------|-------|---------------|
-| W1 [Web]{.pill .w1} | Websites and apps | GitHub Pages. Lovable, Replit, etc for more complex apps. |
+| W1 [Website/app]{.pill .w1} | Websites and apps | GitHub Pages. Lovable, Replit, etc for more complex apps. |
 | W2 [Data]{.pill .w2} | Data analysis and dashboards | ChatGPT Data Analysis, or code through Cursor/VS Code |
 | W3 [Chatbot]{.pill .w3} | Customized chatbots | Botpress, internal-facing custom GPTs in ChatGPT, Claude, Gemini. |
-| W4 [Text]{.pill .w4} | Text analysis and literature synthesis | Iterative text analysis in Google Sheets; literature synthesis and qualitative analysis with NotebookLM. Elicit and SciSpace as alternatives. |
+| W4 [Research synthesis]{.pill .w4} | Text analysis and literature synthesis | Iterative text analysis in Google Sheets; literature synthesis and qualitative analysis with NotebookLM. Elicit and SciSpace as alternatives. |
 | W5 [Automation]{.pill .w5} | Automations | ChatGPT, Claude scheduled tasks |
 | W6 [Visuals]{.pill .w6} | Visual design and video | SVG and image-based designs (ChatGPT, Gemini), Canva, PowerPoint, AI-generated video |
 
@@ -42,35 +44,37 @@ You will submit a **1–2 page document** describing your solution and linking t
 
 The colored tags show which course themes each idea covers. Feel free to adapt any of these or come up with your own.
 
--   **Paper or thesis "digital twin"**: Turn one paper into a website, a chatbot that answers questions about it, a plain-language summary and an explainer video. [Web]{.pill .w1} [Chatbot]{.pill .w3} [Text]{.pill .w4} [Visuals]{.pill .w6}
+-   **Paper "digital twin"**: Turn one paper into a website, a chatbot that answers questions about it, a plain-language summary and an explainer video. [Website/app]{.pill .w1} [Chatbot]{.pill .w3} [Visuals]{.pill .w6}
 
--   **Staff training kit**: A mini course with slides, a tutor chatbot, AI visuals and auto-generated quizzes. [Web]{.pill .w1} [Chatbot]{.pill .w3} [Text]{.pill .w4} [Visuals]{.pill .w6}
+-   **Staff training kit**: A mini course with slides, a tutor chatbot, AI visuals and auto-generated quizzes. [Website/app]{.pill .w1} [Chatbot]{.pill .w3} [Visuals]{.pill .w6}
 
--   **Model selection study for your organization**: Benchmark 3 or 4 models on a real internal task, analyze cost against quality, and add a privacy assessment and a recommendation page. [Web]{.pill .w1} [Data]{.pill .w2} [Text]{.pill .w4}
+-   **Model selection study for your organization**: Benchmark 3 or 4 models on a real internal task, analyze cost against quality, and add a privacy assessment and a recommendation page. [Website/app]{.pill .w1} [Data]{.pill .w2}
 
 -   **Tool comparison**: Do one real task in three tools (for example, ChatGPT Data Analysis vs. Claude in Excel vs. Cursor, or NotebookLM vs. Elicit vs. SciSpace). Measure time, errors and cost, then write a recommendation for your organization. [Any 2+]{.pill .any}
 
--   **Situation monitor**: A scheduled news or policy scan feeds structured extraction into Google Sheets, with trend charts and a briefing page. [Web]{.pill .w1} [Data]{.pill .w2} [Text]{.pill .w4} [Automation]{.pill .w5}
+-   **Situation monitor**: A scheduled news or policy scan feeds structured extraction into Google Sheets, with trend charts and a briefing page. [Website/app]{.pill .w1} [Data]{.pill .w2} [Research synthesis]{.pill .w4} [Automation]{.pill .w5}
 
--   **Conference companion**: For a conference you have already attended, summarize the most interesting abstracts into a website, with a chatbot that answers questions about them and visual summaries of the highlights. [Web]{.pill .w1} [Chatbot]{.pill .w3} [Text]{.pill .w4} [Visuals]{.pill .w6}
+-   **Conference companion**: For a conference you have already attended, summarize the most interesting abstracts into a website, with a chatbot that answers questions about them and visual summaries of the highlights. [Website/app]{.pill .w1} [Chatbot]{.pill .w3} [Research synthesis]{.pill .w4} [Visuals]{.pill .w6}
 
--   **Team "front door"**: A lab or department website with a Botpress bot trained on its SOPs and FAQs, plus an intake form that sends automatic triage emails. [Web]{.pill .w1} [Chatbot]{.pill .w3} [Automation]{.pill .w5}
+-   **Team "front door"**: A lab or department website with a Botpress bot trained on its SOPs and FAQs, plus an intake form that sends automatic triage emails. [Website/app]{.pill .w1} [Chatbot]{.pill .w3} [Automation]{.pill .w5}
 
--   **Job search copilot**: A daily automated scan with ChatGPT searches job boards for roles that match your profile, extracts them into a Google Sheet, and drafts tailored notes for each application, linked from your portfolio site. [Web]{.pill .w1} [Text]{.pill .w4} [Automation]{.pill .w5}
+-   **Job search copilot**: A daily automated scan with ChatGPT searches job boards for roles that match your profile, extracts them into a Google Sheet, and drafts tailored notes for each application, linked from your portfolio site. [Website/app]{.pill .w1} [Automation]{.pill .w5}
 
--   **Qualitative mini-study**: Transcribe and translate interviews or public podcasts. AI codes the themes, you hand-code a subset, and you report how often the two agree. [Data]{.pill .w2} [Text]{.pill .w4}
+-   **Qualitative mini-study**: Transcribe and translate interviews or public podcasts. AI codes the themes, you hand-code a subset, and you report how often the two agree. [Data]{.pill .w2} [Research synthesis]{.pill .w4}
 
--   **Data story for a specific audience**: Choose a public dataset and one audience, such as local officials or community members. Use ChatGPT Data Analysis or Cursor to clean and explore the data, then use Gamma to combine the narrative and charts. [Web]{.pill .w1} [Data]{.pill .w2}
+-   **Data story for a specific audience**: Choose a public dataset and one audience, such as local officials or community members. Use ChatGPT Data Analysis or Cursor to clean and explore the data, then use Gamma to combine the narrative and charts. [Website/app]{.pill .w1} [Data]{.pill .w2}
 
--   **Data journalism piece**: Analyze a public dataset and publish an illustrated scrollytelling page with an "ask the data" chatbot. [Web]{.pill .w1} [Data]{.pill .w2} [Chatbot]{.pill .w3} [Visuals]{.pill .w6}
+-   **Data journalism piece**: Analyze a public dataset and publish an illustrated scrollytelling page with an "ask the data" chatbot. [Website/app]{.pill .w1} [Data]{.pill .w2} [Chatbot]{.pill .w3} [Visuals]{.pill .w6}
 
 -   **Data-driven public information pack**: Use ChatGPT Data Analysis or Cursor to analyze one public dataset and produce accurate charts, then create supporting illustrations or graphics. [Data]{.pill .w2} [Visuals]{.pill .w6}
 
--   **Community health snapshot**: Analyze public data on one health issue, create a simple dashboard or visual summary, and prepare an accessible information page. [Web]{.pill .w1} [Data]{.pill .w2} [Visuals]{.pill .w6}
+-   **Community health snapshot**: Analyze public data on one health issue, create a simple dashboard or visual summary, and prepare an accessible information page. [Website/app]{.pill .w1} [Data]{.pill .w2} [Visuals]{.pill .w6}
 
--   **Health campaign**: Use local data to pick a key message on one health issue, then create campaign visuals (flyers, social media graphics), a landing page and a short explainer video. [Web]{.pill .w1} [Data]{.pill .w2} [Visuals]{.pill .w6}
+-   **Health campaign**: Use local data to pick a key message on one health issue, then create campaign visuals (flyers, social media graphics), a landing page and a short explainer video. [Website/app]{.pill .w1} [Data]{.pill .w2} [Visuals]{.pill .w6}
 
--   **NGO impact showcase**: Turn program data into a clear account of results for potential supporters. [Web]{.pill .w1} [Data]{.pill .w2} [Visuals]{.pill .w6}
+-   **NGO impact showcase**: Turn program data into a clear account of results for potential supporters. [Website/app]{.pill .w1} [Data]{.pill .w2} [Visuals]{.pill .w6}
+
+These are just ideas to get you started, not an exhaustive list. Projects that don't match any of them are very welcome.
 
 # Submission Instructions
 
@@ -93,11 +97,11 @@ For the issues and mitigations section, discuss **at least two** issues that app
 -   **Verifiability**: How hard it is to check whether an output is correct.
 -   **Rubber-stamping** ("meat proxy-ism"): A human signs off on AI output they haven't really checked.
 -   **AI slop**: Low-effort, generic output, and growing audience fatigue with content that "smells like AI".
--   **Impoverishment of visual diversity**: Everything starts to look the same.
+-   **Loss of visual and linguistic diversity**: Everything starts to look and sound the same.
 -   **Bias toward training data**: Outputs reflect the stereotypes and gaps in the data models were trained on.
 -   **Data privacy**: Sensitive data shared with third-party tools.
 -   **Prompt injection**: Untrusted input (emails, forms, web pages) giving the AI instructions.
--   **Cost**: Fine for one person, but some models get expensive at scale.
+-   **Cost**: Models get expensive at scale.
 -   **Lack of reproducibility**: Models are non-deterministic, so the same prompt can give different results.
 -   **Lack of explainability**: It is often hard to find out why the model produced a given output.
 -   **Skill rot**: Losing skills you no longer practice yourself.
@@ -111,9 +115,7 @@ Present your project live in your assigned session (**4 minutes total**). We rec
 -   **Live demonstration of your solution** (~2 minutes)
 -   Issues, reflections and next steps (~1 minute)
 
-You can use a few slides or your document to frame the presentation, but the demo should be the centerpiece.
-
-**Tip:** Have a backup plan (screenshots or a short recorded video) in case of technical difficulties during the live demo.
+You can present via slides or by simply showing and speaking about your project.
 
 ## 3. Share your link
 
@@ -133,7 +135,7 @@ Our Week 5 workshop (the second-to-last session) will include optional time for 
 |---------------|---------------|---------------|---------------|
 | **Relevance** | Highly relevant to work/research; clear real-world value | Relevant; some real-world value | Not relevant or unclear value |
 | **Integration of course themes** | Three or more themes, well connected into one solution | Two themes, at least loosely connected | Fewer than two themes |
-| **Going beyond the course** | Two or more substantial extensions beyond the core course content | One extension, limited ambition | Direct copy of course examples |
+| **Going beyond the course examples** | Two or more substantial extensions beyond the core course content | One extension, limited ambition | Direct copy of course examples |
 | **Issues & mitigations** | Two or more relevant issues with concrete, realistic mitigations | Two issues, with generic or weak mitigations | Little or no discussion of issues |
 | **Written document** | Clear, concise, complete; tools table and link included; under 50% AI on Pangram | Minor gaps or a missing element; or 50% AI or more on Pangram | Disorganized or missing several required elements |
 | **Presentation & demo** | Clear, engaging presentation; compelling live demo | Clear presentation; demo with minor issues | Disorganized; no demo, or demo fails without backup |
