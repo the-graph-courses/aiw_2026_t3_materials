@@ -85,15 +85,15 @@ Upload a **1–2 page document** (PDF or Word) to the submission page. It should
 
 For the issues and mitigations section, discuss **at least two** issues that apply to your solution and how you would mitigate them. Some options:
 
--   **Hallucinations**: Confident-sounding but wrong outputs.
--   **Verifiability**: How hard it is to check whether an output is correct.
+-   **Hallucinations**: Models make mistakes confidently, and have poor awareness of their own fallibility.
+-   **Verifiability**: In domains like data analysis, it can be difficult to know whether an output is correct if you do not have the code literacy to read each line.
 -   **Rubber-stamping** ("meat proxy-ism"): A human signs off on AI output they haven't really checked.
--   **AI slop**: Low-effort, generic output, and growing audience fatigue with content that "smells like AI".
--   **Loss of visual and linguistic diversity**: Everything starts to look and sound the same.
--   **Bias toward training data**: Outputs reflect the stereotypes and gaps in the data models were trained on.
--   **Data privacy**: Sensitive data shared with third-party tools.
--   **Prompt injection**: Untrusted input (emails, forms, web pages) giving the AI instructions.
--   **Cost**: Models get expensive at scale.
+-   **AI slop**: Mass creation of low-effort content.
+-   **Homogenization of visual creations**: Everything is starting to look the same, since most people use only a few models, and these are all trained similarly.
+-   **Biases**: Models are biased towards the data they were trained on. Peoples and concepts that are not in the training data are outside of the model’s creation space.
+-   **Data privacy**: To get the most out of modern generative AI, individuals and organizations have to send their data to AI company servers.
+-   **Prompt injection**: Malicious users or bots can trick an LLM into performing dangerous actions.
+-   **Cost**: Modern frontier models can be expensive when run over a lot of data.
 -   **Lack of reproducibility**: Models are non-deterministic, so the same prompt can give different results.
 -   **Lack of explainability**: It is often hard to find out why the model produced a given output.
 -   **Skill rot**: Losing skills you no longer practice yourself.
@@ -138,32 +138,20 @@ Our Week 5 workshop (the second-to-last session) will include optional time for 
 
 ## **How do I show that I used AI tools during the project?**
 
-While lots of people are trying to prove they *didn't* use AI in their work, we actually want to see that you *did* use it (just not for writing your document)! This can be tricky to show, especially for things like data analysis where you could have done it all yourself. Here's how to handle this:
+While lots of people are trying to prove they *didn't* use AI in their work, we actually want to see that you *did* use it! This can be tricky to show in certain areas. Some tips:
 
-1.  **Keep track**: Take some screenshots or short videos of you working with AI tools, like keeping receipts to show what you did.
+1.  Take some screenshots or short videos of you working with AI tools.
 
-2.  **Show the difference**: Show how AI helped you do more than you could have done on your own. Kevin Scott, Chief Technology Officer at Microsoft, put it this way: "Work on problems that used to be impossible, but are now really hard." Build a project that you would not have been able to achieve (at least not within two weeks) without the help of AI tools.
+2.  **Show the difference**: We have a sense of what is feasible without AI assistance in just two weeks. Show, through the scale of your ambition and execution, that you are now able to achieve far more. A relevant quote from Kevin Scott, Chief Technology Officer at Microsoft, is: "Work on problems that used to be impossible, but are now really hard." 
 
-## **Why must I write the document partly myself if this is an AI course?**
+## **Why must I score below 50% on Pangram?**
 
-The document is where you show your own understanding: what you built, why, and what its limitations are. Use AI as much as you like for the solution itself.
+We want to be sure that you can defend and explain what you have done and why. You can use AI to build the solution, but the short reflection/summary document should be primarily your own brain-child.
 
 ## **Can I use AI tools not covered in the course?**
 
 Yes! You're encouraged to explore additional AI tools. Just make sure at least two course themes are clearly represented.
 
-## **What if my project doesn't work perfectly?**
-
-That's completely fine and expected! Discuss what didn't work in your issues section and presentation. Failed experiments and limitations are valuable learning experiences.
-
 ## **Can I present preliminary results or a work-in-progress?**
 
 It's okay if your work is not finished by the end of the course. Be clear about what's preliminary and what your next steps would be.
-
-## **How strict is the 4-minute time limit?**
-
-We'll aim for 4-5 minutes total to allow for brief Q&A. Practice your timing to ensure you cover all key points effectively.
-
-## **Can I use the same data/project from another course?**
-
-Yes, but you must add significant AI components that weren't part of your original work. The focus should be on the AI enhancement/integration.

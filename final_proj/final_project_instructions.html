@@ -3069,12 +3069,9 @@ vertical-align: -.125em;
   <li><a href="#frequently-asked-questions" id="toc-frequently-asked-questions" class="nav-link" data-scroll-target="#frequently-asked-questions">Frequently Asked Questions</a>
   <ul class="collapse">
   <li><a href="#how-do-i-show-that-i-used-ai-tools-during-the-project" id="toc-how-do-i-show-that-i-used-ai-tools-during-the-project" class="nav-link" data-scroll-target="#how-do-i-show-that-i-used-ai-tools-during-the-project"><strong>How do I show that I used AI tools during the project?</strong></a></li>
-  <li><a href="#why-must-i-write-the-document-partly-myself-if-this-is-an-ai-course" id="toc-why-must-i-write-the-document-partly-myself-if-this-is-an-ai-course" class="nav-link" data-scroll-target="#why-must-i-write-the-document-partly-myself-if-this-is-an-ai-course"><strong>Why must I write the document partly myself if this is an AI course?</strong></a></li>
+  <li><a href="#why-must-i-score-below-50-on-pangram" id="toc-why-must-i-score-below-50-on-pangram" class="nav-link" data-scroll-target="#why-must-i-score-below-50-on-pangram"><strong>Why must I score below 50% on Pangram?</strong></a></li>
   <li><a href="#can-i-use-ai-tools-not-covered-in-the-course" id="toc-can-i-use-ai-tools-not-covered-in-the-course" class="nav-link" data-scroll-target="#can-i-use-ai-tools-not-covered-in-the-course"><strong>Can I use AI tools not covered in the course?</strong></a></li>
-  <li><a href="#what-if-my-project-doesnt-work-perfectly" id="toc-what-if-my-project-doesnt-work-perfectly" class="nav-link" data-scroll-target="#what-if-my-project-doesnt-work-perfectly"><strong>What if my project doesn’t work perfectly?</strong></a></li>
   <li><a href="#can-i-present-preliminary-results-or-a-work-in-progress" id="toc-can-i-present-preliminary-results-or-a-work-in-progress" class="nav-link" data-scroll-target="#can-i-present-preliminary-results-or-a-work-in-progress"><strong>Can I present preliminary results or a work-in-progress?</strong></a></li>
-  <li><a href="#how-strict-is-the-4-minute-time-limit" id="toc-how-strict-is-the-4-minute-time-limit" class="nav-link" data-scroll-target="#how-strict-is-the-4-minute-time-limit"><strong>How strict is the 4-minute time limit?</strong></a></li>
-  <li><a href="#can-i-use-the-same-dataproject-from-another-course" id="toc-can-i-use-the-same-dataproject-from-another-course" class="nav-link" data-scroll-target="#can-i-use-the-same-dataproject-from-another-course"><strong>Can I use the same data/project from another course?</strong></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -3205,15 +3202,15 @@ vertical-align: -.125em;
 <h3 class="anchored" data-anchor-id="issues-to-consider">Issues to consider</h3>
 <p>For the issues and mitigations section, discuss <strong>at least two</strong> issues that apply to your solution and how you would mitigate them. Some options:</p>
 <ul>
-<li><strong>Hallucinations</strong>: Confident-sounding but wrong outputs.</li>
-<li><strong>Verifiability</strong>: How hard it is to check whether an output is correct.</li>
+<li><strong>Hallucinations</strong>: Models make mistakes confidently, and have poor awareness of their own fallibility.</li>
+<li><strong>Verifiability</strong>: In domains like data analysis, it can be difficult to know whether an output is correct if you do not have the code literacy to read each line.</li>
 <li><strong>Rubber-stamping</strong> (“meat proxy-ism”): A human signs off on AI output they haven’t really checked.</li>
-<li><strong>AI slop</strong>: Low-effort, generic output, and growing audience fatigue with content that “smells like AI”.</li>
-<li><strong>Loss of visual and linguistic diversity</strong>: Everything starts to look and sound the same.</li>
-<li><strong>Bias toward training data</strong>: Outputs reflect the stereotypes and gaps in the data models were trained on.</li>
-<li><strong>Data privacy</strong>: Sensitive data shared with third-party tools.</li>
-<li><strong>Prompt injection</strong>: Untrusted input (emails, forms, web pages) giving the AI instructions.</li>
-<li><strong>Cost</strong>: Models get expensive at scale.</li>
+<li><strong>AI slop</strong>: Mass creation of low-effort content.</li>
+<li><strong>Homogenization of visual creations</strong>: Everything is starting to look the same, since most people use only a few models, and these are all trained similarly.</li>
+<li><strong>Biases</strong>: Models are biased towards the data they were trained on. Peoples and concepts that are not in the training data are outside of the model’s creation space.</li>
+<li><strong>Data privacy</strong>: To get the most out of modern generative AI, individuals and organizations have to send their data to AI company servers.</li>
+<li><strong>Prompt injection</strong>: Malicious users or bots can trick an LLM into performing dangerous actions.</li>
+<li><strong>Cost</strong>: Modern frontier models can be expensive when run over a lot of data.</li>
 <li><strong>Lack of reproducibility</strong>: Models are non-deterministic, so the same prompt can give different results.</li>
 <li><strong>Lack of explainability</strong>: It is often hard to find out why the model produced a given output.</li>
 <li><strong>Skill rot</strong>: Losing skills you no longer practice yourself.</li>
@@ -3306,35 +3303,23 @@ vertical-align: -.125em;
 <h1>Frequently Asked Questions</h1>
 <section id="how-do-i-show-that-i-used-ai-tools-during-the-project" class="level2">
 <h2 class="anchored" data-anchor-id="how-do-i-show-that-i-used-ai-tools-during-the-project"><strong>How do I show that I used AI tools during the project?</strong></h2>
-<p>While lots of people are trying to prove they <em>didn’t</em> use AI in their work, we actually want to see that you <em>did</em> use it (just not for writing your document)! This can be tricky to show, especially for things like data analysis where you could have done it all yourself. Here’s how to handle this:</p>
+<p>While lots of people are trying to prove they <em>didn’t</em> use AI in their work, we actually want to see that you <em>did</em> use it! This can be tricky to show in certain areas. Some tips:</p>
 <ol type="1">
-<li><p><strong>Keep track</strong>: Take some screenshots or short videos of you working with AI tools, like keeping receipts to show what you did.</p></li>
-<li><p><strong>Show the difference</strong>: Show how AI helped you do more than you could have done on your own. Kevin Scott, Chief Technology Officer at Microsoft, put it this way: “Work on problems that used to be impossible, but are now really hard.” Build a project that you would not have been able to achieve (at least not within two weeks) without the help of AI tools.</p></li>
+<li><p>Take some screenshots or short videos of you working with AI tools.</p></li>
+<li><p><strong>Show the difference</strong>: We have a sense of what is feasible without AI assistance in just two weeks. Show, through the scale of your ambition and execution, that you are now able to achieve far more. A relevant quote from Kevin Scott, Chief Technology Officer at Microsoft, is: “Work on problems that used to be impossible, but are now really hard.”</p></li>
 </ol>
 </section>
-<section id="why-must-i-write-the-document-partly-myself-if-this-is-an-ai-course" class="level2">
-<h2 class="anchored" data-anchor-id="why-must-i-write-the-document-partly-myself-if-this-is-an-ai-course"><strong>Why must I write the document partly myself if this is an AI course?</strong></h2>
-<p>The document is where you show your own understanding: what you built, why, and what its limitations are. Use AI as much as you like for the solution itself.</p>
+<section id="why-must-i-score-below-50-on-pangram" class="level2">
+<h2 class="anchored" data-anchor-id="why-must-i-score-below-50-on-pangram"><strong>Why must I score below 50% on Pangram?</strong></h2>
+<p>We want to be sure that you can defend and explain what you have done and why. You can use AI to build the solution, but the short reflection/summary document should be primarily your own brain-child.</p>
 </section>
 <section id="can-i-use-ai-tools-not-covered-in-the-course" class="level2">
 <h2 class="anchored" data-anchor-id="can-i-use-ai-tools-not-covered-in-the-course"><strong>Can I use AI tools not covered in the course?</strong></h2>
 <p>Yes! You’re encouraged to explore additional AI tools. Just make sure at least two course themes are clearly represented.</p>
 </section>
-<section id="what-if-my-project-doesnt-work-perfectly" class="level2">
-<h2 class="anchored" data-anchor-id="what-if-my-project-doesnt-work-perfectly"><strong>What if my project doesn’t work perfectly?</strong></h2>
-<p>That’s completely fine and expected! Discuss what didn’t work in your issues section and presentation. Failed experiments and limitations are valuable learning experiences.</p>
-</section>
 <section id="can-i-present-preliminary-results-or-a-work-in-progress" class="level2">
 <h2 class="anchored" data-anchor-id="can-i-present-preliminary-results-or-a-work-in-progress"><strong>Can I present preliminary results or a work-in-progress?</strong></h2>
 <p>It’s okay if your work is not finished by the end of the course. Be clear about what’s preliminary and what your next steps would be.</p>
-</section>
-<section id="how-strict-is-the-4-minute-time-limit" class="level2">
-<h2 class="anchored" data-anchor-id="how-strict-is-the-4-minute-time-limit"><strong>How strict is the 4-minute time limit?</strong></h2>
-<p>We’ll aim for 4-5 minutes total to allow for brief Q&amp;A. Practice your timing to ensure you cover all key points effectively.</p>
-</section>
-<section id="can-i-use-the-same-dataproject-from-another-course" class="level2">
-<h2 class="anchored" data-anchor-id="can-i-use-the-same-dataproject-from-another-course"><strong>Can I use the same data/project from another course?</strong></h2>
-<p>Yes, but you must add significant AI components that weren’t part of your original work. The focus should be on the AI enhancement/integration.</p>
 </section>
 </section>
 
