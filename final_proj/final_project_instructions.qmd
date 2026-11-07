@@ -97,7 +97,6 @@ For the issues and mitigations section, discuss **at least two** issues that app
 -   **Lack of reproducibility**: Models are non-deterministic, so the same prompt can give different results.
 -   **Lack of explainability**: It is often hard to find out why the model produced a given output.
 -   **Skill rot**: Losing skills you no longer practice yourself.
--   **Job displacement**: Effects on the people who used to do this work.
 
 This is a non-exhaustive list. There are many other issues and mitigations that you might consider.
 
