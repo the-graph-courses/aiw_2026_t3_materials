@@ -127,7 +127,7 @@ Our Week 5 workshop (the second-to-last session) will include optional time for 
 | Criteria | Excellent (3) | Good (2) | Needs Improvement (1) |
 |---------------|---------------|---------------|---------------|
 | **Relevance** | Highly relevant to work/research; clear real-world value | Relevant; some real-world value | Not relevant or unclear value |
-| **Integration of course themes** | Three or more themes, well connected into one solution | Two themes, at least loosely connected | Fewer than two themes |
+| **Integration of course themes** | Two or more themes, well connected into one solution | Two themes, at least loosely connected | Fewer than two themes |
 | **Going beyond the course examples** | Two or more substantial extensions beyond the core course content | One extension, limited ambition | Direct copy of course examples |
 | **Issues & mitigations** | Two or more relevant issues with concrete, realistic mitigations | Two issues, with generic or weak mitigations | Little or no discussion of issues |
 | **Written document** | Clear, concise, complete; tools table and link included; under 50% AI on Pangram | Minor gaps or a missing element; or 50% AI or more on Pangram | Disorganized or missing several required elements |
