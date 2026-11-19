@@ -114,4 +114,8 @@ Do this after you have your maps.
 
 # Part 3: Submission
 
--   Upload your final PDF report to the designated submission link.
+Email your final PDF report to [courses@thegraphnetwork.org](mailto:courses@thegraphnetwork.org).
+
+Use this subject line, replacing the name with your own:
+
+`Quantitative Methods Submission 1: FIRST NAME LAST NAME`
